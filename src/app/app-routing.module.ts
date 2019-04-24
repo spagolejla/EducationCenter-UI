@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
+import { LoginComponent } from './shared/components/login/login.component';
+import { HomeComponent } from './shared/components/home/home.component';
 
-const routes: Routes = [];
+const routes: Route[] = [
+  { path: '', component: LoginComponent},
+  { path: 'home', component: HomeComponent}
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

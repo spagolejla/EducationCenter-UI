@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class LayoutService {
 
   private userMenuOpened$ = new BehaviorSubject<boolean>(false);
-  private navMenuOpened$ = new BehaviorSubject<boolean>(true);
+  private navMenuOpened$ = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 

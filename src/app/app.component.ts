@@ -16,6 +16,7 @@ export class AppComponent implements OnDestroy {
   onDestroy$ = new Subject();
   userMenuOpen: boolean;
   navigationOpen: boolean;
+  headerShowed: boolean;
 
   constructor(private layoutService: LayoutService, router: Router) {
     this.layoutService
@@ -28,7 +29,7 @@ export class AppComponent implements OnDestroy {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(isOpen => (this.navigationOpen = isOpen));
 
-
+    this.headerShowed = true;
   }
 
   closeUserProfile() {
