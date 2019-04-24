@@ -1,9 +1,0 @@
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\bin\Debug\netcoreapp2.2\EducationCenter.Core.deps.json
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\bin\Debug\netcoreapp2.2\EducationCenter.Core.dll
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\bin\Debug\netcoreapp2.2\EducationCenter.Core.pdb
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.csprojAssemblyReference.cache
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.csproj.CoreCompileInputs.cache
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.AssemblyInfoInputs.cache
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.AssemblyInfo.cs
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.dll
-C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.pdb
