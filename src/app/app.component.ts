@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { LayoutService } from './layout/services/layout.service';
-import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

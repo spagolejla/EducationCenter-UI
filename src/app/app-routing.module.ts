@@ -5,8 +5,12 @@ import { HomeComponent } from './shared/components/home/home.component';
 
 const routes: Route[] = [
   { path: '', component: LoginComponent},
-  { path: 'home', component: HomeComponent}
-]
+  { path: 'home', component: HomeComponent},
+  {
+    path: 'student',
+    loadChildren: './student/student.module#StudentModule'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

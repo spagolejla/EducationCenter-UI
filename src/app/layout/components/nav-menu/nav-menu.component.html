@@ -1,3 +1,107 @@
-<p>
-  nav-menu works!
-</p>
+<div class="nav-menu-content">
+  <mat-nav-list >
+    <div class="sidenav-link">
+      <a mat-list-item routerLink='/home' >
+        <i class="material-icons sidenav-icon">home</i>
+        Home
+      </a>
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">chrome_reader_mode</i>
+            Courses
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item >
+            <i class="material-icons sidenav-icon">library_add</i>
+            Add course</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+          <a mat-list-item >
+            <i class="material-icons sidenav-icon">ballot</i>
+            Show all</a>
+        </mat-nav-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">person</i>
+            Employees
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item >
+            <i class="material-icons sidenav-icon">account_box</i>
+            Administrators</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+          <a mat-list-item >
+            <i class="material-icons sidenav-icon">people</i>
+            Educators</a>
+        </mat-nav-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">school</i>
+            Students
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item routerLink='/student'>
+            <i class="material-icons sidenav-icon">people</i>
+            Show all</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+          <a mat-list-item >
+            <i class="material-icons sidenav-icon">payment</i>
+            Payments</a>
+        </mat-nav-list>
+
+      </mat-expansion-panel>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="sidenav-item">
+            <mat-panel-title>
+              <i class="material-icons sidenav-icon">notifications</i>
+              Notifications
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <a mat-list-item >
+              <i class="material-icons sidenav-icon">add_circle</i>
+              Add new</a>
+          </mat-nav-list>
+
+          <mat-nav-list>
+            <a mat-list-item >
+              <i class="material-icons sidenav-icon">list_alt</i>
+              Show all</a>
+          </mat-nav-list>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-accordion>
+
+  </mat-nav-list>
+
+ </div>

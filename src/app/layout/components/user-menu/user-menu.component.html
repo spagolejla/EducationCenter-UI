@@ -1,3 +1,20 @@
-<p>
-  user-menu works!
-</p>
+<div id="userMenuContent">
+  <div id="card">
+    <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=BlazerShirt&eyeType=Default&eyebrowType=FlatNatural&mouthType=Default&skinColor=Light'
+/>
+    <h2>Dino Fišić</h2>
+    <h4>Administrator</h4>
+  </div>
+  <br>
+  <br>
+  <mat-nav-list>
+    <a mat-list-item (click)="closeUserMenu()">
+      <mat-icon matListIcon>dashboard</mat-icon>
+      Profile
+    </a>
+    <a mat-list-item (click)="closeUserMenu()">
+      <mat-icon matListIcon>exit_to_app</mat-icon>
+      Logout
+    </a>
+  </mat-nav-list>
+</div>
