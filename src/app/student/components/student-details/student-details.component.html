@@ -1,20 +1,75 @@
 <div class="container">
 
-  <mat-card id="card" *ngIf='student'>
+  <div>
+    <mat-card id="card" *ngIf='student'>
+
+      <div style="width: 100%">
+        <div style="float:right;">
+          <button mat-button class="back-btn" [routerLink]="['/student']">Back</button>
+        </div>
 
 
-    <img src='https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight2&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Gray01&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light'
-   style="display: inline;"
-    />
 
+      </div>
+      <div>
+        <img
+          src='https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight2&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Gray01&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light'
+          style="display: inline;" /></div>
 
-    <h2>{{student.firstName + student.lastName}}</h2>
-    <h4>Student</h4>
+      <h1>{{student.firstName + ' '+ student.lastName}}</h1>
+      <h4>Student</h4>
 
-  </mat-card>
-  <br>
-  <br>
+    </mat-card>
+  </div>
+  <div class="part">
+    <mat-card  *ngIf='student'>
+      <mat-card-title>
+        <h4>About</h4>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="details-row">
+          {{ student.description }} <br />
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
+  <div class="part">
+    <mat-card  *ngIf='student'>
+      <mat-card-title>
+        <h4>Additional informations</h4>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="details-row">
+          <b>Email: </b> {{ student.email }} <br />
+        </div>
+        <div class="details-row">
+          <b>Phone: </b>{{ student.phone }} <br />
+        </div>
+        <div class="details-row">
+          <b>Birthdate: </b>{{ student.birthDate }} <br />
+        </div>
+        <div class="details-row">
+          <b>Username: </b>{{ student.username }} <br />
+        </div>
+        <div class="details-row">
+          <b>Active: </b>{{ student.active }} <br />
+        </div>
+      </mat-card-content>
 
+    </mat-card>
+  </div>
+  <mat-accordion class="part">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>Student courses</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list role="list">
+
+      </mat-list>
+
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
-

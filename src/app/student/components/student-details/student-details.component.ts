@@ -38,4 +38,8 @@ export class StudentDetailsComponent implements OnInit {
       );
   }
 
+ onBackClicked() {
+    this.location.back();
+  }
+
 }
