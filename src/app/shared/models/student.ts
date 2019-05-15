@@ -9,6 +9,7 @@ export class Student {
   username: string;
   accountType: string;
   active: boolean;
+  avatarUrl: string;
 }
 
 

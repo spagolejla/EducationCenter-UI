@@ -13,7 +13,7 @@
       </div>
       <div>
         <img
-          src='https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight2&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Gray01&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light'
+          src={{student.avatarUrl}}
           style="display: inline;" /></div>
 
       <h1>{{student.firstName + ' '+ student.lastName}}</h1>
@@ -47,7 +47,7 @@
           <b>Phone: </b>{{ student.phone }} <br />
         </div>
         <div class="details-row">
-          <b>Birthdate: </b>{{ student.birthDate }} <br />
+          <b>Birthdate: </b>{{ student.birthDate | date:'longDate'}} <br />
         </div>
         <div class="details-row">
           <b>Username: </b>{{ student.username }} <br />
