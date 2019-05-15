@@ -1,0 +1,39 @@
+#card {
+  background: white;
+  border-radius: 2px;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+ }
+ #card h2, #card h4 {
+   color: black;
+   font-weight: normal;
+ }
+ #card h4 {
+   font-style: italic;
+   margin-top: 9px;
+ }
+ #card h2 {
+   margin-bottom: 9px;
+ }
+ #card img {
+   height: 150px;
+   width: 150px;
+
+   margin-bottom: 2em;
+   margin-top: 2em;
+ }
+
+ .container {
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1em;
+}
+.back-button {
+  background-color: rgba(238, 238, 238, 1);
+  color: black;
+  float: right;
+}
