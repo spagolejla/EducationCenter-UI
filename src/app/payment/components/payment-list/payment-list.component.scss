@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+  }
+
+  .mat-form-field {
+    font-size: 20px;
+    width: 50%;
+  }
+
+  .table-container {
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1em;
+  }
+
+  .table-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  .table-body{
+    margin-top: 10px;
+  }
+
+  .table-cell{
+    text-align: left;
+    font-size: 18px;
+    padding: 0.5em;
+  }
+  .center{
+    text-align: center;
+  }
+
+  .add-button {
+
+    background-color: rgba(0, 150, 136, 1);
+    color: white;
+    float: right;
+
+  }
+
+  tr.mat-footer-row {
+    font-weight: bold;
+    align-items: center;
+   
+
+  }
+
+
+
+  .edit-button{
+    margin-left: 23px;
+  }

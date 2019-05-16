@@ -9,7 +9,12 @@ const routes: Route[] = [
   {
     path: 'student',
     loadChildren: './student/student.module#StudentModule'
+  },
+  {
+    path: 'payment',
+    loadChildren: './payment/payment.module#PaymentModule'
   }
+
 ];
 
 @NgModule({

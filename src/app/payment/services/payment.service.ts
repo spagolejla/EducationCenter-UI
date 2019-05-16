@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { retry, catchError } from 'rxjs/operators';
-import { throwError, of } from 'rxjs';
-import { Student } from 'src/app/shared/models/student';
 import { AppConfig } from 'src/app/config/config';
-
+import { Payment } from 'src/app/shared/models/payment';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StudentService {
+export class PaymentService {
 
   private pathAPI = this.config.setting[ 'PathAPI'] ;
-
   constructor(private http: HttpClient, private config: AppConfig) { }
 
-  getStudents() {
-    return this.http.get<Student[]>(this.pathAPI + 'api/student').pipe(
-      catchError(this.handleError)
-    );
-  }
-
-
-  getStudentById(id: number) {
-    return this.http.get<Student>(this.pathAPI + `api/student/${id}`).pipe(
-      retry(3),
+  getPayments() {
+    return this.http.get<Payment[]>(this.pathAPI + 'api/payment').pipe(
       catchError(this.handleError)
     );
   }
