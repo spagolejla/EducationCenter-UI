@@ -10,3 +10,45 @@
   background: rgba(0, 150, 136, 1);
   color: white;
 }
+
+.example-container {
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1em;
+}
+
+.example-container > * {
+  width: 100%;
+}
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.frm-field {
+   width:100%;
+}
+
+.frm-field > * {
+  width: 100%;
+}
+
+.save-btn{
+  background-color: rgba(0, 150, 136, 1);
+  color: white;
+  margin-top: 10px;
+  margin-left: 92.3%;
+}
+
+.btn-div{
+width:100%;
+}

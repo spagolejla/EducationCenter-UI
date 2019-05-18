@@ -1,13 +1,63 @@
-
 <div class="container">
 
   <mat-card class="mat-elevation-z3">
     <div style="margin-bottom:15px;">
       <h2 style="display:inline;"> {{pageTitle}}</h2>
-      <button mat-button class="back-button"  [routerLink]="['/payment']">Back</button>
+      <button mat-button class="back-button" [routerLink]="['/payment']">Back</button>
     </div>
-        </mat-card>
+  </mat-card>
 
 
+      <div class="example-container">
+          <mat-card class="mat-elevation-z3">
 
+              <mat-card-content>
+                <h3>Payment data</h3>
+          <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+            <div class="frm-field">
+                <mat-form-field>
+                    <mat-select formControlName="studentId" placeholder="Student" class="dropdown-input" required>
+                      <mat-option *ngFor="let s of students" [value]="s.id">{{s.firstName + '  ' + s.lastName}}</mat-option>
+                    </mat-select>
+                   <!-- <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>-->
+                  </mat-form-field>
+
+            </div>
+
+          <div class="frm-field">
+              <mat-form-field>
+                  <mat-select formControlName="courseId" placeholder="Course" class="dropdown-input" required>
+                    <mat-option *ngFor="let c of courses" [value]="c.id">{{c.name}}</mat-option>
+                  </mat-select>
+                 <!-- <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>-->
+                </mat-form-field>
+          </div>
+          <div class="frm-field" >
+              <mat-form-field>
+                  <input matInput [matDatepicker]="picker"  formControlName="date" placeholder="Choose a date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+          </div>
+
+      <div class="frm-field">
+          <mat-form-field>
+              <input matInput placeholder="Amount" type="number" formControlName="amount" class="example-right-align">
+              <span matPrefix>$&nbsp;</span>
+              <span matSuffix>.00</span>
+            </mat-form-field>
+      </div>
+      <div class="btn-div">
+
+
+          <button mat-button cdkFocusInitial class="save-btn" type="submit">Save</button>
+      </div>
+
+          </form>
+        </mat-card-content>
+
+
+  </mat-card>
+</div>
 </div>
