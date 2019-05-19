@@ -32,7 +32,7 @@ export class PaymentService {
   }
 
   updatePayment(payment: EditPayment) {
-    return this.http.post<AddPayment>(this.pathAPI + 'api/payment', payment).pipe(
+    return this.http.put<EditPayment>(this.pathAPI + 'api/payment', payment).pipe(
      catchError(this.handleError)
     );
  }

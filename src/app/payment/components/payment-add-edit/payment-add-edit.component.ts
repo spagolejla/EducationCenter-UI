@@ -22,6 +22,7 @@ export class PaymentAddEditComponent implements OnInit {
   students: Student[];
   courses: Course[];
   editPayment: EditPayment;
+  dateHelper: Date;
 
   observables: any = [];
 
@@ -110,20 +111,28 @@ export class PaymentAddEditComponent implements OnInit {
       this.updatePayment();
     }
   }
+
+
   updatePayment() {
-    this.editPayment.studentId = this.paymentForm.get("studentId").value;
-    this.editPayment.courseId = this.paymentForm.get("courseId").value;
-    this.editPayment.amount = this.paymentForm.get("amount").value;
-    this.editPayment.date = this.paymentForm.get("date").value;
+    this.editPayment.studentId = this.paymentForm.get('studentId').value;
+    this.editPayment.courseId = this.paymentForm.get('courseId').value;
+    this.editPayment.amount = this.paymentForm.get('amount').value;
+
+    const  dateHelper = new Date(this.paymentForm.get('date').value);
+    let d:Date = this.paymentForm.get('date').value;
+    d.setHours(d.getHours() - d.getTimezoneOffset() / 60);
+    this.editPayment.date =  d;
+
 
     this.paymentService.updatePayment(this.editPayment).subscribe(
       () => {
-        this.snackBar.open("Successfully updated the payment !", "Close", {
+        this.snackBar.open('Successfully updated the payment !', 'Close', {
           duration: 3000
         });
+        this.router.navigate(['/payment']);
       },
       err => {
-        this.snackBar.open(err, "Close");
+        this.snackBar.open(err, 'Close');
         console.error(err);
       }
     );
@@ -139,8 +148,8 @@ export class PaymentAddEditComponent implements OnInit {
 
     this.paymentService.addPayment(newPayment).subscribe(
       () => {
-        this.openSnackBar("Success!", "New Payment added!");
-        this.router.navigate(["/payment"]);
+        this.openSnackBar('Success!', 'New Payment added!');
+        this.router.navigate(['/payment']);
       },
       err => console.log(err)
     );
