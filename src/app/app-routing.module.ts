@@ -13,6 +13,14 @@ const routes: Route[] = [
   {
     path: 'payment',
     loadChildren: './payment/payment.module#PaymentModule'
+  },
+  {
+    path: 'educator',
+    loadChildren: './educator/educator.module#EducatorModule'
+  },
+  {
+    path: 'administrator',
+    loadChildren: './administrator/administrator.module#AdministratorModule'
   }
 
 ];

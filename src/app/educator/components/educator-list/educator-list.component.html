@@ -1,0 +1,42 @@
+<div class="grid-container">
+  <mat-card class="mat-elevation-z3">
+    <div style="margin-bottom:15px;">
+      <h1 style="display:inline;"> Educators</h1>
+      <button mat-button class="add-button" [routerLink]="['/payment/addedit', 0]">Add new</button>
+    </div>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Search" [(ngModel)]="listFilter">
+      <button mat-button matSuffix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+
+    </mat-form-field>
+
+  </mat-card>
+
+  <div class="grid-body" *ngIf="educators">
+    <mat-grid-list cols="4" rowHeight="50px">
+
+
+        <div class="card mat-elevation-z3" *ngFor="let educator of filteredEducators">
+
+          <img src={{educator.avatarUrl}} />
+          <h4> {{ educator.title + ' ' + educator.firstName + ' '+ educator.lastName}} </h4>
+          <button mat-button class="details-btn">Details</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </mat-grid-list>
+  </div>
+
+</div>

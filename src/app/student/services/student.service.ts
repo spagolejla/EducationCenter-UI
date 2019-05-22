@@ -16,7 +16,7 @@ export class StudentService {
   constructor(private http: HttpClient, private config: AppConfig) { }
 
   getStudents() {
-    return this.http.get<Student[]>(this.pathAPI + 'api/student').pipe(
+    return this.http.get<Student[]>(this.pathAPI + 'api/students').pipe(
       catchError(this.handleError)
     );
   }
