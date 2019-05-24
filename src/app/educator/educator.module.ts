@@ -4,9 +4,10 @@ import { EducatorListComponent } from './components/educator-list/educator-list.
 import { EducatorRoutingModule } from './educator-routing.module';
 import { MaterialDesignModule } from '../shared/material-design/material-design.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EducatorDetailsComponent } from './components/educator-details/educator-details.component';
 
 @NgModule({
-  declarations: [EducatorListComponent],
+  declarations: [EducatorListComponent, EducatorDetailsComponent],
   imports: [
     CommonModule,
     EducatorRoutingModule,

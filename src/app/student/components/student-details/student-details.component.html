@@ -1,28 +1,30 @@
 <div class="container">
 
   <div>
-    <mat-card id="card" *ngIf='student'>
+    <mat-card id="card" *ngIf='student' class="mat-elevation-z3">
 
-      <div style="width: 100%">
-        <div style="float:right;">
+      <div style="width: 100%; display:inline-block;">
+        <div style=" float:right;">
           <button mat-button class="back-btn" [routerLink]="['/student']">Back</button>
         </div>
 
 
 
+
+        <div style="float:left;margin-left:43%;">
+          <img src={{student.avatarUrl}} />
+        </div>
       </div>
       <div>
-        <img
-          src={{student.avatarUrl}}
-          style="display: inline;" /></div>
+        <h1>{{ student.firstName + ' '+ student.lastName}}</h1>
+        <h4>{{student.accountType}}</h4>
+      </div>
 
-      <h1>{{student.firstName + ' '+ student.lastName}}</h1>
-      <h4>Student</h4>
 
     </mat-card>
   </div>
   <div class="part">
-    <mat-card  *ngIf='student'>
+    <mat-card *ngIf='student'>
       <mat-card-title>
         <h4>About</h4>
       </mat-card-title>
@@ -35,7 +37,7 @@
   </div>
 
   <div class="part">
-    <mat-card  *ngIf='student'>
+    <mat-card *ngIf='student'>
       <mat-card-title>
         <h4>Additional informations</h4>
       </mat-card-title>
@@ -67,7 +69,11 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-list role="list">
-
+        <mat-list-item role="listitem" *ngFor="let course of courses">
+          <div class="details-row">
+            <b> {{ course.name }} </b><br />
+          </div>
+        </mat-list-item>
       </mat-list>
 
     </mat-expansion-panel>

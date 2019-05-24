@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Administrator } from 'src/app/shared/models/administrator';
+import { AdministratorService } from '../../services/administrator.service';
+import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-administrator-list',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministratorListComponent implements OnInit {
 
-  constructor() { }
+admins: Administrator[];
+displayedColumns: string[] = ['Firstname', 'Lastname', 'Email', 'Phone',  'Username', 'Active', 'Action'];
+dataSource;
+
+applyFilter(filterValue: string) {
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+}
+  constructor(private adminService: AdministratorService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getAdmins();
+  }
+  getAdmins(): void {
+    this.adminService.getAdministrators()
+      .subscribe(admin => {
+        this.admins = admin;
+        this.dataSource = new MatTableDataSource(this.admins);
+        console.log(this.admins);
+      }
+      );
   }
 
 }

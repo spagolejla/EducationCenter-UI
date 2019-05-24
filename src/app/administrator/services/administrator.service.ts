@@ -1,34 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Administrator } from 'src/app/shared/models/administrator';
+import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { retry, catchError } from 'rxjs/operators';
-import { throwError, of } from 'rxjs';
 import { AppConfig } from 'src/app/config/config';
-import { Course } from 'src/app/shared/models/course';
-
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CourseService {
+export class AdministratorService {
 
   private pathAPI = this.config.setting[ 'PathAPI'] ;
 
   constructor(private http: HttpClient, private config: AppConfig) { }
 
-  getCourses() {
-    return this.http.get<Course[]>(this.pathAPI + 'api/courses').pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  getCoursesByEducatorId(id: number) {
-    return this.http.get<Course[]>(this.pathAPI + `api/educator/${id}/courses`).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  getCoursesByStudentId(id: number) {
-    return this.http.get<Course[]>(this.pathAPI + `api/student/${id}/courses`).pipe(
+  getAdministrators(){
+    return this.http.get<Administrator[]>(this.pathAPI + 'api/administrators').pipe(
       catchError(this.handleError)
     );
   }
@@ -43,6 +30,4 @@ export class CourseService {
     }
     return throwError('Something bad happened; please try again later.');
   }
-
-
 }

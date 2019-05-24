@@ -1,0 +1,45 @@
+import { Component, OnInit } from "@angular/core";
+import { EducatorService } from "../../services/educator.service";
+import { ActivatedRoute } from "@angular/router";
+import { Educator } from "src/app/shared/models/educator";
+import { Course } from "src/app/shared/models/course";
+import { CourseService } from "src/app/course/services/course.service";
+import { forkJoin } from 'rxjs';
+
+@Component({
+  selector: "app-educator-details",
+  templateUrl: "./educator-details.component.html",
+  styleUrls: ["./educator-details.component.scss"]
+})
+export class EducatorDetailsComponent implements OnInit {
+  educator: Educator;
+  educatorId: number;
+  courses: Course[];
+
+  observables: any = [];
+
+  constructor(
+    private educatorService: EducatorService,
+    private courseService: CourseService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.educatorId = +params.get("id");
+    });
+
+    this.observables.push(
+      this.educatorService.getEducatorById(this.educatorId));
+    this.observables.push(this.courseService.getCoursesByEducatorId(this.educatorId));
+
+
+    forkJoin(this.observables).subscribe(responseList => {
+      this.educator = responseList[0] as Educator;
+      this.courses = responseList[1] as Course[];
+      console.log(this.courses);
+    });
+  }
+
+
+}

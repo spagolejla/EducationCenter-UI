@@ -1,0 +1,103 @@
+<div class="container">
+
+  <div>
+    <mat-card id="card" *ngIf='educator' class="mat-elevation-z3">
+
+      <div style="width: 100%; display:inline-block;">
+        <div style=" float:right;">
+          <button mat-button class="back-btn" [routerLink]="['/educator']">Back</button>
+        </div>
+
+
+
+
+      <div style="float:left;margin-left:43%;">
+        <img src={{educator.avatarUrl}} />
+      </div>
+    </div>
+    <div>
+        <h1 >{{educator.title + ' ' + educator.firstName + ' '+ educator.lastName}}</h1>
+
+    </div>
+
+
+    </mat-card>
+  </div>
+
+
+
+
+<div style="display: inline-block;width: 100%">
+  <div class="part" style="float:left; width: 73%;height: 100%">
+    <mat-card *ngIf='educator' class="mat-elevation-z3">
+      <mat-card-title>
+        <h4 style="color:rgba(0, 150, 136, 1);display:inline-block">Additional informations</h4>
+        <button mat-mini-fab color="primary" style="margin-left: 15px; margin-top: 15px;" [routerLink]="['/payment/addedit', educator.id]" >
+          <i class="material-icons">edit</i>
+        </button>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Course field: </b> {{ educator.courseField }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Email: </b> {{ educator.email }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Phone: </b>{{ educator.phone }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Username: </b>{{ educator.username }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Active: </b>{{ educator.active }} <br />
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="part" style=" float:right; width:26%;height: 100%;">
+      <div>
+          <mat-card *ngIf='educator' class="mat-elevation-z3">
+
+              <mat-card-content style="padding-left:15%;">
+                  <p style="font-size: 2em; color:rgba(0, 150, 136, 1);"><b>Average rate</b></p>
+                            </mat-card-content>
+
+            </mat-card>
+      </div>
+    <div style="margin-top: 20px;">
+        <mat-card *ngIf='educator' style="background:rgba(0, 150, 136, 1);" class="mat-elevation-z3">
+
+            <mat-card-content style="padding:30%;">
+  <p style="font-size: 5em; color:white">9.5</p>
+            </mat-card-content>
+
+          </mat-card>
+    </div>
+
+  </div>
+</div>
+<div class="part mat-elevation-z2">
+    <mat-accordion >
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3 style="color:rgba(0, 150, 136, 1);">Educator courses</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let course of courses">
+                  <div class="details-row">
+                      <b> {{ course.name }} </b><br />
+                    </div>
+              </mat-list-item>
+          </mat-list>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+</div>
+
+</div>

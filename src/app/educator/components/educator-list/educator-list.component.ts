@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EducatorService } from '../../services/educator.service';
 import { ActivatedRoute } from '@angular/router';
 import { Educator } from 'src/app/shared/models/educator';
-import { elementContainerStart } from '@angular/core/src/render3';
+
 
 @Component({
   selector: 'app-educator-list',
