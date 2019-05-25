@@ -1,3 +1,17 @@
-<p>
-  home works!
-</p>
+<div class="container">
+<div class="top-menu">
+  <div class="menu-course">
+    <button mat-button class="btn-course">
+
+      <h2>Courses</h2></button>
+
+  </div>
+  <div class="menu-educator">
+      <button mat-button class="btn-educator"  [routerLink]="['/educator']"> <h2>Educators</h2></button>
+     </div>
+     <div class="menu-profile">
+        <button mat-button class="btn-profile"> <h2>My profile</h2></button>
+       </div>
+</div>
+<app-notification-list></app-notification-list>
+</div>>

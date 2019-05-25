@@ -11,6 +11,7 @@ import { MaterialDesignModule } from './shared/material-design/material-design.m
 import { LoginComponent } from './shared/components/login/login.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotificationModule } from './notification/notification.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LayoutModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NotificationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,21 @@
+
+
+
+ <div class="notif-body " *ngFor="let n of notifications">
+   <mat-card class="mat-elevation-z1">
+     <div style="display:inline-block; width:100%;">
+        <div class="notif-title" ><h3>{{n.title}}</h3></div>
+        <div class="notif-date"><h4>{{n.date | date: 'longDate'}}</h4></div>
+
+     </div>
+
+      <div class="notif-text">{{n.text}}</div>
+
+
+      <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>  {{n.user}}</div>
+
+   </mat-card>
+
+
+
+ </div>

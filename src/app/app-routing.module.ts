@@ -21,6 +21,10 @@ const routes: Route[] = [
   {
     path: 'administrator',
     loadChildren: './administrator/administrator.module#AdministratorModule'
+  },
+  {
+    path: 'notification',
+    loadChildren: './notification/notification.module#NotificationModule'
   }
 
 ];
