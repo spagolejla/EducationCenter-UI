@@ -25,6 +25,10 @@ const routes: Route[] = [
   {
     path: 'notification',
     loadChildren: './notification/notification.module#NotificationModule'
+  },
+  {
+    path: 'course',
+    loadChildren: './course/course.module#CourseModule'
   }
 
 ];

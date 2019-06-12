@@ -1,0 +1,49 @@
+<div class="grid-container">
+  <mat-card class="mat-elevation-z3">
+    <div style="margin-bottom:15px;">
+      <h1 style="display:inline;"> Courses</h1>
+      <button mat-button class="add-button" [routerLink]="['/course/addedit', 0]">Add new</button>
+    </div>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Search" [(ngModel)]="listFilter" >
+      <button mat-button matSuffix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+
+    </mat-form-field>
+
+  </mat-card>
+
+  <div class="grid-body" *ngIf="courses">
+    <mat-grid-list cols="4" rowHeight="50px">
+        <div class="card mat-elevation-z3" *ngFor="let c of filteredCourses">
+          <h4 style="color: rgba(0, 150, 136, 1);"> {{ c.name}} </h4>
+          <button mat-button class="details-btn" [routerLink]="['/course/details',c.id]">Details</button>
+        </div>
+
+        <div class="card mat-elevation-z3" *ngFor="let c of filteredCourses">
+          <h4> {{ c.name}} </h4>
+          <button mat-button class="details-btn" [routerLink]="['/educator/details',0]">Details</button>
+        </div>
+
+        <div class="card mat-elevation-z3" *ngFor="let c of filteredCourses">
+          <h4> {{ c.name}} </h4>
+          <button mat-button class="details-btn" [routerLink]="['/educator/details',0]">Details</button>
+        </div>
+
+        <div class="card mat-elevation-z3" *ngFor="let c of filteredCourses">
+          <h4> {{ c.name}} </h4>
+          <button mat-button class="details-btn" [routerLink]="['/educator/details',0]">Details</button>
+        </div>
+
+        <div class="card mat-elevation-z3" *ngFor="let c of filteredCourses">
+          <h4> {{ c.name}} </h4>
+          <button mat-button class="details-btn" [routerLink]="['/educator/details',0]">Details</button>
+        </div>
+    </mat-grid-list>
+  </div>
+
+
+
+</div>

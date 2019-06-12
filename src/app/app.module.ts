@@ -14,11 +14,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationModule } from './notification/notification.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,

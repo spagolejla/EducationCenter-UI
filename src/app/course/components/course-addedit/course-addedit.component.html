@@ -1,0 +1,135 @@
+<div class="grid-container">
+  <mat-card class="mat-elevation-z3">
+      <div style="margin-bottom:15px;">
+          <h1 style="display:inline;"> {{title}}</h1>
+          <button mat-button class="back-btn" [routerLink]="['/course']">Back</button>
+        </div>
+
+  </mat-card>
+<mat-horizontal-stepper linear #stepper class="mat-elevation-z3">
+    <mat-step [stepControl]="basicInfoFormGroup">
+      <form [formGroup]="basicInfoFormGroup">
+        <ng-template matStepLabel>Basic info</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Course name" formControlName="name" required>
+          <mat-error *ngIf="f1.name.errors?.required">Course name is required</mat-error>
+        </mat-form-field> <br>
+        <ng-template matStepLabel>Description</ng-template>
+        <mat-form-field>
+          <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+          <mat-error *ngIf="f1.description.errors?.required">Course description is required</mat-error>
+
+        </mat-form-field><br>
+        <ng-template matStepLabel>Number of lectures</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Number of lectures"  type="number" formControlName="numberOfLectures" required>
+          <mat-error *ngIf="f1.numberOfLectures.errors?.required">Number of lectures is required</mat-error>
+          <mat-error *ngIf="f1.numberOfLectures.errors?.min">This cannot be a negative number!</mat-error>
+          <mat-error *ngIf="f1.numberOfLectures.errors?.max">The maximun number is 10 000 !</mat-error>
+
+        </mat-form-field><br>
+        <ng-template matStepLabel>Price</ng-template>
+        <mat-form-field>
+            <input matInput placeholder="Price" type="number" formControlName="price" class="example-right-align">
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
+          <mat-error *ngIf="f1.price.errors?.required">Course price is required</mat-error>
+          <mat-error *ngIf="f1.price.errors?.min">This cannot be a negative number!</mat-error>
+          <mat-error *ngIf="f1.price.errors?.max">The maximun number is 10 000 !</mat-error>
+
+          </mat-form-field>
+        <div>
+          <button mat-button matStepperNext class="next-btn">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="advInfoFormGroup">
+      <form [formGroup]="advInfoFormGroup">
+        <ng-template matStepLabel>Start time</ng-template>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker"  formControlName="startDate" placeholder="Start date" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="f2.startDate.errors?.required">Start date is required</mat-error>
+          </mat-form-field>
+        <br>
+        <ng-template matStepLabel>Class start time</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Class time" formControlName="classStartTime" required>
+          <mat-hint align="start"><strong>Example: 19:00h</strong> </mat-hint>
+          <mat-error *ngIf="f2.classStartTime.errors?.required">Class start time is required</mat-error>
+        </mat-form-field> <br>
+        <ng-template matStepLabel>Days of week</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Days of week" formControlName="daysOfWeek" required>
+          <mat-hint align="start"><strong>Example: Monday, Friday (separate with ' , ' )</strong> </mat-hint>
+          <mat-error *ngIf="f2.daysOfWeek.errors?.required">Days of week is required</mat-error>
+
+        </mat-form-field> <br>
+        <br>
+        <br>
+
+        <div>
+          <button mat-button matStepperPrevious class="bck-btn">Back</button>
+          <button mat-button matStepperNext  class="next-btn">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="specInfoFormGroup">
+      <form [formGroup]="specInfoFormGroup">
+        <ng-template matStepLabel>Educator and course field </ng-template>
+
+             <mat-form-field>
+                <mat-select formControlName="courseFieldId" matSelect placeholder="Course field" class="dropdown-input" required>
+                  <mat-option *ngFor="let cf of courseFields" [value]="cf.id">{{cf.field}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="f.courseFieldId.errors?.required">Course field is required</mat-error>
+              </mat-form-field> <br>
+<br>
+              <mat-form-field>
+               <mat-select formControlName="educatorId" placeholder="Educator" class="dropdown-input" required>
+                <mat-option *ngFor="let e of educators" [value]="e.id">{{e.firstName + ' ' + e.lastName}}</mat-option>
+              </mat-select>
+               <mat-error *ngIf="f.educatorId.errors?.required">Educator is required</mat-error>
+                 </mat-form-field> <br>
+
+        <div>
+          <button mat-button matStepperPrevious class="bck-btn">Back</button>
+          <button mat-button matStepperNext  class="next-btn">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="finalStep">
+      <p><b>Course name: </b> {{this.basicInfoFormGroup.value.name }} </p>
+      <p><b>Description: </b> {{this.basicInfoFormGroup.value.description }} </p>
+      <p><b>Lectures: </b> {{this.basicInfoFormGroup.value.numberOfLectures }} </p>
+      <p><b>Price: </b> {{this.basicInfoFormGroup.value.price }} </p>
+
+      <p><b>Start date: </b> {{this.advInfoFormGroup.value.startDate | date: shortDate}} </p>
+      <p><b>Class start time: </b> {{this.basicInfoFormGroup.value.price }} </p>
+      <p><b>Days of week: </b> {{this.basicInfoFormGroup.value.price }} </p>
+
+
+
+
+
+      </div>
+      <div>
+        <button mat-button matStepperPrevious class="bck-btn">Back</button>
+
+        <button
+            mat-raised-button
+            cdkFocusInitial
+            color="primary"
+            (click)="onSubmit()"
+          >
+            Create Course
+          </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

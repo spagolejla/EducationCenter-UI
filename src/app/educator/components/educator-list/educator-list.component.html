@@ -17,25 +17,11 @@
 
   <div class="grid-body" *ngIf="educators">
     <mat-grid-list cols="4" rowHeight="50px">
-
-
         <div class="card mat-elevation-z3" *ngFor="let educator of filteredEducators">
-
           <img src={{educator.avatarUrl}} />
           <h4> {{ educator.title + ' ' + educator.firstName + ' '+ educator.lastName}} </h4>
           <button mat-button class="details-btn" [routerLink]="['/educator/details', educator.id]">Details</button>
         </div>
-
-
-
-
-
-
-
-
-
-
-
     </mat-grid-list>
   </div>
 

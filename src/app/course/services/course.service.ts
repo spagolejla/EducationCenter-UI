@@ -4,6 +4,8 @@ import { retry, catchError } from 'rxjs/operators';
 import { throwError, of } from 'rxjs';
 import { AppConfig } from 'src/app/config/config';
 import { Course } from 'src/app/shared/models/course';
+import { CourseField } from 'src/app/shared/models/courseField';
+import { AddCourse } from 'src/app/shared/models/addCourse';
 
 
 @Injectable({
@@ -21,6 +23,18 @@ export class CourseService {
     );
   }
 
+  getCourseFields() {
+    return this.http.get<CourseField[]>(this.pathAPI + 'api/courseFields').pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getCourseById(id: number) {
+    return this.http.get<Course[]>(this.pathAPI + `api/course/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getCoursesByEducatorId(id: number) {
     return this.http.get<Course[]>(this.pathAPI + `api/educator/${id}/courses`).pipe(
       catchError(this.handleError)
@@ -32,6 +46,13 @@ export class CourseService {
       catchError(this.handleError)
     );
   }
+
+  addCourse(course: AddCourse) {
+    return this.http.post<AddCourse>(this.pathAPI + 'api/course', course).pipe(
+     catchError(this.handleError)
+    );
+ }
+
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
