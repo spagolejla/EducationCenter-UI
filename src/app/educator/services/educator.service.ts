@@ -4,6 +4,7 @@ import { retry, catchError, filter } from 'rxjs/operators';
 import { throwError, of } from 'rxjs';
 import { AppConfig } from 'src/app/config/config';
 import { Educator } from 'src/app/shared/models/educator';
+import { AddEducator } from 'src/app/shared/models/addEducator';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,11 @@ getEducatorById(id: number) {
   );
 }
 
+addEducator(edc: AddEducator) {
+  return this.http.post<AddEducator>(this.pathAPI + 'api/educator', edc).pipe(
+   catchError(this.handleError)
+  );
+}
 
 handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {

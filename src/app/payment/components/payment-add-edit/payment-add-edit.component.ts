@@ -118,9 +118,10 @@ export class PaymentAddEditComponent implements OnInit {
     this.editPayment.courseId = this.paymentForm.get('courseId').value;
     this.editPayment.amount = this.paymentForm.get('amount').value;
 
-    const  dateHelper = new Date(this.paymentForm.get('date').value);
-    let d:Date = this.paymentForm.get('date').value;
+
+    let d: Date = this.paymentForm.get('date').value;
     d.setHours(d.getHours() - d.getTimezoneOffset() / 60);
+
     this.editPayment.date =  d;
 
 
@@ -139,10 +140,15 @@ export class PaymentAddEditComponent implements OnInit {
   }
 
   addNewPayment() {
+
+    let d: Date = this.paymentForm.get('date').value;
+    d.setHours(d.getHours() - d.getTimezoneOffset() / 60);
+
+
     const newPayment: AddPayment = {
       studentId: this.paymentForm.value.studentId,
       courseId: this.paymentForm.value.courseId,
-      date: this.paymentForm.value.date,
+      date: d,
       amount: this.paymentForm.value.amount
     };
 

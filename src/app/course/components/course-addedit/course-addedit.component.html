@@ -6,7 +6,7 @@
         </div>
 
   </mat-card>
-<mat-horizontal-stepper linear #stepper class="mat-elevation-z3">
+<mat-horizontal-stepper linear  #stepper class="mat-elevation-z3">
     <mat-step [stepControl]="basicInfoFormGroup">
       <form [formGroup]="basicInfoFormGroup">
         <ng-template matStepLabel>Basic info</ng-template>
@@ -90,7 +90,7 @@
 <br>
               <mat-form-field>
                <mat-select formControlName="educatorId" placeholder="Educator" class="dropdown-input" required>
-                <mat-option *ngFor="let e of educators" [value]="e.id">{{e.firstName + ' ' + e.lastName}}</mat-option>
+                <mat-option *ngFor="let e of filteredEducators" [value]="e.id">{{e.firstName + ' ' + e.lastName}}</mat-option>
               </mat-select>
                <mat-error *ngIf="f.educatorId.errors?.required">Educator is required</mat-error>
                  </mat-form-field> <br>
@@ -110,8 +110,8 @@
       <p><b>Price: </b> {{this.basicInfoFormGroup.value.price }} </p>
 
       <p><b>Start date: </b> {{this.advInfoFormGroup.value.startDate | date: shortDate}} </p>
-      <p><b>Class start time: </b> {{this.basicInfoFormGroup.value.price }} </p>
-      <p><b>Days of week: </b> {{this.basicInfoFormGroup.value.price }} </p>
+      <p><b>Class start time: </b> {{this.advInfoFormGroup.value.classStartTime }} </p>
+      <p><b>Days of week: </b> {{this.advInfoFormGroup.value.daysOfWeek }} </p>
 
 
 

@@ -5,9 +5,10 @@ import { EducatorRoutingModule } from './educator-routing.module';
 import { MaterialDesignModule } from '../shared/material-design/material-design.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EducatorDetailsComponent } from './components/educator-details/educator-details.component';
+import { EducatorAddeditComponent } from './components/educator-addedit/educator-addedit.component';
 
 @NgModule({
-  declarations: [EducatorListComponent, EducatorDetailsComponent],
+  declarations: [EducatorListComponent, EducatorDetailsComponent, EducatorAddeditComponent],
   imports: [
     CommonModule,
     EducatorRoutingModule,

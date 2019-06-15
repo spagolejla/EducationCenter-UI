@@ -1,14 +1,12 @@
-export class Educator {
-  id: number;
+export interface AddEducator {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   title: string;
-  courseField: string;
-  courseFieldId: number;
   username: string;
-  accountType: string;
-  active: boolean;
+  password: string;
   avatarUrl: string;
+  courseFieldId: number;
 }
+

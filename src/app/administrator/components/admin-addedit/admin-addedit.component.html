@@ -1,0 +1,99 @@
+<div class="grid-container">
+
+    <mat-card class="mat-elevation-z3">
+      <div style="margin-bottom:15px;">
+        <h1 style="display:inline;"> {{title}}</h1>
+        <button mat-button class="back-btn" [routerLink]="['/course']">Back</button>
+      </div>
+    </mat-card>
+
+    <mat-horizontal-stepper  #stepper class="mat-elevation-z3">
+        <mat-step [stepControl]="basicInfoFormGroup">
+          <form [formGroup]="basicInfoFormGroup">
+            <ng-template matStepLabel>Basic info</ng-template>
+            <mat-form-field class="field">
+              <input matInput placeholder="First name" formControlName="firstName" required>
+              <mat-error *ngIf="f1.firstName.errors?.required"> First name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Last name" formControlName="lastName" required>
+              <mat-error *ngIf="f1.lastName.errors?.required">Last Name is required</mat-error>
+            </mat-form-field><br>
+            <mat-form-field class="field">
+              <input matInput placeholder="Email" formControlName="email" required>
+              <mat-error *ngIf="f1.email.errors?.email"> Please enter valid email address</mat-error>
+              <mat-error *ngIf="f1.email.errors?.required"> Email is required</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="tel" matInput placeholder="Telephone" formControlName="phone" required>
+                <mat-error *ngIf="f1.phone.errors?.required">Phone is required</mat-error>
+              </mat-form-field>
+
+          <br>
+
+          <mat-form-field class="field">
+              <input matInput placeholder="Username" formControlName="username" required>
+              <mat-error *ngIf="f1.username.errors?.required"> Username is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="AvatarURL" formControlName="avatarUrl" required></textarea>
+                <mat-error *ngIf="f1.avatarUrl.errors?.required"> AvatarURL is required</mat-error>
+              </mat-form-field> <a target="_blank" rel="noopener noreferrer" href="https://getavataaars.com/">Generate Avatar</a>
+            <br>
+            <mat-form-field class="field">
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+                <mat-error *ngIf="f1.password.errors?.required"> Paasword is required</mat-error>
+                <mat-error *ngIf="f1.password.errors?.minlength"> Must be at least 8 characters!</mat-error>
+                <mat-error *ngIf="f1.password.errors?.hasNumber">   Must contain at least 1 number!</mat-error>
+                <mat-error *ngIf="f1.password.errors?.hasCapitalCase"> Must contain at least 1 in Capital Case!</mat-error>
+                <mat-error *ngIf="f1.password.errors?.hasSmallCase">  Must contain at least 1 Letter in Small Case!</mat-error>
+
+
+              </mat-form-field>
+
+              <mat-form-field>
+                  <input matInput type="password" placeholder="Confrim password" formControlName="confirmPassword" required>
+                  <mat-error *ngIf="f1.confirmPassword.errors?.required"> Password is required</mat-error>
+                  <mat-error *ngIf="f1.confirmPassword.errors?.NoPassswordMatch">   Password do not match</mat-error>
+
+                </mat-form-field>
+                <br>
+                <br>
+            <br>
+            <br>
+            <div>
+              <button mat-button matStepperNext class="next-btn">Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <div class="finalStep" style="display: inline-block; width:100%;margin-bottom:20px;">
+            <div style="float: left; ;margin-right:70px;">
+                <p><b>Administrator: </b> {{this.basicInfoFormGroup.value.firstName + ' ' + this.basicInfoFormGroup.value.lastName}} </p>
+                <p><b>Phone: </b> {{this.basicInfoFormGroup.value.phone }} </p>
+                <p><b>Email: </b> {{this.basicInfoFormGroup.value.email }} </p>
+
+                <p><b>Username: </b> {{this.basicInfoFormGroup.value.username }} </p>
+            </div>
+
+
+
+          </div>
+          <div>
+            <button mat-button matStepperPrevious class="bck-btn">Back</button>
+
+            <button mat-raised-button cdkFocusInitial color="primary" (click)="onSubmit()">
+              Create Admin
+            </button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+
+ </div>

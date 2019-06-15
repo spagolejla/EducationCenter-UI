@@ -6,7 +6,7 @@ export interface AddCourse {
 
   startDate: Date;
   classStartTime: string;
-  daysOfWeek: string[];
+  daysOfWeek: string;
 
   administratorId: number;
   educatorId: number;

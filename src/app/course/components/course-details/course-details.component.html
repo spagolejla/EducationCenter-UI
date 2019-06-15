@@ -34,7 +34,7 @@
         </mat-card-title>
         <mat-card-content>
           <div class="details-row">
-            <b style="color:rgba(0, 150, 136, 1);">Start date: </b> {{ course.startDate  }}   <b style="color:rgba(0, 150, 136, 1);">Time: </b> {{ course.classStartTime }} <br />
+            <b style="color:rgba(0, 150, 136, 1);">Start date: </b> {{ course.startDate | date: shortDate }}   <b style="color:rgba(0, 150, 136, 1);">Time: </b> {{ course.classStartTime }} <br />
           </div>
           <div class="details-row">
             <b style="color:rgba(0, 150, 136, 1);">Days of week: </b>{{ course.daysOfWeek }} <br />
