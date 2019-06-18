@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AdministratorService } from '../../services/administrator.service';
 import { CustomValidators } from 'src/app/shared/helpers/custom-validators';
 import { AddAdmin } from 'src/app/shared/models/addAdministrator';
+import { UsernameValidator } from 'src/app/shared/helpers/username';
 
 @Component({
   selector: 'app-admin-addedit',
@@ -23,6 +24,7 @@ export class AdminAddeditComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private adminService: AdministratorService,
+    public usernameValidator: UsernameValidator
   ) { }
 
   ngOnInit() {
@@ -35,7 +37,8 @@ export class AdminAddeditComponent implements OnInit {
         Validators.required])
      ],
       phone: ["", Validators.required],
-      username: ["", Validators.required],
+      // tslint:disable-next-line:max-line-length
+      username: ['', Validators.compose([Validators.required]), this.usernameValidator.checkUsername.bind(this.usernameValidator)],
       avatarUrl: ["", Validators.required],
       password: [ null, Validators.compose([
         Validators.required,

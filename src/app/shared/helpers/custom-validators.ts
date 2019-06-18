@@ -1,6 +1,8 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 export class CustomValidators {
+
 
   static patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
@@ -26,6 +28,11 @@ export class CustomValidators {
       control.get('confirmPassword').setErrors({ NoPassswordMatch: true });
     }
   }
+
+
+
+
+
 
 
 }

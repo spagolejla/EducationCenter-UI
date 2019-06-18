@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router, ActivatedRoute } from  '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthService } from '../../services/authentication.service';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private authenticationService: AuthenticationService) { }
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.loginForm  =  this.formBuilder.group({
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   });
 
   // reset login status
-  this.authenticationService.logout();
+  this.authService.logout();
 
   // get return url from route parameters or default to '/'
   this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.authService.login(this.f.username.value, this.f.password.value)
         .pipe(first())
         .subscribe(
             data => {
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
                 this.loading = false;
             });
   }
+
 
 
 }

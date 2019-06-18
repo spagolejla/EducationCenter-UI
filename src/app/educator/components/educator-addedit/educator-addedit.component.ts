@@ -10,6 +10,7 @@ import { CourseField } from 'src/app/shared/models/courseField';
 import { forkJoin } from 'rxjs';
 import { CustomValidators } from 'src/app/shared/helpers/custom-validators';
 import { AddEducator } from 'src/app/shared/models/addEducator';
+import { UsernameValidator } from 'src/app/shared/helpers/username';
 
 @Component({
   selector: 'app-educator-addedit',
@@ -36,7 +37,8 @@ export class EducatorAddeditComponent implements OnInit {
     private router: Router,
     private courseService: CourseService,
     private edcService: EducatorService,
-    private accTypeService: AccountTypeService
+    private accTypeService: AccountTypeService,
+    public usernameValidator: UsernameValidator
   ) { }
 
   ngOnInit() {
@@ -54,7 +56,7 @@ export class EducatorAddeditComponent implements OnInit {
     });
 
     this.advInfoFormGroup = this.fb.group({
-      username: ["", Validators.required],
+      username: ['', Validators.compose([Validators.required]), this.usernameValidator.checkUsername.bind(this.usernameValidator)],
       avatarUrl: ["", Validators.required],
       password: [ null, Validators.compose([
         Validators.required,

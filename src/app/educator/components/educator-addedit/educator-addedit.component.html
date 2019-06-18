@@ -60,6 +60,7 @@
         <ng-template matStepLabel>Advanced info</ng-template>
         <mat-form-field class="field">
           <input matInput placeholder="Username" formControlName="username" required>
+          <mat-error *ngIf="f2.username.errors?.usernameInUse"> Username is already exist!</mat-error>
           <mat-error *ngIf="f2.username.errors?.required"> Username is required</mat-error>
         </mat-form-field>
         <mat-form-field>

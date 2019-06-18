@@ -12,6 +12,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationModule } from './notification/notification.module';
+import { UsernameValidator } from './shared/helpers/username';
 
 
 
@@ -33,7 +34,9 @@ import { NotificationModule } from './notification/notification.module';
     HttpClientModule,
     NotificationModule
   ],
-  providers: [],
+  providers: [
+    UsernameValidator,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
