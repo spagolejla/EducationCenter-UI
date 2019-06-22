@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AppConfig } from 'src/app/config/config';
 import { throwError } from 'rxjs';
 import { AddAdmin } from 'src/app/shared/models/addAdministrator';
+import { EditAdmin } from 'src/app/shared/models/editAdmin';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +22,24 @@ export class AdministratorService {
     );
   }
 
+  getAdminById(id: number) {
+    return this.http.get<EditAdmin>(this.pathAPI + `api/administrator/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   addAdmin(adm: AddAdmin) {
     return this.http.post<AddAdmin>(this.pathAPI + 'api/administrator', adm).pipe(
      catchError(this.handleError)
     );
   }
+
+  updateAdmin(adm: EditAdmin) {
+    return this.http.put<EditAdmin>(this.pathAPI + 'api/administrator', adm).pipe(
+     catchError(this.handleError)
+    );
+  }
+
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

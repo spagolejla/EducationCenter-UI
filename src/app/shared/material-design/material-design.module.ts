@@ -20,6 +20,7 @@ import { MatNativeDateModule, MatSelectModule, MatInputModule, MatAutocompleteMo
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [],
   imports: [
@@ -45,7 +46,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatMenuModule
   ],
   exports: [
     MatToolbarModule,
@@ -69,7 +71,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatMenuModule
   ]
 })
 export class MaterialDesignModule { }

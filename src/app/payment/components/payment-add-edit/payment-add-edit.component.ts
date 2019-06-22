@@ -90,7 +90,7 @@ export class PaymentAddEditComponent implements OnInit {
     if (this.paymentForm) {
       this.paymentForm.reset();
     }
-    this.pageTitle = "Edit Entry";
+    this.pageTitle = "Edit Payment";
 
     this.paymentForm.patchValue({
       studentId: this.editPayment.studentId,
