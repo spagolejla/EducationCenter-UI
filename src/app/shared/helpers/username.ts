@@ -27,7 +27,7 @@ export class UsernameValidator {
 
           }
         }, (err) => {
-          console.log(err)
+          console.log(err);
         });
 
       }, 1000);

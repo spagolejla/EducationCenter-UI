@@ -16,12 +16,12 @@ import { EditAdmin } from "src/app/shared/models/editAdmin";
 export class AdminAddeditComponent implements OnInit {
   title = "Add new administrator";
   errors: string[] = null;
-
-  isEdit: boolean;
+  isEdit: boolean = false;
   adminId: number;
   adminEdit: EditAdmin;
 
   basicInfoFormGroup: FormGroup;
+  editForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -65,7 +65,42 @@ export class AdminAddeditComponent implements OnInit {
             Validators.minLength(8)
           ])
         ],
-        confirmPassword: [null, Validators.compose([Validators.required])]
+        confirmPassword: [null]
+      },
+      {
+        // check whether our password and confirm password match
+        validator: CustomValidators.passwordMatchValidator
+      }
+    );
+
+
+    this.editForm = this.fb.group(
+      {
+        firstName: ["", Validators.required],
+        lastName: ["", Validators.required],
+        email: [
+          null,
+          Validators.compose([Validators.email, Validators.required])
+        ],
+        phone: ["", Validators.required],
+        // tslint:disable-next-line:max-line-length
+
+        avatarUrl: ["", Validators.required],
+        password: [
+          null,
+          Validators.compose([
+            Validators.required,
+            CustomValidators.patternValidator(/\d/, { hasNumber: true }),
+            CustomValidators.patternValidator(/[A-Z]/, {
+              hasCapitalCase: true
+            }),
+            CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
+            Validators.minLength(8)
+          ])
+        ],
+        confirmPassword: [null],
+        active: [null],
+
       },
       {
         // check whether our password and confirm password match
@@ -74,6 +109,7 @@ export class AdminAddeditComponent implements OnInit {
     );
 
     if (this.adminId !== 0) {
+      this.isEdit = true;
       this.getAdmin();
     }
   }
@@ -90,14 +126,14 @@ export class AdminAddeditComponent implements OnInit {
     }
     this.title = "Edit Administrator";
 
-    this.basicInfoFormGroup.patchValue({
+    this.editForm.patchValue({
       firstName: this.adminEdit.firstName,
       lastName: this.adminEdit.lastName,
       email: this.adminEdit.email,
       phone: this.adminEdit.phone,
-      username: this.adminEdit.username,
       password: this.adminEdit.password,
-      avatarUrl: this.adminEdit.avatarUrl
+      avatarUrl: this.adminEdit.avatarUrl,
+      active: this.adminEdit.active
     });
   }
 
@@ -106,9 +142,6 @@ export class AdminAddeditComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.basicInfoFormGroup.invalid || this.basicInfoFormGroup.untouched) {
-      return;
-    }
     if (this.adminId !== 0) {
       this.updateAdmin();
     } else {
@@ -116,17 +149,18 @@ export class AdminAddeditComponent implements OnInit {
     }
   }
   updateAdmin() {
-   this.adminEdit.firstName = this.basicInfoFormGroup.value.firstName;
-   this.adminEdit.lastName = this.basicInfoFormGroup.value.lastName;
-   this.adminEdit.email = this.basicInfoFormGroup.value.email;
-   this.adminEdit.phone = this.basicInfoFormGroup.value.phone;
-   this.adminEdit.username = this.basicInfoFormGroup.value.username;
-   this.adminEdit.password = this.basicInfoFormGroup.value.password;
-   this.adminEdit.avatarUrl = this.basicInfoFormGroup.value.avatarUrl;
+   this.adminEdit.firstName = this.editForm.value.firstName;
+   this.adminEdit.lastName = this.editForm.value.lastName;
+   this.adminEdit.email = this.editForm.value.email;
+   this.adminEdit.phone = this.editForm.value.phone;
+   this.adminEdit.password = this.editForm.value.password;
+   this.adminEdit.avatarUrl = this.editForm.value.avatarUrl;
+   this.adminEdit.active = this.editForm.value.active;
+
 
    this.adminService.updateAdmin(this.adminEdit).subscribe(
     () => {
-      this.snackBar.open('Successfully updated admint !', 'Close', {
+      this.snackBar.open('Successfully updated Admin !', 'Close', {
         duration: 3000
       });
       this.router.navigate(['/administrator']);
