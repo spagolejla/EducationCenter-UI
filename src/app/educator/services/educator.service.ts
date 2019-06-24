@@ -5,6 +5,7 @@ import { throwError, of } from 'rxjs';
 import { AppConfig } from 'src/app/config/config';
 import { Educator } from 'src/app/shared/models/educator';
 import { AddEducator } from 'src/app/shared/models/addEducator';
+import { EditEducator } from 'src/app/shared/models/editEducator';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,19 @@ getEducatorById(id: number) {
   return this.http.get<Educator>(this.pathAPI + `api/educator/${id}`).pipe(
     retry(3),
     catchError(this.handleError)
+  );
+}
+
+getEducatorByIdEdit(id: number) {
+  return this.http.get<EditEducator>(this.pathAPI + `api/educator/${id}`).pipe(
+    retry(3),
+    catchError(this.handleError)
+  );
+}
+
+updateEducator(edc: EditEducator) {
+  return this.http.put<EditEducator>(this.pathAPI + 'api/educator', edc).pipe(
+   catchError(this.handleError)
   );
 }
 

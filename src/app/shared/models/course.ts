@@ -1,3 +1,5 @@
+import { CourseRate } from './courseRates';
+
 export class Course {
   id: number;
 
@@ -13,4 +15,6 @@ export class Course {
   educator: string;
   courseField: boolean;
   price: number;
+  rates: CourseRate[];
+  avgRate: number;
 }

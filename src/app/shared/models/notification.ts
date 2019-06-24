@@ -5,5 +5,5 @@ export class Notification {
   title: string;
   text: number;
   date: Date;
-
+  isCreator: boolean;
 }

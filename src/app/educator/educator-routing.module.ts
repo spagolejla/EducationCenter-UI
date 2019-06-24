@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EducatorListComponent } from './components/educator-list/educator-list.component';
 import { EducatorDetailsComponent } from './components/educator-details/educator-details.component';
 import { EducatorAddeditComponent } from './components/educator-addedit/educator-addedit.component';
+import { EducatorEditComponent } from './components/educator-edit/educator-edit.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'addedit/:id',
     component: EducatorAddeditComponent
+  },
+  {
+    path: 'edit/:id',
+    component: EducatorEditComponent
   },
 ];
 

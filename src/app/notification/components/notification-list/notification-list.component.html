@@ -11,8 +11,16 @@
 
       <div class="notif-text">{{n.text}}</div>
 
+      <div style="display:inline-block; width:100%;">
+      <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>  {{n.user}}
 
-      <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>  {{n.user}}</div>
+      </div>
+      <div style="float: right;" *ngIf="n.isCreator">
+        <button mat-icon-button color="primary" >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
 
    </mat-card>
 

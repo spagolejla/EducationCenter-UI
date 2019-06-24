@@ -3,11 +3,12 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CourseField } from "src/app/shared/models/courseField";
 import { Educator } from "src/app/shared/models/educator";
 import { MatSnackBar } from "@angular/material";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { CourseService } from "../../services/course.service";
 import { EducatorService } from "src/app/educator/services/educator.service";
 import { forkJoin } from "rxjs";
 import { AddCourse } from "src/app/shared/models/addCourse";
+import { EditCourse } from 'src/app/shared/models/editCourse';
 
 @Component({
   selector: "app-course-addedit",
@@ -18,26 +19,39 @@ export class CourseAddeditComponent implements OnInit {
   errors: string[] = null;
   title = "Add new course";
 
+  isEdit: boolean = false;
+
   educators: Educator[] = [];
   filteredEducators: Educator[] = [];
 
   courseFields: CourseField[] = [];
+
+  courseEdit: EditCourse;
 
   basicInfoFormGroup: FormGroup;
   advInfoFormGroup: FormGroup;
   specInfoFormGroup: FormGroup;
 
   observables: any = [];
+  courseId: number;
 
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private router: Router,
     private courseService: CourseService,
-    private edcService: EducatorService
+    private edcService: EducatorService,
+    private route: ActivatedRoute
+
   ) {}
 
   ngOnInit() {
+
+    this.route.paramMap.subscribe(params => {
+      this.courseId = +params.get("id");
+    });
+
+
     this.basicInfoFormGroup = this.fb.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
@@ -56,16 +70,39 @@ export class CourseAddeditComponent implements OnInit {
 
     this.observables.push(this.courseService.getCourseFields());
     this.observables.push(this.edcService.getEducators());
+    if(this.courseId !== 0){
+      this.observables.push(this.courseService.getCourseById(this.courseId));
+      this.isEdit = true;
+    }
 
     forkJoin(this.observables).subscribe(responseList => {
       this.courseFields = responseList[0] as CourseField[];
       this.educators = responseList[1] as Educator[];
-
+      if(this.courseId !== 0){
+       this.courseEdit = responseList[2] as EditCourse;
+       this.displayCourse();
+      }
       this.specInfoFormGroup
         .get("courseFieldId")
         .valueChanges.subscribe(val => {
           this.toggleEducatorDropdown(val);
         });
+    });
+  }
+  displayCourse() {
+    this.title = "Edit course";
+
+    this.basicInfoFormGroup.patchValue({
+      name: this.courseEdit.name,
+      description: this.courseEdit.description,
+      numberOfLectures: this.courseEdit.numberOfLectures,
+      price:this.courseEdit.price
+    });
+
+    this.advInfoFormGroup.patchValue({
+      startDate: this.courseEdit.startDate,
+      classStartTime:this.courseEdit.classStartTime,
+      daysOfWeek:this.courseEdit.daysOfWeek,
     });
   }
   get f(): any {
@@ -99,8 +136,38 @@ export class CourseAddeditComponent implements OnInit {
     }
   }
   onSubmit() {
+    if(this.isEdit){
+      this.updateCourse();
+    } else {
     this.addNewCourse();
+    }
   }
+
+  updateCourse() {
+    this.courseEdit.name = this.basicInfoFormGroup.value.name;
+    this.courseEdit.description = this.basicInfoFormGroup.value.description;
+    this.courseEdit.numberOfLectures = this.basicInfoFormGroup.value.numberOfLectures;
+    this.courseEdit.price = this.basicInfoFormGroup.value.price;
+    this.courseEdit.startDate = this.advInfoFormGroup.value.startDate;
+    this.courseEdit.classStartTime = this.advInfoFormGroup.value.classStartTime;
+    this.courseEdit.daysOfWeek = this.advInfoFormGroup.value.daysOfWeek;
+
+
+    this.courseService.updateCourse(this.courseEdit).subscribe(
+     () => {
+       this.snackBar.open('Successfully updated couers !', 'Close', {
+         duration: 3000
+       });
+       this.router.navigate(['/course/details',this.courseId]);
+     },
+     err => {
+       this.snackBar.open(err, 'Close');
+       console.error(err);
+     }
+   );
+
+   }
+
   addNewCourse() {
     let d: Date = this.advInfoFormGroup.get("startDate").value;
     d.setHours(d.getHours() - d.getTimezoneOffset() / 60);

@@ -1,3 +1,5 @@
+import { EducatorRate } from './educatorRates';
+
 export class Educator {
   id: number;
   firstName: string;
@@ -11,4 +13,6 @@ export class Educator {
   accountType: string;
   active: boolean;
   avatarUrl: string;
+  rates: EducatorRate[];
+  avgRate: number;
 }

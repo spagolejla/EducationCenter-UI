@@ -4,6 +4,7 @@ import { AppConfig } from 'src/app/config/config';
 import { Notification } from 'src/app/shared/models/notification';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
+import { AddNotification } from 'src/app/shared/models/addNotification';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,12 @@ export class NotificationService {
       catchError(this.handleError)
     );
   }
+
+  addNotif(notif: AddNotification) {
+    return this.http.post<AddNotification>(this.pathAPI + 'api/notification', notif).pipe(
+     catchError(this.handleError)
+    );
+ }
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

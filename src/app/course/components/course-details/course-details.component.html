@@ -28,7 +28,7 @@
       <mat-card *ngIf='course' class="mat-elevation-z3">
         <mat-card-title>
           <h4 style="color:rgba(0, 150, 136, 1);display:inline-block">Additional informations</h4>
-          <button mat-mini-fab color="primary" style="margin-left: 15px; margin-top: 15px;" [routerLink]="['/payment/addedit', course.id]" >
+          <button mat-mini-fab color="primary" style="margin-left: 15px; margin-top: 15px;" [routerLink]="['/course/addedit', course.id]" >
             <i class="material-icons">edit</i>
           </button>
         </mat-card-title>
@@ -70,7 +70,7 @@
       <mat-card *ngIf='course' style="background:rgba(0, 150, 136, 1);" class="mat-elevation-z3">
 
           <mat-card-content style="padding:30%;">
-<p style="font-size: 5em; color:white">9.5</p>
+<p style="font-size: 5em; color:white">{{course.avgRate |  number:'1.1-2'}}</p>
           </mat-card-content>
 
         </mat-card>

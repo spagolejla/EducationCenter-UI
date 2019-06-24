@@ -19,7 +19,7 @@
                     <mat-select formControlName="studentId" placeholder="Student" class="dropdown-input" required>
                       <mat-option *ngFor="let s of students" [value]="s.id">{{s.firstName + '  ' + s.lastName}}</mat-option>
                     </mat-select>
-                   <!-- <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>-->
+                    <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>
                   </mat-form-field>
 
             </div>
@@ -29,7 +29,7 @@
                   <mat-select formControlName="courseId" placeholder="Course" class="dropdown-input" required>
                     <mat-option *ngFor="let c of courses" [value]="c.id">{{c.name}}</mat-option>
                   </mat-select>
-                 <!-- <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>-->
+                  <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>
                 </mat-form-field>
           </div>
           <div class="frm-field" >

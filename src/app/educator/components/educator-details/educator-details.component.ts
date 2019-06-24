@@ -5,6 +5,7 @@ import { Educator } from "src/app/shared/models/educator";
 import { Course } from "src/app/shared/models/course";
 import { CourseService } from "src/app/course/services/course.service";
 import { forkJoin } from 'rxjs';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: "app-educator-details",
@@ -15,8 +16,10 @@ export class EducatorDetailsComponent implements OnInit {
   educator: Educator;
   educatorId: number;
   courses: Course[];
-
   observables: any = [];
+
+  displayedColumns: string[] = [ 'Student', 'Comment', 'Rate'];
+  dataSource;
 
   constructor(
     private educatorService: EducatorService,
@@ -36,6 +39,8 @@ export class EducatorDetailsComponent implements OnInit {
 
     forkJoin(this.observables).subscribe(responseList => {
       this.educator = responseList[0] as Educator;
+      console.log('Educator', this.educator);
+      this.dataSource = new MatTableDataSource(this.educator.rates);
       this.courses = responseList[1] as Course[];
       console.log(this.courses);
     });

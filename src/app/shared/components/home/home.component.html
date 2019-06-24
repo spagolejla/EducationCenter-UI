@@ -1,26 +1,35 @@
 <div class="container">
 <div class="top-menu">
-  <div class="menu-course">
+  <span class="menu-course">
     <button mat-button [matMenuTriggerFor]="menu1" class="btn-course">Courses</button>
     <mat-menu #menu1="matMenu">
       <button mat-menu-item [routerLink]="['/course/addedit', 0]">Create new</button>
       <button mat-menu-item routerLink='/course'>Managae courses</button>
     </mat-menu>
-  </div>
-  <div class="menu-educator">
+  </span>
+  <span class="menu-educator">
       <button mat-button [matMenuTriggerFor]="menu2" class="btn-educator">Employees</button>
       <mat-menu #menu2="matMenu">
         <button mat-menu-item routerLink='/educator'>Educators</button>
         <button mat-menu-item routerLink='/administrator'>Administrators</button>
       </mat-menu>
-     </div>
-     <div class="menu-profile">
+    </span>
+     <span class="menu-profile">
       <button mat-button [matMenuTriggerFor]="menu3" class="btn-profile">Students</button>
       <mat-menu #menu3="matMenu">
         <button mat-menu-item routerLink='/student'>Show students</button>
         <button mat-menu-item routerLink='/payment'>Payments</button>
       </mat-menu>
-       </div>
+    </span>
+       <span class="menu-more">
+        <button mat-button [matMenuTriggerFor]="menu4" class="btn-more">
+          <i class="material-icons ">more_horiz</i>
+        </button>
+        <mat-menu #menu4="matMenu">
+          <button mat-menu-item [routerLink]="['/notification/addedit', 0]">New notificaton</button>
+          <button mat-menu-item routerLink='/payment'>View profile</button>
+        </mat-menu>
+      </span>
 
 
 </div>

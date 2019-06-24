@@ -13,14 +13,18 @@
       <h2>Notification data</h2>
     </mat-card-subtitle>
     <mat-card-content>
-      <form >
+      <form [formGroup]="notifForm" (ngSubmit)="onSubmit()">
         <div class="example-container">
           <mat-form-field>
-            <input matInput placeholder="Title">
+            <input matInput placeholder="Title" formControlName="title">
+            <mat-error *ngIf="f.title.errors?.required">Ttile  is required</mat-error>
+
           </mat-form-field>
 
           <mat-form-field>
-            <textarea matInput placeholder="Text"></textarea>
+            <textarea matInput placeholder="Text" formControlName="text"></textarea>
+            <mat-error *ngIf="f.text.errors?.required">Text  is required</mat-error>
+
           </mat-form-field>
 
           <div class="btn-div">
@@ -31,4 +35,6 @@
     </mat-card-content>
 
   </mat-card>
+
+  <app-notification-list></app-notification-list>
 </div>

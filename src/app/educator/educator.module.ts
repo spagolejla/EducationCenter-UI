@@ -6,9 +6,10 @@ import { MaterialDesignModule } from '../shared/material-design/material-design.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EducatorDetailsComponent } from './components/educator-details/educator-details.component';
 import { EducatorAddeditComponent } from './components/educator-addedit/educator-addedit.component';
+import { EducatorEditComponent } from './components/educator-edit/educator-edit.component';
 
 @NgModule({
-  declarations: [EducatorListComponent, EducatorDetailsComponent, EducatorAddeditComponent],
+  declarations: [EducatorListComponent, EducatorDetailsComponent, EducatorAddeditComponent, EducatorEditComponent],
   imports: [
     CommonModule,
     EducatorRoutingModule,

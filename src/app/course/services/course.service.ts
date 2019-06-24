@@ -6,6 +6,7 @@ import { AppConfig } from 'src/app/config/config';
 import { Course } from 'src/app/shared/models/course';
 import { CourseField } from 'src/app/shared/models/courseField';
 import { AddCourse } from 'src/app/shared/models/addCourse';
+import { EditCourse } from 'src/app/shared/models/editCourse';
 
 
 @Injectable({
@@ -52,6 +53,12 @@ export class CourseService {
      catchError(this.handleError)
     );
  }
+
+ updateCourse(course: EditCourse) {
+  return this.http.put<EditCourse>(this.pathAPI + 'api/course', course).pipe(
+   catchError(this.handleError)
+  );
+}
 
 
   handleError(error: HttpErrorResponse) {
