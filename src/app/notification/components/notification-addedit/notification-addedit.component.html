@@ -2,7 +2,7 @@
 
     <mat-card class="mat-elevation-z1">
 
-      <h1 style="display:inline;"> Add new notification</h1>
+      <h3 style="display:inline;"> Notifications</h3>
       <button mat-button class="back-btn"  routerLink='/notification'>Back</button>
     </mat-card>
 
@@ -10,7 +10,7 @@
 
   <mat-card class="mat-elevation-z1" style="margin-top: 5px;">
     <mat-card-subtitle class="example-container">
-      <h2>Notification data</h2>
+      <h5 style="color: rgba(0, 150, 136, 1);">Notification data</h5>
     </mat-card-subtitle>
     <mat-card-content>
       <form [formGroup]="notifForm" (ngSubmit)="onSubmit()">
@@ -28,7 +28,7 @@
           </mat-form-field>
 
           <div class="btn-div">
-            <button mat-button cdkFocusInitial class="save-btn" type="submit">Add</button>
+            <button mat-button cdkFocusInitial class="save-btn" type="submit">Save</button>
         </div>
         </div>
       </form>

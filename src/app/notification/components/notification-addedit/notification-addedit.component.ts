@@ -5,6 +5,7 @@ import { MatSnackBar } from "@angular/material";
 import { NotificationService } from '../../services/notification.service';
 import { forkJoin } from 'rxjs';
 import { AddNotification } from 'src/app/shared/models/addNotification';
+import { EditNotification } from 'src/app/shared/models/editNotification';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class NotificationAddeditComponent implements OnInit {
   notifId: number;
 
   isAdmin: boolean = true;
- // editNotification: EditPayment;
+  editNotification: EditNotification;
 
 
   observables: any = [];
@@ -42,7 +43,7 @@ export class NotificationAddeditComponent implements OnInit {
     });
 
     if (this.isEdit) {
-     // this.observables.push(this.notifService.getNotifById(this.notifId));
+      this.observables.push(this.notifService.getNotifById(this.notifId));
     }
 
 
@@ -50,8 +51,8 @@ export class NotificationAddeditComponent implements OnInit {
      /*  this.students = responseList[0] as Student[];
       this.courses = responseList[1] as Course[]; */
       if (this.isEdit) {
-       // this.editPayment = responseList[2] as EditPayment;
-        // this.displayNotif();
+        this.editNotification = responseList[0] as EditNotification;
+        this.displayNotif();
       }
     });
 
@@ -69,7 +70,15 @@ export class NotificationAddeditComponent implements OnInit {
   }
 
   displayNotif(): void {
+    if (this.notifForm) {
+      this.notifForm.reset();
+    }
+    this.pageTitle = "Edit notification";
 
+    this.notifForm.patchValue({
+      title: this.editNotification.title,
+      text: this.editNotification.text
+    });
   }
 
   onSubmit() {
@@ -86,7 +95,7 @@ export class NotificationAddeditComponent implements OnInit {
 
 
   addNewNotif() {
-    // promjeniti creatorId na logiranog korisnika 
+    // promjeniti creatorId na logiranog korisnika
     const newNotif: AddNotification = {
       title: this.notifForm.value.title,
       text: this.notifForm.value.text,
@@ -105,7 +114,22 @@ export class NotificationAddeditComponent implements OnInit {
   }
 
   updateNotif() {
+    this.editNotification.title = this.notifForm.get('title').value;
+    this.editNotification.text = this.notifForm.get('text').value;
 
+
+    this.notifService.updateNotif(this.editNotification).subscribe(
+      () => {
+        this.snackBar.open('Successfully updated notification !', 'Close', {
+          duration: 3000
+        });
+        this.router.navigate(['/notification']);
+      },
+      err => {
+        this.snackBar.open(err, 'Close');
+        console.error(err);
+      }
+    );
 
   }
 

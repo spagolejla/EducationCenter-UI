@@ -5,6 +5,8 @@ import { Notification } from 'src/app/shared/models/notification';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { AddNotification } from 'src/app/shared/models/addNotification';
+import { EditNotification } from 'src/app/shared/models/editNotification';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,16 @@ export class NotificationService {
      catchError(this.handleError)
     );
  }
+
+ updateNotif(notif: EditNotification) {
+  return this.http.put<EditNotification>(this.pathAPI + 'api/notification', notif).pipe(
+   catchError(this.handleError)
+  );
+}
+
+ getNotifById(id: number): Observable<EditNotification> {
+  return this.http.get<EditNotification>(this.pathAPI + `api/notification/${id}`);
+}
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

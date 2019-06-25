@@ -2,7 +2,7 @@
 
   <mat-card class="mat-elevation-z3">
     <div style="margin-bottom:15px;">
-      <h2 style="display:inline;"> {{pageTitle}}</h2>
+      <h3 style="display:inline;"> {{pageTitle}}</h3>
       <button mat-button class="back-button" [routerLink]="['/payment']">Back</button>
     </div>
   </mat-card>
@@ -12,14 +12,14 @@
           <mat-card class="mat-elevation-z3">
 
               <mat-card-content>
-                <h3>Payment data</h3>
+                <h5>Payment data</h5>
           <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
             <div class="frm-field">
                 <mat-form-field>
                     <mat-select formControlName="studentId" placeholder="Student" class="dropdown-input" required>
                       <mat-option *ngFor="let s of students" [value]="s.id">{{s.firstName + '  ' + s.lastName}}</mat-option>
                     </mat-select>
-                    <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>
+                    <!-- <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error> -->
                   </mat-form-field>
 
             </div>
@@ -29,7 +29,7 @@
                   <mat-select formControlName="courseId" placeholder="Course" class="dropdown-input" required>
                     <mat-option *ngFor="let c of courses" [value]="c.id">{{c.name}}</mat-option>
                   </mat-select>
-                  <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error>
+                  <!-- <mat-error *ngIf="f.studentiId.errors?.required">Student  is required</mat-error> -->
                 </mat-form-field>
           </div>
           <div class="frm-field" >

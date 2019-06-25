@@ -66,6 +66,7 @@ export class PaymentAddEditComponent implements OnInit {
   get f(): any {
     return this.paymentForm.controls;
   }
+ 
   get isEdit(): boolean {
     if (this.paymentId === 0) {
       return false;
