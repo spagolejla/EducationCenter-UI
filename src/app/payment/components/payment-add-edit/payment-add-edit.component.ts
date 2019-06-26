@@ -9,7 +9,7 @@ import { AddPayment } from "src/app/shared/models/addPayment";
 import { PaymentService } from "../../services/payment.service";
 import { MatSnackBar } from "@angular/material";
 import { EditPayment } from "src/app/shared/models/editPayment";
-import { forkJoin } from "rxjs";
+import { forkJoin, Observable } from "rxjs";
 
 @Component({
   selector: "app-payment-add-edit",
@@ -18,6 +18,7 @@ import { forkJoin } from "rxjs";
 })
 export class PaymentAddEditComponent implements OnInit {
   hideSpinner = false;
+  changesSaved = false;
   pageTitle = "Add Payment";
   paymentId: number;
   students: Student[];
@@ -62,8 +63,7 @@ export class PaymentAddEditComponent implements OnInit {
         this.displayPayment();
       }
       this.toggleSpinner();
-    }
-    );
+    });
   }
 
   get f(): any {
@@ -105,7 +105,7 @@ export class PaymentAddEditComponent implements OnInit {
   }
 
   toggleSpinner() {
-    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+    this.hideSpinner ? (this.hideSpinner = false) : (this.hideSpinner = true);
   }
 
   onSubmit() {
@@ -120,39 +120,36 @@ export class PaymentAddEditComponent implements OnInit {
     }
   }
 
-
   updatePayment() {
-    this.editPayment.studentId = this.paymentForm.get('studentId').value;
-    this.editPayment.courseId = this.paymentForm.get('courseId').value;
-    this.editPayment.amount = this.paymentForm.get('amount').value;
+    this.editPayment.studentId = this.paymentForm.get("studentId").value;
+    this.editPayment.courseId = this.paymentForm.get("courseId").value;
+    this.editPayment.amount = this.paymentForm.get("amount").value;
 
-
-    let d: Date = this.paymentForm.get('date').value;
+    let d: Date = this.paymentForm.get("date").value;
     d.setHours(d.getHours() - d.getTimezoneOffset() / 60);
 
-    this.editPayment.date =  d;
-
+    this.editPayment.date = d;
 
     this.paymentService.updatePayment(this.editPayment).subscribe(
       () => {
         this.toggleSpinner();
-        this.snackBar.open('Successfully updated the payment !', 'Close', {
+        this.changesSaved = true;
+        this.snackBar.open("Successfully updated the payment !", "Close", {
           duration: 3000
         });
-        this.router.navigate(['/payment']);
+        this.router.navigate(["/payment"]);
       },
       err => {
-        this.snackBar.open(err, 'Close');
+        this.toggleSpinner();
+        this.snackBar.open(err, "Close");
         console.error(err);
       }
     );
   }
 
   addNewPayment() {
-
-    let d: Date = this.paymentForm.get('date').value;
+    let d: Date = this.paymentForm.get("date").value;
     d.setHours(d.getHours() - d.getTimezoneOffset() / 60);
-
 
     const newPayment: AddPayment = {
       studentId: this.paymentForm.value.studentId,
@@ -164,15 +161,29 @@ export class PaymentAddEditComponent implements OnInit {
     this.paymentService.addPayment(newPayment).subscribe(
       () => {
         this.toggleSpinner();
-        this.openSnackBar('Success!', 'New Payment added!');
-        this.router.navigate(['/payment']);
+        this.changesSaved = true;
+        this.openSnackBar("Success!", "New Payment added!");
+        this.router.navigate(["/payment"]);
       },
       err => {
         this.toggleSpinner();
-        this.snackBar.open(err, 'Close');
+        this.snackBar.open(err, "Close");
         console.error(err);
       }
     );
+  }
+
+  canDeactivate(): boolean {
+    if(!this.changesSaved) {
+      if (this.paymentForm.dirty) {
+        return confirm("Do you want to discard the changes?");
+      } else {
+        return true;
+      }
+    }
+   else {
+      return true;
+    }
   }
 
   openSnackBar(message: string, description: string): void {

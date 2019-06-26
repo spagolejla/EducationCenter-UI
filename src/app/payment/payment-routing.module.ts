@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PaymentListComponent } from './components/payment-list/payment-list.component';
 import { PaymentAddEditComponent } from './components/payment-add-edit/payment-add-edit.component';
+import { PaymentAddeditGuard } from './guards/payment-addedit.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'addedit/:id',
-    component: PaymentAddEditComponent
+    component: PaymentAddEditComponent,
+    canDeactivate: [PaymentAddeditGuard],
   }
 ];
 

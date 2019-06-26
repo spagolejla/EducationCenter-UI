@@ -147,6 +147,7 @@ export class NotificationAddeditComponent implements OnInit {
         this.router.navigate(['/notification']);
       },
       err => {
+        this.toggleSpinner();
         this.snackBar.open(err, 'Close');
         console.error(err);
       }
