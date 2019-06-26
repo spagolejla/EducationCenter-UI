@@ -18,6 +18,7 @@ import { UsernameValidator } from 'src/app/shared/helpers/username';
   styleUrls: ['./educator-addedit.component.scss']
 })
 export class EducatorAddeditComponent implements OnInit {
+  hideSpinner = false;
 
   title = 'Add new educator';
   errors: string[] = null;
@@ -79,10 +80,14 @@ export class EducatorAddeditComponent implements OnInit {
     forkJoin(this.observables).subscribe(responseList => {
       this.courseFields = responseList[0] as CourseField[];
       this.accTypes = responseList[1] as AccountType[];
-
+      this.toggleSpinner();
     });
 
   }
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
+
 
   get f1(): any {
     return this.basicInfoFormGroup.controls;
@@ -111,10 +116,13 @@ export class EducatorAddeditComponent implements OnInit {
 
     this.edcService.addEducator(newEducator).subscribe(
       () => {
+        this.toggleSpinner();
         this.openSnackBar("Success!", "New Educator added!");
         this.router.navigate(["/educator"]);
       },
       err => {
+        this.toggleSpinner();
+        this.openSnackBar(err, "Something bad has happened!");
         console.log(err);
       }
     );

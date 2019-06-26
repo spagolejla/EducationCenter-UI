@@ -16,6 +16,7 @@ import { EditCourse } from 'src/app/shared/models/editCourse';
   styleUrls: ["./course-addedit.component.scss"]
 })
 export class CourseAddeditComponent implements OnInit {
+  hideSpinner = false;
   errors: string[] = null;
   title = "Add new course";
 
@@ -87,8 +88,14 @@ export class CourseAddeditComponent implements OnInit {
         .valueChanges.subscribe(val => {
           this.toggleEducatorDropdown(val);
         });
+        this.toggleSpinner();
     });
   }
+
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
+
   displayCourse() {
     this.title = "Edit course";
 
@@ -155,12 +162,14 @@ export class CourseAddeditComponent implements OnInit {
 
     this.courseService.updateCourse(this.courseEdit).subscribe(
      () => {
+      this.toggleSpinner();
        this.snackBar.open('Successfully updated couers !', 'Close', {
          duration: 3000
        });
        this.router.navigate(['/course/details',this.courseId]);
      },
      err => {
+      this.toggleSpinner();
        this.snackBar.open(err, 'Close');
        console.error(err);
      }
@@ -189,10 +198,13 @@ export class CourseAddeditComponent implements OnInit {
 
     this.courseService.addCourse(newCourse).subscribe(
       () => {
+        this.toggleSpinner();
         this.openSnackBar("Success!", "New Course added!");
         this.router.navigate(["/course"]);
       },
       err => {
+        this.toggleSpinner();
+        this.openSnackBar("Error!", err);
         console.log(err);
       }
     );

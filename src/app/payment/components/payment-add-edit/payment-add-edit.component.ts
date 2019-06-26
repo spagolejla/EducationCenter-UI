@@ -17,6 +17,7 @@ import { forkJoin } from "rxjs";
   styleUrls: ["./payment-add-edit.component.scss"]
 })
 export class PaymentAddEditComponent implements OnInit {
+  hideSpinner = false;
   pageTitle = "Add Payment";
   paymentId: number;
   students: Student[];
@@ -60,13 +61,15 @@ export class PaymentAddEditComponent implements OnInit {
         this.editPayment = responseList[2] as EditPayment;
         this.displayPayment();
       }
-    });
+      this.toggleSpinner();
+    }
+    );
   }
 
   get f(): any {
     return this.paymentForm.controls;
   }
- 
+
   get isEdit(): boolean {
     if (this.paymentId === 0) {
       return false;
@@ -101,11 +104,15 @@ export class PaymentAddEditComponent implements OnInit {
     });
   }
 
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
+
   onSubmit() {
     if (this.paymentForm.invalid || this.paymentForm.untouched) {
       return;
     }
-    //this.toggleSpinner();
+    this.toggleSpinner();
     if (!this.isEdit) {
       this.addNewPayment();
     } else {
@@ -128,6 +135,7 @@ export class PaymentAddEditComponent implements OnInit {
 
     this.paymentService.updatePayment(this.editPayment).subscribe(
       () => {
+        this.toggleSpinner();
         this.snackBar.open('Successfully updated the payment !', 'Close', {
           duration: 3000
         });
@@ -155,10 +163,15 @@ export class PaymentAddEditComponent implements OnInit {
 
     this.paymentService.addPayment(newPayment).subscribe(
       () => {
+        this.toggleSpinner();
         this.openSnackBar('Success!', 'New Payment added!');
         this.router.navigate(['/payment']);
       },
-      err => console.log(err)
+      err => {
+        this.toggleSpinner();
+        this.snackBar.open(err, 'Close');
+        console.error(err);
+      }
     );
   }
 

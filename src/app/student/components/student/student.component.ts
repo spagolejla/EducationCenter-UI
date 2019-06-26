@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit {
+  hideSpinner = false;
 
   students: Student[];
   displayedColumns: string[] = ['Firstname', 'Lastname', 'Email', 'Phone', 'Active', 'Action'];
@@ -23,10 +24,13 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
     this.getStudents();
   }
-
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
   getStudents(): void {
     this.studentService.getStudents()
       .subscribe(student => {
+        this.toggleSpinner();
         this.students = student;
         this.dataSource = new MatTableDataSource(this.students);
         console.log(this.students);

@@ -1,4 +1,7 @@
-<div class="container">
+<div id="spinnerWrapper">
+  <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+</div>
+<div class="container" *ngIf="hideSpinner">
 
   <mat-card class="mat-elevation-z3">
     <div style="margin-bottom:15px;">

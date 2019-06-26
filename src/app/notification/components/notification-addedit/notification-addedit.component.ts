@@ -14,6 +14,7 @@ import { EditNotification } from 'src/app/shared/models/editNotification';
   styleUrls: ['./notification-addedit.component.scss']
 })
 export class NotificationAddeditComponent implements OnInit {
+  hideSpinner = false;
 
   pageTitle = "Add new notification";
   notifId: number;
@@ -51,13 +52,24 @@ export class NotificationAddeditComponent implements OnInit {
      /*  this.students = responseList[0] as Student[];
       this.courses = responseList[1] as Course[]; */
       if (this.isEdit) {
+        this.toggleSpinner();
+
         this.editNotification = responseList[0] as EditNotification;
+
         this.displayNotif();
+
+
       }
+
+
     });
+    this.toggleSpinner();
 
   }
 
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
   get f(): any {
     return this.notifForm.controls;
   }
@@ -73,6 +85,8 @@ export class NotificationAddeditComponent implements OnInit {
     if (this.notifForm) {
       this.notifForm.reset();
     }
+    this.toggleSpinner();
+
     this.pageTitle = "Edit notification";
 
     this.notifForm.patchValue({
@@ -85,7 +99,7 @@ export class NotificationAddeditComponent implements OnInit {
     if (this.notifForm.invalid || this.notifForm.untouched) {
       return;
     }
-    //this.toggleSpinner();
+    this.toggleSpinner();
     if (!this.isEdit) {
       this.addNewNotif();
     } else {
@@ -105,11 +119,16 @@ export class NotificationAddeditComponent implements OnInit {
 
     this.notifService.addNotif(newNotif).subscribe(
       () => {
+        this.toggleSpinner();
+
         this.openSnackBar('Success!', 'New notfication added!');
         this.notifForm.reset();
         this.router.navigate(['/notification']);
       },
-      err => console.log(err)
+      err => {
+        this.snackBar.open(err, 'Close');
+        console.error(err);
+      }
     );
   }
 
@@ -120,6 +139,8 @@ export class NotificationAddeditComponent implements OnInit {
 
     this.notifService.updateNotif(this.editNotification).subscribe(
       () => {
+        this.toggleSpinner();
+
         this.snackBar.open('Successfully updated notification !', 'Close', {
           duration: 3000
         });

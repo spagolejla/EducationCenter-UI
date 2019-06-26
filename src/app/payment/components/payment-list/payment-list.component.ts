@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./payment-list.component.scss']
 })
 export class PaymentListComponent implements OnInit {
+  hideSpinner = false;
 
   payments: Payment[];
   displayedColumns: string[] = ['Student', 'Course', 'Date', 'Amount',  'Action'];
@@ -24,10 +25,13 @@ export class PaymentListComponent implements OnInit {
   ngOnInit() {
     this.getPayments();
   }
-
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
   getPayments(): void {
     this.paymentService.getPayments()
       .subscribe(payment => {
+        this.toggleSpinner();
         this.payments = payment;
         this.dataSource = new MatTableDataSource(this.payments);
         console.log(this.payments);

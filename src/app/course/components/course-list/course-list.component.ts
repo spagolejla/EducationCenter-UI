@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
-
+  hideSpinner = false;
   _listFilter = '';
   get listFilter(): string {
     return this._listFilter;
@@ -26,10 +26,13 @@ export class CourseListComponent implements OnInit {
   ngOnInit() {
     this.getCourses();
   }
-
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
   getCourses(): void {
     this.courseService.getCourses()
       .subscribe(c => {
+        this.toggleSpinner();
         this.courses = c;
         this.filteredCourses = this.courses;
         console.log(this.courses);

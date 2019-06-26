@@ -1,4 +1,7 @@
-<div class="container">
+<div id="spinnerWrapper">
+    <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+  </div>
+<div class="container" *ngIf="hideSpinner">
 
   <div>
     <mat-card id="card" *ngIf='educator' class="mat-elevation-z3">
@@ -70,7 +73,7 @@
         <mat-card *ngIf='educator' style="background:rgba(0, 150, 136, 1);" class="mat-elevation-z3">
 
             <mat-card-content style="padding:30%;">
-  <p style="font-size: 5em; color:white">{{educator.avgRate |  number:'1.1-2'}}</p>
+  <p style="font-size: 5em; color:white">{{educator.avgRate |  number:'1.1-1'}}</p>
             </mat-card-content>
 
           </mat-card>

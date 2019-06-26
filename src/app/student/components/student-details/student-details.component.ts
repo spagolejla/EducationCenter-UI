@@ -13,6 +13,8 @@ import { forkJoin } from 'rxjs';
   styleUrls: ["./student-details.component.scss"]
 })
 export class StudentDetailsComponent implements OnInit {
+  hideSpinner = false;
+
   student: Student;
   studentId: number;
   courses: Course[];
@@ -39,10 +41,14 @@ export class StudentDetailsComponent implements OnInit {
       this.student = responseList[0] as Student;
       this.courses = responseList[1] as Course[];
       console.log(this.courses);
+      this.toggleSpinner();
+
     });
   }
 
-
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
 
 
 }

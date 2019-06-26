@@ -9,6 +9,8 @@ import { Notification } from "src/app/shared/models/notification";
   styleUrls: ["./notification-list.component.scss"]
 })
 export class NotificationListComponent implements OnInit {
+  hideSpinner = false;
+
   notifications: Notification[];
   user: string = "Lejla Špago";  //promjeniti kad napravim logiranje
   constructor(
@@ -20,6 +22,9 @@ export class NotificationListComponent implements OnInit {
     this.getNotifications();
   }
 
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
   checkNotification() {
     for (let notif of this.notifications) {
       if (notif.user === this.user) {
@@ -30,6 +35,7 @@ export class NotificationListComponent implements OnInit {
 
   getNotifications(): void {
     this.notifService.getNotifications().subscribe(ntf => {
+      this.toggleSpinner();
       this.notifications = ntf;
       this.checkNotification();
       console.log(this.notifications);

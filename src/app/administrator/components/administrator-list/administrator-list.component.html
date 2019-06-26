@@ -1,4 +1,7 @@
-<div class="table-container">
+<div id="spinnerWrapper">
+    <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+  </div>
+<div class="table-container" *ngIf="hideSpinner">
     <mat-card class="mat-elevation-z3">
         <div style="margin-bottom:15px;">
           <h3 style="display:inline;"> Administrators</h3>

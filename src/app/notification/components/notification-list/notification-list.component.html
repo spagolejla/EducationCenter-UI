@@ -1,29 +1,33 @@
 
+<div id="spinnerWrapper">
+    <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+  </div>
+<div  *ngIf="hideSpinner">
+    <div class="notif-body " *ngFor="let n of notifications">
+        <mat-card class="mat-elevation-z1">
+          <div style="display:inline-block; width:100%;">
+             <div class="notif-title" style="color: rgba(0, 150, 136, 1);" ><h4>{{n.title}}</h4></div>
+             <div class="notif-date"><h5>{{n.date | date: 'longDate'}}</h5></div>
+
+          </div>
+
+           <div class="notif-text">{{n.text}}</div>
+
+           <div style="display:inline-block; width:100%;">
+           <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>  {{n.user}}
+
+           </div>
+           <div style="float: right;" *ngIf="n.isCreator">
+             <button mat-icon-button color="primary" [routerLink]="['/notification/addedit', n.id]">
+               <mat-icon>edit</mat-icon>
+             </button>
+           </div>
+         </div>
+
+        </mat-card>
 
 
- <div class="notif-body " *ngFor="let n of notifications">
-   <mat-card class="mat-elevation-z1">
-     <div style="display:inline-block; width:100%;">
-        <div class="notif-title" style="color: rgba(0, 150, 136, 1);" ><h4>{{n.title}}</h4></div>
-        <div class="notif-date"><h5>{{n.date | date: 'longDate'}}</h5></div>
-
-     </div>
-
-      <div class="notif-text">{{n.text}}</div>
-
-      <div style="display:inline-block; width:100%;">
-      <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>  {{n.user}}
 
       </div>
-      <div style="float: right;" *ngIf="n.isCreator">
-        <button mat-icon-button color="primary" [routerLink]="['/notification/addedit', n.id]">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </div>
-    </div>
+</div>
 
-   </mat-card>
-
-
-
- </div>

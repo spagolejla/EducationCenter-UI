@@ -1,4 +1,7 @@
-<div class="container">
+<div id="spinnerWrapper">
+    <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+  </div>
+<div class="container" *ngIf="hideSpinner">
 <div class="header">
 <mat-card  id="card" *ngIf='course' class="mat-elevation-z3">
   <div style="width: 100%; display:inline-block;">
@@ -6,7 +9,7 @@
       <button mat-button class="back-btn" [routerLink]="['/course']">Back</button>
     </div>
     <div>
-      <h1 >{{course.name}}</h1>
+      <h3 >{{course.name}}</h3>
   </div>
 </div>
 </mat-card>
@@ -15,7 +18,7 @@
 <div class="part" >
     <mat-card *ngIf='course' class="mat-elevation-z3">
 
-   <h3 style="color:rgba(0, 150, 136, 1);">Description</h3>
+   <h5 style="color:rgba(0, 150, 136, 1);">Description</h5>
 
     <p>
       {{course.description}}
@@ -70,7 +73,7 @@
       <mat-card *ngIf='course' style="background:rgba(0, 150, 136, 1);" class="mat-elevation-z3">
 
           <mat-card-content style="padding:30%;">
-<p style="font-size: 5em; color:white">{{course.avgRate |  number:'1.1-2'}}</p>
+<p style="font-size: 5em; color:white">{{course.avgRate |  number:'1.1-1'}}</p>
           </mat-card-content>
 
         </mat-card>
@@ -84,7 +87,7 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <h3 style="color:rgba(0, 150, 136, 1);">Classes</h3>
+              <h5 style="color:rgba(0, 150, 136, 1);">Classes</h5>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list role="list">
@@ -105,7 +108,7 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <h3 style="color:rgba(0, 150, 136, 1);">Students on this course</h3>
+              <h5 style="color:rgba(0, 150, 136, 1);">Students on this course</h5>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list role="list">

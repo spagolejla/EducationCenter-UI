@@ -13,6 +13,8 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ["./educator-details.component.scss"]
 })
 export class EducatorDetailsComponent implements OnInit {
+  hideSpinner = false;
+
   educator: Educator;
   educatorId: number;
   courses: Course[];
@@ -43,8 +45,14 @@ export class EducatorDetailsComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.educator.rates);
       this.courses = responseList[1] as Course[];
       console.log(this.courses);
-    });
+      this.toggleSpinner();
+    }
+
+    );
   }
 
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+  }
 
 }

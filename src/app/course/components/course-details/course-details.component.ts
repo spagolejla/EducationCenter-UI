@@ -13,6 +13,7 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./course-details.component.scss']
 })
 export class CourseDetailsComponent implements OnInit {
+  hideSpinner = false;
   course: Course;
   courseId: number;
 
@@ -36,9 +37,12 @@ export class CourseDetailsComponent implements OnInit {
 
       forkJoin(this.observables).subscribe(responseList => {
         this.course = responseList[0] as Course;
+        this.toggleSpinner();
         console.log(this.course);
       });
     }
 
-
+    toggleSpinner() {
+      this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
+    }
 }

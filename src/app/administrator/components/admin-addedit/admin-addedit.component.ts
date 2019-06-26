@@ -14,6 +14,7 @@ import { EditAdmin } from "src/app/shared/models/editAdmin";
   styleUrls: ["./admin-addedit.component.scss"]
 })
 export class AdminAddeditComponent implements OnInit {
+  hideSpinner = false;
   title = "Add new administrator";
   errors: string[] = null;
   isEdit: boolean = false;
@@ -111,10 +112,17 @@ export class AdminAddeditComponent implements OnInit {
     if (this.adminId !== 0) {
       this.isEdit = true;
       this.getAdmin();
+    } else {
+      this.toggleSpinner();
+
     }
+  }
+  toggleSpinner() {
+    this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
   }
   getAdmin() {
     this.adminService.getAdminById(this.adminId).subscribe(adm => {
+      this.toggleSpinner();
       this.adminEdit = adm;
       console.log(this.adminEdit);
       this.displayAdmin();
@@ -160,12 +168,14 @@ export class AdminAddeditComponent implements OnInit {
 
    this.adminService.updateAdmin(this.adminEdit).subscribe(
     () => {
+      this.toggleSpinner();
       this.snackBar.open('Successfully updated Admin !', 'Close', {
         duration: 3000
       });
       this.router.navigate(['/administrator']);
     },
     err => {
+      this.toggleSpinner();
       this.snackBar.open(err, 'Close');
       console.error(err);
     }
@@ -185,10 +195,13 @@ export class AdminAddeditComponent implements OnInit {
 
     this.adminService.addAdmin(newAdmin).subscribe(
       () => {
+        this.toggleSpinner();
         this.openSnackBar("Success!", "New Administrator added!");
         this.router.navigate(["/administrator"]);
       },
       err => {
+        this.toggleSpinner();
+        this.openSnackBar("Error!", err);
         console.log(err);
       }
     );
