@@ -35,4 +35,29 @@ export class UsernameValidator {
     });
   }
 
+  checkUsernameExist(control: FormControl): any {
+
+    clearTimeout(this.debouncer);
+
+    return new Promise(resolve => {
+
+      this.debouncer = setTimeout(() => {
+
+        this.userService.checkUsername(control.value).subscribe((res) => {
+          if (res === true) {
+            resolve(null);
+          } else{
+            resolve({'NotExist': true});
+
+          }
+        }, (err) => {
+          console.log(err);
+        });
+
+      }, 1000);
+
+    });
+  }
+
+  
 }

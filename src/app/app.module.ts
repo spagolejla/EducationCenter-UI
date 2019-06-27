@@ -21,7 +21,6 @@ import { UsernameValidator } from './shared/helpers/username';
     AppComponent,
     LoginComponent,
     HomeComponent,
-
   ],
   imports: [
     BrowserModule,

@@ -33,8 +33,11 @@ export class AppComponent implements OnDestroy {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(isOpen => (this.navigationOpen = isOpen));
 
+    // this.authService
+    // .onHeaderToggle()
+    // .pipe(takeUntil(this.onDestroy$))
+    // .subscribe(isOpen => (this.headerShowed = isOpen));
 
-    this.headerShowed = true;
   }
 
   closeUserProfile() {

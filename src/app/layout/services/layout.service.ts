@@ -33,10 +33,9 @@ export class LayoutService {
     this.userMenuOpened$.next(false);
   }
 
-
-
-
-
+  closeNavMenu() {
+    this.navMenuOpened$.next(false);
+  }
 
 
 

@@ -1,4 +1,4 @@
-<div class="nav-menu-content">
+<div class="nav-menu-content" *ngIf='isAdmin'>
   <mat-nav-list >
     <div class="sidenav-link">
       <a mat-list-item routerLink='/home' >
@@ -105,3 +105,195 @@
   </mat-nav-list>
 
  </div>
+
+ <!-- EDUCATOR-->
+ <div class="nav-menu-content" *ngIf='isEducator'>
+  <mat-nav-list >
+    <div class="sidenav-link">
+      <a mat-list-item routerLink='/educator/home' >
+        <i class="material-icons sidenav-icon">home</i>
+        Home
+      </a>
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">chrome_reader_mode</i>
+            Competitions
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="['/course/addedit', 0]">
+            <i class="material-icons sidenav-icon">library_add</i>
+            Add competiton</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+          <a mat-list-item routerLink='/course'>
+            <i class="material-icons sidenav-icon">ballot</i>
+            Show all</a>
+        </mat-nav-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">tab</i>
+            Courses
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item  routerLink='/administrator'>
+            <i class="material-icons sidenav-icon">horizontal_split</i>
+            My Courses</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+          <a mat-list-item  routerLink='/educator'>
+            <i class="material-icons sidenav-icon">list_alt</i>
+            All Courses</a>
+        </mat-nav-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">school</i>
+            Students
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item routerLink='/student'>
+            <i class="material-icons sidenav-icon">people</i>
+            Show all</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item routerLink='/student'>
+            <i class="material-icons sidenav-icon">event</i>
+            Classes</a>
+        </mat-nav-list>
+
+
+      </mat-expansion-panel>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="sidenav-item">
+            <mat-panel-title>
+              <i class="material-icons sidenav-icon">notifications</i>
+              Notifications
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <a mat-list-item  [routerLink]="['/notification/addedit', 0]" >
+              <i class="material-icons sidenav-icon">add_circle</i>
+              Add new</a>
+          </mat-nav-list>
+
+          <mat-nav-list>
+            <a mat-list-item routerLink='/notification' >
+              <i class="material-icons sidenav-icon">list_alt</i>
+              Manage notification</a>
+          </mat-nav-list>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-accordion>
+
+  </mat-nav-list>
+
+ </div>
+
+
+ <!-- STUDENTS-->
+
+ <div class="nav-menu-content" *ngIf='isStudent'>
+  <mat-nav-list >
+    <div class="sidenav-link">
+      <a mat-list-item routerLink='/student/home' >
+        <i class="material-icons sidenav-icon">home</i>
+        Home
+      </a>
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">chrome_reader_mode</i>
+            My Courses
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="['/course/addedit', 0]">
+            <i class="material-icons sidenav-icon">dashboard</i>
+            Show all</a>
+        </mat-nav-list>
+
+
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">school</i>
+            Avaible courses
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item routerLink='/student'>
+            <i class="material-icons sidenav-icon">dashboard</i>
+            Show all</a>
+        </mat-nav-list>
+
+
+
+      </mat-expansion-panel>
+
+
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="sidenav-item">
+          <mat-panel-title>
+            <i class="material-icons sidenav-icon">person</i>
+            Educators
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a mat-list-item  routerLink='/administrator'>
+            <i class="material-icons sidenav-icon">people</i>
+            Show all</a>
+        </mat-nav-list>
+
+
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+
+  </mat-nav-list>
+
+ </div>
+
+
+

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async">
     <mat-toolbar-row>
           <button mat-icon-button (click)="toggleNavMenu()">
             <mat-icon>menu</mat-icon>

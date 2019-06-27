@@ -4,6 +4,7 @@ import { EducatorListComponent } from './components/educator-list/educator-list.
 import { EducatorDetailsComponent } from './components/educator-details/educator-details.component';
 import { EducatorAddeditComponent } from './components/educator-addedit/educator-addedit.component';
 import { EducatorEditComponent } from './components/educator-edit/educator-edit.component';
+import { EducatorHomeComponent } from './components/educator-home/educator-home.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: EducatorEditComponent
+  },
+  {
+    path: 'home',
+    component: EducatorHomeComponent
   },
 ];
 

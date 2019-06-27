@@ -5,6 +5,7 @@ import { HomeComponent } from './shared/components/home/home.component';
 
 const routes: Route[] = [
   { path: '', component: LoginComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
   {
     path: 'student',

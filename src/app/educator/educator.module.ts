@@ -7,9 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EducatorDetailsComponent } from './components/educator-details/educator-details.component';
 import { EducatorAddeditComponent } from './components/educator-addedit/educator-addedit.component';
 import { EducatorEditComponent } from './components/educator-edit/educator-edit.component';
+import { EducatorHomeComponent } from './components/educator-home/educator-home.component';
 
 @NgModule({
-  declarations: [EducatorListComponent, EducatorDetailsComponent, EducatorAddeditComponent, EducatorEditComponent],
+  declarations: [EducatorListComponent, EducatorDetailsComponent, EducatorAddeditComponent, EducatorEditComponent, EducatorHomeComponent],
   imports: [
     CommonModule,
     EducatorRoutingModule,

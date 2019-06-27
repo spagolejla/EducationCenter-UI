@@ -1,4 +1,7 @@
-<!-- <mat-card class="form-box">
+<div id="spinnerWrapper">
+  <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+</div>
+<mat-card class="form-box" *ngIf="hideSpinner">
 
     <div class="head">Login</div>
 
@@ -9,6 +12,8 @@
       <div class="example-container">
         <mat-form-field class="form-group">
           <input matInput placeholder="Username" formControlName="username">
+          <mat-error *ngIf="f.username.errors?.NotExist"> That username dosent exist!</mat-error>
+          <mat-error *ngIf="f.username.errors?.required"> You must fill the username!</mat-error>
         </mat-form-field>
 
         <mat-form-field class="form-group">
@@ -23,4 +28,4 @@
 
 
 </mat-card>
- -->
+
