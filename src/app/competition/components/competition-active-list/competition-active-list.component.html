@@ -1,0 +1,33 @@
+<div id="spinnerWrapper">
+  <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+</div>
+<div *ngIf="hideSpinner">
+  <mat-card class="notif-body mat-elevation-z1" *ngFor='let c of competitions'>
+    <div style="display:inline-block; width:100%;">
+       <div class="notif-title" style="color: white;" ><h4>{{c.courseName}}</h4></div>
+    </div>
+     <div style="display:inline-block; width:100%;">
+     <div class="notif-user"><span style="color: white;">Current number of application:  {{c.currentCandidatesNumber + ' / ' + c.maxCandidatesNumber}}</span>
+     </div>
+     <div style="float: right;">
+       <button mat-icon-button style="color: white;" [routerLink]="['/competition/details', c.id]">
+         <mat-icon>keyboard_arrow_right</mat-icon>
+       </button>
+     </div>
+   </div>
+  </mat-card>
+</div>
+<div *ngIf="!competitionsExist">
+  <mat-card class="mat-elevation-z1" style="background-color: rgba(205, 205, 205, 1)" >
+   <h4 style="display: inline;">No active competitions!</h4>
+   <button mat-button color="primary" [routerLink]="['/notification/addedit',0]">
+Add new
+  </button>
+
+  </mat-card>
+</div>
+
+
+
+
+

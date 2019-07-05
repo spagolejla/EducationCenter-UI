@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/shared/models/course';
 import { CourseService } from '../../services/course.service';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-course-list',
@@ -21,7 +22,7 @@ export class CourseListComponent implements OnInit {
 
   courses: Course[];
   filteredCourses: Course[] = [];
-  constructor(private courseService: CourseService, private route: ActivatedRoute) { }
+  constructor(private courseService: CourseService, private route: ActivatedRoute,  private _service: DataService) { }
 
   ngOnInit() {
     this.getCourses();

@@ -17,4 +17,5 @@ export class Course {
   price: number;
   rates: CourseRate[];
   avgRate: number;
+  active: boolean;
 }

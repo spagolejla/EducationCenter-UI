@@ -1,0 +1,32 @@
+.notif-body{
+  margin-top: 10px;
+ background-color:rgba(76, 189, 207, 1)
+}
+
+.notif-title{
+  float:left;
+
+
+}
+.notif-title h3{
+  color:white;
+}
+
+.notif-date{
+  float:right;
+
+}
+
+.notif-user{
+  margin-top:20px;
+  float:left;
+
+}
+
+
+#spinnerWrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

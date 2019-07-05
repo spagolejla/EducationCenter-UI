@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { User } from '../../models/user';
 import { UsernameValidator } from '../../helpers/username';
 import { MatSnackBar } from '@angular/material';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -27,10 +28,14 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute,
               private authService: AuthService,
               private snackBar: MatSnackBar,
-              public usernameValidator: UsernameValidator
+              public usernameValidator: UsernameValidator,
+              private _service: DataService
               ) { }
 
   ngOnInit() {
+    this.authService.logged=false;
+    this._service.isLoggedIn$=false;
+    localStorage.removeItem('currentUser');
     this.loginForm  =  this.formBuilder.group({
       username: ['', Validators.compose([Validators.required]), this.usernameValidator.checkUsernameExist.bind(this.usernameValidator)],
       password: ['', Validators.required]
@@ -58,9 +63,11 @@ export class LoginComponent implements OnInit {
 
       this.authService.login1(username, password).subscribe(usr => {
         this.authService.headerToggle();
+        this.authService.logged=true;
         this.currentUser = usr;
         this.toggleSpinner();
         localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+        this._service.initUser();
         if(this.currentUser.accountTypeId === 1) {
           this.router.navigate(['/home']);
         } else if (this.currentUser.accountTypeId === 2) {

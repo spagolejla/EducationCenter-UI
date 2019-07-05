@@ -30,6 +30,10 @@ const routes: Route[] = [
   {
     path: 'course',
     loadChildren: './course/course.module#CourseModule'
+  },
+  {
+    path: 'competition',
+    loadChildren: './competition/competition.module#CompetitionModule'
   }
 
 ];

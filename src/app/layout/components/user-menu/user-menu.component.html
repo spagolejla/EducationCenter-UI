@@ -1,9 +1,9 @@
 <div id="userMenuContent">
-  <div id="card" *ngIf='currentUser'>
-    <img src={{currentUser.avatarUrl}}
+  <div id="card" *ngIf='_service?.currentUser'>
+    <img src={{_service?.currentUser.avatarUrl}}
 />
-    <h4>{{currentUser.firstName + ' ' + currentUser.lastName }}</h4>
-    <h6>{{currentUser.accountType}}</h6>
+    <h4>{{_service?.currentUser.firstName + ' ' + _service?.currentUser.lastName }}</h4>
+    <h6>{{_service?.currentUser.accountType}}</h6>
   </div>
 
   <br>

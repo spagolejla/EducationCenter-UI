@@ -22,6 +22,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSortModule} from '@angular/material/sort';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -49,7 +54,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSnackBarModule,
     MatGridListModule,
     MatMenuModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ScrollDispatchModule,
+    MatTabsModule,
+    MatChipsModule,
+    MatSortModule
   ],
   exports: [
     MatToolbarModule,
@@ -75,7 +84,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSnackBarModule,
     MatGridListModule,
     MatMenuModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ScrollDispatchModule,
+    MatTabsModule,
+    MatChipsModule,
+    MatSortModule
   ]
 })
 export class MaterialDesignModule { }

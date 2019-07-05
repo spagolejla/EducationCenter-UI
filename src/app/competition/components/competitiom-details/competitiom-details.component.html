@@ -1,0 +1,102 @@
+<div id="spinnerWrapper">
+  <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+</div>
+<div class="container" id="hideSpinner">
+
+  <mat-card class="mat-elevation-z3" *ngIf='competition'>
+    <div style="margin-bottom:15px;">
+      <h1 style="display:inline;"> {{competition.courseName}}</h1>
+      <button mat-button class="back-button" [routerLink]="['/competition']">Back</button>
+    </div>
+
+    <mat-tab-group>
+      <mat-tab label="Basic informations">
+        <div class="basic-info">
+          <mat-card class="part1">
+
+            <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Sunglasses&hatColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Black&eyeType=Close&eyebrowType=Angry&mouthType=Default&skinColor=Light"
+              style="width: 200px; height: 200px" />
+            <h2 style="margin-top:5%">Dinaid Dinic</h2>
+            <h4>Educator</h4>
+
+          </mat-card>
+          <div class="part2">
+            <mat-card>
+
+              <h5 style="color:rgba(0, 150, 136, 1);">Description</h5>
+
+              <p>
+                {{competition.description}}
+              </p>
+
+            </mat-card>
+            <mat-card style="margin-top: 5px;">
+              <mat-card-content>
+                <div class="details-row">
+                  <b style="color:rgba(0, 150, 136, 1);">Course starts: </b> {{competition.startDate | date: short}} |
+                  10:00h | Monday, Friday <br />
+                </div>
+                <div class="details-row">
+                  <b style="color:rgba(0, 150, 136, 1);">Fields: </b>Programming | 10 lectures<br />
+                </div>
+                <div class="details-row">
+                  <b style="color:rgba(0, 150, 136, 1);">Competition period: </b>{{competition.startDate |date: short}}
+                  - {{competition.endDate |date: short}} <br />
+                </div>
+              </mat-card-content>
+
+            </mat-card>
+          </div>
+        </div>
+
+
+
+      </mat-tab>
+      <mat-tab label="Applications">
+        <div class="application-info">
+          <mat-card>
+            <h5 style="color:rgba(0, 150, 136, 1);">Competition description</h5>
+            <p>
+              {{competition.description}}
+            </p>
+          </mat-card>
+
+
+        </div>
+        <mat-card *ngIf='_service?.isEducator'>
+
+          <h5 style="color:rgba(0, 150, 136, 1);">All application</h5>
+
+          <table class="table table-striped" matSort (matSortChange)="sortData($event)">
+            <thead>
+              <th mat-sort-header="studentent"> Student </th>
+              <th>Points </th>
+              <th mat-sort-header="date"> date</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let a of sortedData">
+                <td>
+                  {{a.student}}
+                </td>
+
+                <td>
+                  10
+                </td>
+                <td>
+                  {{a.date}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </mat-card>
+        <div *ngIf='!_service?.isEducator'>
+          <button mat-button color="primary"> Applay now</button>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </mat-card>
+</div>

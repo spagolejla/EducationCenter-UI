@@ -1,0 +1,59 @@
+.container {
+  margin-top: 20px;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 1em;
+  width:90%;
+}
+
+.back-button{
+  float: right;
+  background: rgba(0, 150, 136, 1);
+  color: white;
+}
+
+.basic-info{
+  display: inline-block;
+  width: 90%;
+
+  margin-top: 20px;
+
+}
+.part1{
+  float: left;
+  margin-top:2%;
+
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.part2{
+  float: left;
+
+  margin-left:3%;
+  margin-top:2%;
+
+  width: 60%;
+}
+
+.details-row{
+  padding: 10px;
+  margin-top: 10px;
+  background-color: rgba(238, 238, 238, 1);
+}
+.application-info{
+  margin-top: 20px;
+}
+
+.app-table{
+  width: 100%;
+}
+#spinnerWrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

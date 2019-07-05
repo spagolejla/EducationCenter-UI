@@ -1,0 +1,43 @@
+<div id="spinnerWrapper">
+  <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+</div>
+<div *ngIf="hideSpinner">
+    <mat-form-field>
+        <input matInput type="text" placeholder="Search" [(ngModel)]="listFilter" >
+        <button mat-button matSuffix mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+
+      </mat-form-field>
+  <mat-card class="notif-body mat-elevation-z1" *ngFor='let c of filteredCompetitions'>
+
+    <div style="display:inline-block; width:100%;">
+       <div class="notif-title" style="color:rgba(0, 150, 136, 1);" ><h4>{{c.courseName}}</h4></div>
+    </div>
+     <div style="display:inline-block; width:100%;">
+     <div class="notif-user"><span>Current number of application:  {{c.currentCandidatesNumber + ' / ' + c.maxCandidatesNumber}}</span>
+     </div>
+     <div style="float: right;">
+
+       <mat-chip-list aria-label="Fish selection">
+
+        <mat-chip color="primary" selected [routerLink]="['/competition/details', c.id]">Manage competition</mat-chip>
+
+      </mat-chip-list>
+     </div>
+    </div>
+  </mat-card>
+</div>
+<div *ngIf="!competitionsExist">
+  <mat-card class="mat-elevation-z1" style="background-color: rgba(205, 205, 205, 1)" >
+   <h4 style="display: inline;">No competitions yet!</h4>
+   <button mat-button color="primary" [routerLink]="['/competition/details',0]">
+Add new
+  </button>
+
+  </mat-card>
+</div>
+
+
+
+

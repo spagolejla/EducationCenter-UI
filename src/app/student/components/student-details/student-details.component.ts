@@ -34,7 +34,7 @@ export class StudentDetailsComponent implements OnInit {
 
     this.observables.push(this.studentService.getStudentById(this.studentId));
     this.observables.push(
-      this.courseService.getCoursesByEducatorId(this.studentId)
+      this.courseService.getCoursesByStudentId(this.studentId)
     );
 
     forkJoin(this.observables).subscribe(responseList => {

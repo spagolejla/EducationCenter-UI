@@ -3,6 +3,7 @@ import { AuthService } from "src/app/shared/services/authentication.service";
 import { User } from "src/app/shared/models/user";
 import { Router } from "@angular/router";
 import { LayoutService } from "../../services/layout.service";
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: "app-nav-menu",
@@ -17,17 +18,11 @@ export class NavMenuComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private _service:DataService
   ) {}
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (this.currentUser.accountType === "Administrator") {
-      this.isAdmin = true;
-    } else if (this.currentUser.accountType === "Educator") {
-      this.isEducator = true;
-    } else {
-      this.isStudent = true;
-    }
+   this._service.initUser();
   }
 }

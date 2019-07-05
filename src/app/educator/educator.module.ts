@@ -8,6 +8,10 @@ import { EducatorDetailsComponent } from './components/educator-details/educator
 import { EducatorAddeditComponent } from './components/educator-addedit/educator-addedit.component';
 import { EducatorEditComponent } from './components/educator-edit/educator-edit.component';
 import { EducatorHomeComponent } from './components/educator-home/educator-home.component';
+import { NotificationModule } from '../notification/notification.module';
+import { CompetitionModule } from '../competition/competition.module';
+
+
 
 @NgModule({
   declarations: [EducatorListComponent, EducatorDetailsComponent, EducatorAddeditComponent, EducatorEditComponent, EducatorHomeComponent],
@@ -16,7 +20,9 @@ import { EducatorHomeComponent } from './components/educator-home/educator-home.
     EducatorRoutingModule,
     MaterialDesignModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotificationModule,
+    CompetitionModule
   ]
 })
 export class EducatorModule { }

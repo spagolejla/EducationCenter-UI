@@ -6,6 +6,8 @@ import { EducatorService } from 'src/app/educator/services/educator.service';
 import { CourseService } from '../../services/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { DataService } from 'src/app/shared/services/data.service';
+
 
 @Component({
   selector: 'app-course-details',
@@ -23,7 +25,9 @@ export class CourseDetailsComponent implements OnInit {
 
   constructor(
     private courseService: CourseService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private _service: DataService
+    ) { }
 
     ngOnInit() {
       this.route.paramMap.subscribe(params => {

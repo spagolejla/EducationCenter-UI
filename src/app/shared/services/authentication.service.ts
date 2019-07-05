@@ -13,6 +13,8 @@ export class AuthService {
   currentUser: any;
   redirectUrl: string;
 
+  public logged:boolean;
+
   private headerOpened$ = new BehaviorSubject<boolean>(false);
   private loggedIn = new BehaviorSubject<boolean>(false);
   get isLoggedIn() {

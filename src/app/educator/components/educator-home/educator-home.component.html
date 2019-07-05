@@ -1,1 +1,61 @@
-<h1>Educator home</h1>
+<!-- <div id="spinnerWrapper">
+  <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+</div> -->
+<div class="table-container">
+
+    <span class="card-wrapper">
+  <mat-card class="mat-elevation-z3">
+
+    <h3> Educator home</h3>
+
+    <span class="top-menu">
+
+      <span class="menu-course">
+        <button mat-button [matMenuTriggerFor]="menu1" class="btn-course">Courses</button>
+        <mat-menu #menu1="matMenu">
+          <button mat-menu-item [routerLink]="['/course/addedit', 0]">Create new</button>
+          <button mat-menu-item routerLink='/course'>Managae courses</button>
+        </mat-menu>
+      </span>
+      <span class="menu-educator">
+        <button mat-button [matMenuTriggerFor]="menu2" class="btn-educator">Students</button>
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item routerLink='/educator'>Educators</button>
+          <button mat-menu-item routerLink='/administrator'>Administrators</button>
+        </mat-menu>
+      </span>
+      <span class="menu-profile">
+        <button mat-button [matMenuTriggerFor]="menu3" class="btn-profile">Notifications</button>
+        <mat-menu #menu3="matMenu">
+          <button mat-menu-item routerLink='/student'>Show students</button>
+          <button mat-menu-item routerLink='/payment'>Payments</button>
+        </mat-menu>
+      </span>
+
+
+
+    </span>
+  </mat-card>
+</span>
+  <span class="card-wrapper">
+    <mat-card class="card1 mat-elevation-z3">
+      <h5>Notifications</h5>
+      <cdk-virtual-scroll-viewport  style="height: 600px" itemSize="90" >
+        <ng-container>
+          <app-notification-list></app-notification-list>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+
+    </mat-card>
+    <mat-card class="card2 mat-elevation-z3">
+      <h5>Active competitions</h5>
+      <cdk-virtual-scroll-viewport  style="height: 600px; " itemSize="90" >
+        <ng-container>
+          <app-competition-active-list></app-competition-active-list>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+    </mat-card>
+  </span>
+
+
+</div>

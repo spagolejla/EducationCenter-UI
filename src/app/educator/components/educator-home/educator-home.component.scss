@@ -1,0 +1,115 @@
+
+.table-container {
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+.top-menu{
+  display: inline-block;
+  width:100%;
+
+}
+.menu-course{
+  float:left;
+  width:30%;
+
+  height: 10%;
+  display: flex;
+
+}
+.btn-course{
+  background-color:
+  rgba(124, 137, 208, 1);
+  color:white;
+width:100%
+
+}
+.menu-educator{
+ float:left;
+ width:30%;
+
+
+  height: 10%;
+  margin-left: 1%;
+  display: flex;
+
+
+}
+.btn-educator{
+  background-color:
+  rgba(76, 189, 207, 1);
+  color:white;
+  width:100%
+
+
+}
+.menu-profile
+{
+ float:left;
+ width:30%;
+
+
+  height: 10%;
+  margin-left: 1%;
+  display: flex;
+
+}
+
+.menu-more
+{
+ float:left;
+ width:1%;
+
+  height: 10%;
+  margin-left: 1%;
+  display: flex;
+
+}
+.btn-profile{
+  background-color:
+  rgba(27, 188, 155, 1);
+  color:white;
+  width:100%
+}
+
+.btn-more{
+
+  background-color:
+  rgba(3, 211, 192, 1);
+  color:white;
+  width:100%
+}
+#spinnerWrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-wrapper{
+
+ width: 100%;
+
+  display: inline-block;
+padding: 0%;
+height: 40%;
+}
+
+.card1{
+
+ float:left;
+ margin-right: 1%;
+ margin-top: 1em;
+width: 50%;
+}
+
+.card2{
+
+float: left;
+margin-top: 1em;
+width:40%;
+
+}
+
+

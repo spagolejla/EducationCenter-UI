@@ -4,6 +4,7 @@ import { AuthService } from "src/app/shared/services/authentication.service";
 import { User } from "src/app/shared/models/user";
 import { LayoutService } from '../../services/layout.service';
 import { Observable } from 'rxjs';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: "app-user-menu",
@@ -12,10 +13,12 @@ import { Observable } from 'rxjs';
 })
 export class UserMenuComponent implements OnInit {
   currentUser: User;
-  constructor(private router: Router, private authService: AuthService, private layoutService: LayoutService) {}
+  constructor(private router: Router, private authService: AuthService, private layoutService: LayoutService, private _service: DataService) {}
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this._service.initUser();
+    this.currentUser = this._service.currentUser;
+    console.log(this.currentUser);
 
   }
   getCurrentUser() {
@@ -28,6 +31,7 @@ export class UserMenuComponent implements OnInit {
   }
   logout() {
     this.authService.logout();
+    this.authService.logged=false;
     localStorage.removeItem('currentUser');
     this.layoutService.closeUserMenu();
     this.layoutService.closeNavMenu();

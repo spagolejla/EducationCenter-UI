@@ -6,6 +6,7 @@ import { NotificationService } from '../../services/notification.service';
 import { forkJoin } from 'rxjs';
 import { AddNotification } from 'src/app/shared/models/addNotification';
 import { EditNotification } from 'src/app/shared/models/editNotification';
+import { DataService } from 'src/app/shared/services/data.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class NotificationAddeditComponent implements OnInit {
 
   isAdmin: boolean = true;
   editNotification: EditNotification;
-
+  userId: number;
 
   observables: any = [];
 
@@ -34,13 +35,16 @@ export class NotificationAddeditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    private _service: DataService
   ) { }
 
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
       this.notifId = +params.get("id");
+      this.userId = this._service.currentUser.userId;
+      this.isAdmin = this._service.isAdmin;
     });
 
     if (this.isEdit) {
@@ -114,7 +118,7 @@ export class NotificationAddeditComponent implements OnInit {
       title: this.notifForm.value.title,
       text: this.notifForm.value.text,
       isAdmin: this.isAdmin,
-      creatorId: 1
+      creatorId: this.userId
     };
 
     this.notifService.addNotif(newNotif).subscribe(
