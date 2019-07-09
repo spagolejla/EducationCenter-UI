@@ -7,6 +7,7 @@ import { Course } from 'src/app/shared/models/course';
 import { CourseField } from 'src/app/shared/models/courseField';
 import { AddCourse } from 'src/app/shared/models/addCourse';
 import { EditCourse } from 'src/app/shared/models/editCourse';
+import { CompetitionApplication } from 'src/app/shared/models/competitionApplication';
 
 
 @Injectable({
@@ -53,6 +54,12 @@ export class CourseService {
      catchError(this.handleError)
     );
  }
+
+ addStudentsToCourse(students: CompetitionApplication[]) {
+  return this.http.post<CompetitionApplication[]>(this.pathAPI + 'api/course/addStudents', students).pipe(
+   catchError(this.handleError)
+  );
+}
 
  updateCourse(course: EditCourse) {
   return this.http.put<EditCourse>(this.pathAPI + 'api/course', course).pipe(

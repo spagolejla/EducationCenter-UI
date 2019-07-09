@@ -42,7 +42,7 @@
                 </div>
                 <div class="details-row">
                   <b style="color:rgba(0, 150, 136, 1);">Competition period: </b>{{competition.startDate |date: short}}
-                  - {{competition.endDate |date: short}} <br />
+                  - {{competition.endDate |date: short}} | {{competition.maxCandidatesNumber + ' candidates'}} <br />
                 </div>
               </mat-card-content>
 
@@ -65,35 +65,90 @@
 
         </div>
         <mat-card *ngIf='_service?.isEducator'>
-
-          <h5 style="color:rgba(0, 150, 136, 1);">All application</h5>
-
-          <table class="table table-striped" matSort (matSortChange)="sortData($event)">
-            <thead>
-              <th mat-sort-header="studentent"> Student </th>
-              <th>Points </th>
-              <th mat-sort-header="date"> date</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let a of sortedData">
+<div>
+    <h5 style="color:rgba(0, 150, 136, 1);">All application</h5>
+    <cdk-virtual-scroll-viewport  style="height: 300px; width: 100%; margin-bottom:3%;" itemSize="150" >
+        <table class="table table-striped" matSort (matSortChange)="sortData($event)">
+      <thead>
+            <th > Student </th>
+            <th mat-sort-header="points">Points </th>
+            <th> Date</th>
+          </thead>
+      <tbody>
+            <tr *ngFor="let a of sortedData">
                 <td>
                   {{a.student}}
                 </td>
 
                 <td>
-                  10
+                  {{a.points}}
                 </td>
                 <td>
-                  {{a.date}}
+                  {{a.date  | date: short}}
                 </td>
               </tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+      </cdk-virtual-scroll-viewport>
+
+</div>
+
+        <div *ngIf='competitionFinished'>
+            <button [disabled]="isSorted" class="btn" style="background-color: rgba(0, 150, 136, 1); color: white; margin-right: 1%; " (click)='sortData1()'>Sort applications</button>
+            <span style="color: rgba(0, 150, 136, 1);">  Competition period has finished please sort the applications.</span>
+        </div>
 
         </mat-card>
-        <div *ngIf='!_service?.isEducator'>
-          <button mat-button color="primary"> Applay now</button>
+        <div *ngIf='competition.active'>
+            <div *ngIf='_service?.isStudent'>
+                <br>
+                <br>
+                <div *ngIf='!isApplied'>
+                    <span style="color: rgba(0, 150, 136, 1);  margin-top: 2%;">
+                        If you are interested please apply as soon  because the end date of the competition is very close.
+                    </span> <br> <br>
+
+                <button [disabled]="isApplied"  class="btn" style="background-color: rgba(0, 150, 136, 1); color: white;   margin-top: 1%;" >Apply now</button>
+                </div>
+
+                <div *ngIf='isApplied'>
+                    <span style="color: rgba(0, 150, 136, 1);  margin-top: 2%;">
+                        You have already applied on this competition.
+                        Please be patient until the competition is over.
+                    </span> <br> <br>
+                </div>
+
+
+            </div>
         </div>
+        <div *ngIf='!competition.active'>
+            <br>
+            <br>
+            <span style="color: rgba(0, 150, 136, 1);  margin-top: 2%;">
+                This competition is no longer active!
+            </span> <br> <br>
+        </div>
+
+<div *ngIf='_service?.isEducator'>
+    <mat-card *ngIf='isSorted'>
+
+
+        <span style="color: rgba(0, 150, 136, 1);"> {{' Only '  + competition.maxCandidatesNumber + ' candidates can be accepted!'}}.</span> <br> <br>
+
+        <h3 style="color: rgba(0, 150, 136, 1);">Students who passed the competitions: </h3>
+
+
+        <ol class="list-group">
+            <li  *ngFor='let s of selectedStudents' style="margin-left:3%;"> {{s.student}}</li>
+
+          </ol>
+
+
+        <button  class="btn" style="background-color: rgba(0, 150, 136, 1); color: white; margin-right: 1%; margin-top:3%;" (click)='addToCourse()' *ngIf='competition.active'>Add to course</button>
+
+    </mat-card>
+</div>
+
       </mat-tab>
 
     </mat-tab-group>

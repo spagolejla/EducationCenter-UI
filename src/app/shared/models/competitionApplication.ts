@@ -6,4 +6,5 @@ export class CompetitionApplication {
   courseId: string;
   competitionId: number;
   date: Date;
+  points: number;
 }

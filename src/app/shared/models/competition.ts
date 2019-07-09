@@ -6,7 +6,7 @@ export class Competition {
   courseId: number;
   title: string;
   description: string;
-  active: number;
+  active: boolean;
   startDate: Date;
   endDate: Date;
   educatorId: number;
