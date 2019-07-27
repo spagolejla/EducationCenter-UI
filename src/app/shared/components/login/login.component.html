@@ -12,7 +12,7 @@
       <div class="example-container">
         <mat-form-field class="form-group">
           <input matInput placeholder="Username" formControlName="username">
-          <mat-error *ngIf="f.username.errors?.NotExist"> That username dosent exist!</mat-error>
+          <mat-error *ngIf="f.username.errors?.NotExist"> That username doesn't exist!</mat-error>
           <mat-error *ngIf="f.username.errors?.required"> You must fill the username!</mat-error>
         </mat-form-field>
 

@@ -36,8 +36,13 @@
 <div>
   <h4>Latest notifications</h4>
 </div>
-<div style="overflow: scroll;">
-<app-notification-list></app-notification-list>
+<div>
+    <cdk-virtual-scroll-viewport  style="height: 800px" itemSize="90" >
+        <ng-container>
+          <app-notification-list></app-notification-list>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+
 </div>
 
 </div>

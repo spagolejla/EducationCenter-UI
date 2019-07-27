@@ -8,6 +8,8 @@ import { CourseField } from 'src/app/shared/models/courseField';
 import { AddCourse } from 'src/app/shared/models/addCourse';
 import { EditCourse } from 'src/app/shared/models/editCourse';
 import { CompetitionApplication } from 'src/app/shared/models/competitionApplication';
+import { CourseManage } from 'src/app/shared/models/courseManage';
+import { AddCourseClass } from 'src/app/shared/models/addCourseClass';
 
 
 @Injectable({
@@ -37,8 +39,19 @@ export class CourseService {
     );
   }
 
+ getCourseManageById(id: number) {
+    return this.http.get<CourseManage[]>(this.pathAPI + `api/course/manage/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
   getCoursesByEducatorId(id: number) {
     return this.http.get<Course[]>(this.pathAPI + `api/educator/${id}/courses`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getActiveCoursesByEducatorId(id: number) {
+    return this.http.get<Course[]>(this.pathAPI + `api/educator/${id}/courses/active`).pipe(
       catchError(this.handleError)
     );
   }
@@ -54,6 +67,12 @@ export class CourseService {
      catchError(this.handleError)
     );
  }
+
+ addCourseClass(courseClass: AddCourseClass) {
+  return this.http.post<AddCourseClass>(this.pathAPI + 'api/course/addClass', courseClass).pipe(
+   catchError(this.handleError)
+  );
+}
 
  addStudentsToCourse(students: CompetitionApplication[]) {
   return this.http.post<CompetitionApplication[]>(this.pathAPI + 'api/course/addStudents', students).pipe(

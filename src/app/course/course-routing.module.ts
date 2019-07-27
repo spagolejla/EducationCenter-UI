@@ -4,6 +4,8 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { CourseAddeditComponent } from './components/course-addedit/course-addedit.component';
 import { CourseEducatorComponent } from './components/course-educator/course-educator.component';
+import { CourseManageComponent } from './components/course-manage/course-manage.component';
+import { CourseclassAddComponent } from './components/courseclass-add/courseclass-add.component';
 
 
 
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: 'educator',
    component: CourseEducatorComponent
+  },
+  {
+    path: 'manage/:id',
+    component: CourseManageComponent
+  },
+  {
+    path: 'manage/addClass/:id',
+    component: CourseclassAddComponent
   }
 ];
 

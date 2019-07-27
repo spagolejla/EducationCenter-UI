@@ -1,0 +1,57 @@
+<div class="container" >
+  <div class="header">
+    <mat-card id="card" *ngIf='course' class="mat-elevation-z3">
+      <div style="width: 100%; display:inline-block;">
+        <div style=" float:right;">
+          <button mat-button class="back-btn" (click)="onBack()">Back</button>
+        </div>
+        <div>
+          <h1>{{course.name}}</h1>
+        </div>
+      </div>
+    </mat-card>
+
+  </div>
+  <div class="part">
+    <mat-card id="card" *ngIf='course' class="mat-elevation-z3">
+
+          <h5 style="color:rgba(0, 150, 136, 1);">Add new class</h5>
+          <form [formGroup]="classForm" class="form">
+            <mat-form-field>
+              <textarea matInput
+              placeholder="Class description"
+              formControlName="description">
+
+              </textarea>
+
+              </mat-form-field
+            ><br />
+
+
+          </form>
+
+
+
+
+
+
+          <h5 style="color:rgba(0, 150, 136, 1);">Students attendance</h5>
+          <mat-selection-list  #shoes>
+            <mat-list-option color="primary" *ngFor="let std of course.students"  (click)="studentSelected(std.studentId)">
+              {{std.student}}
+            </mat-list-option>
+          </mat-selection-list>
+          <button
+          mat-raised-button
+          cdkFocusInitial
+          color="primary"
+          (click)="onSubmit()"
+          style="margin-top:2%;"
+        >
+         Add class
+        </button>
+
+    </mat-card>
+  </div>
+
+  </div>

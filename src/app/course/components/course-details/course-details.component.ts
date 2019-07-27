@@ -7,7 +7,7 @@ import { CourseService } from '../../services/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { DataService } from 'src/app/shared/services/data.service';
-
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-course-details',
@@ -26,7 +26,8 @@ export class CourseDetailsComponent implements OnInit {
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,
-    private _service: DataService
+    private _service: DataService,
+    private _location: Location
     ) { }
 
     ngOnInit() {
@@ -45,7 +46,9 @@ export class CourseDetailsComponent implements OnInit {
         console.log(this.course);
       });
     }
-
+    onBack() {
+      this._location.back();
+    }
     toggleSpinner() {
       this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
     }

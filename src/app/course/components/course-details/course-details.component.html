@@ -6,10 +6,10 @@
 <mat-card  id="card" *ngIf='course' class="mat-elevation-z3">
   <div style="width: 100%; display:inline-block;">
     <div style=" float:right;">
-      <button mat-button class="back-btn" [routerLink]="['/course']">Back</button>
+      <button mat-button class="back-btn" (click)="onBack()">Back</button>
     </div>
     <div>
-      <h3 >{{course.name}}</h3>
+      <h1 >{{course.name}}</h1>
   </div>
 </div>
 </mat-card>

@@ -4,7 +4,7 @@
 <div class="grid-container" *ngIf="hideSpinner">
   <mat-card class="mat-elevation-z3">
     <div style="margin-bottom:15px;">
-      <h3 style="display:inline;"> Educators</h3>
+      <h1 style="display:inline;"> Educators</h1>
       <button mat-button class="add-button" [routerLink]="['/educator/addedit', 0]">Add new</button>
     </div>
 
@@ -22,7 +22,7 @@
     <mat-grid-list cols="4" rowHeight="50px">
         <div class="card mat-elevation-z3" *ngFor="let educator of filteredEducators">
           <img src={{educator.avatarUrl}} />
-          <h6> {{ educator.title + ' ' + educator.firstName + ' '+ educator.lastName}} </h6>
+          <h5 style="margin-top:5%;"> {{ educator.title + ' ' + educator.firstName + ' '+ educator.lastName}} </h5>
           <button mat-button class="details-btn" [routerLink]="['/educator/details', educator.id]">Details</button>
         </div>
     </mat-grid-list>

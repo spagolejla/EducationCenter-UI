@@ -7,9 +7,11 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { CourseAddeditComponent } from './components/course-addedit/course-addedit.component';
 import { CourseEducatorComponent } from './components/course-educator/course-educator.component';
+import { CourseManageComponent } from './components/course-manage/course-manage.component';
+import { CourseclassAddComponent } from './components/courseclass-add/courseclass-add.component';
 
 @NgModule({
-  declarations: [CourseListComponent, CourseDetailsComponent, CourseAddeditComponent, CourseEducatorComponent],
+  declarations: [CourseListComponent, CourseDetailsComponent, CourseAddeditComponent, CourseEducatorComponent, CourseManageComponent, CourseclassAddComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
