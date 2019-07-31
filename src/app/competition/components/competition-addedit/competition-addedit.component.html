@@ -1,0 +1,160 @@
+<div id="spinnerWrapper">
+  <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+</div>
+
+
+<div class="grid-container"  *ngIf="hideSpinner">
+  <mat-card class="mat-elevation-z3">
+      <div style="margin-bottom:15px;">
+          <h3 style="display:inline;"> {{title}}</h3>
+          <button mat-button class="back-btn" [routerLink]="['/competition']">Back</button>
+        </div>
+
+  </mat-card>
+<mat-horizontal-stepper linear  #stepper class="mat-elevation-z3" *ngIf='!isEdit'>
+    <mat-step>
+        <ng-template matStepLabel>Competition info</ng-template>
+      <form  [formGroup]="competitionForm">
+          <mat-form-field>
+              <mat-select formControlName="courseId" matSelect placeholder="Course" class="dropdown-input" required>
+                <mat-option *ngFor="let cf of courses" [value]="cf.id">{{cf.name}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="f.courseId.errors?.required">Course  is required</mat-error>
+            </mat-form-field> <br>
+            <mat-form-field>
+                <input matInput placeholder="Competition title" formControlName="title" required>
+                <mat-error *ngIf="f.title.errors?.required">Competition title is required</mat-error>
+              </mat-form-field> <br>
+              <ng-template matStepLabel>Description</ng-template>
+              <mat-form-field>
+                <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+                <mat-error *ngIf="f.description.errors?.required">Course description is required</mat-error>
+
+              </mat-form-field><br>
+              <mat-form-field>
+                  <input matInput placeholder="Max candidates number" type="number" formControlName="maxCandidates" required>
+                  <mat-error *ngIf="f.maxCandidates.errors?.required">Max Candidates number is required</mat-error>
+                </mat-form-field> <br>
+          <mat-form-field>
+              <input matInput [matDatepicker]="picker"  formControlName="endDate" placeholder="End date" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="f.endDate.errors?.required">End date is required</mat-error>
+            </mat-form-field>
+            <br>
+
+
+
+
+        <div>
+          <button mat-button matStepperNext class="next-btn">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+
+      <div class="finalStep">
+
+          <p><b>Title: </b> {{this.competitionForm.value.title }} </p>
+          <p><b>Description: </b> {{this.competitionForm.value.description }} </p>
+          <p><b>Max candidates number: </b> {{this.competitionForm.value.maxCandidates }} </p>
+          <p><b>End date: </b> {{this.competitionForm.value.endDate | date: shortDate}} </p>
+     </div>
+
+      <div>
+        <button mat-button matStepperPrevious class="bck-btn">Back</button>
+
+        <button
+            mat-raised-button
+            cdkFocusInitial
+            color="primary"
+            (click)="onSubmit()"
+          >
+           Create
+          </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <mat-horizontal-stepper linear  #stepper class="mat-elevation-z3" *ngIf='isEdit'>
+      <mat-step>
+          <ng-template matStepLabel>Competition info</ng-template>
+        <form  [formGroup]="competitionUpdateForm">
+
+
+
+
+              <br>
+              <mat-form-field>
+                  <input matInput placeholder="Competition title" formControlName="title" required>
+                  <mat-error *ngIf="f.title.errors?.required">Competition title is required</mat-error>
+                </mat-form-field>
+
+                <mat-slide-toggle formControlName="active"
+                   style="margin-left: 5%"
+
+               >
+              Active
+            </mat-slide-toggle>
+                <br>
+                <ng-template matStepLabel>Description</ng-template>
+                <mat-form-field>
+                  <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+                  <mat-error *ngIf="f.description.errors?.required">Course description is required</mat-error>
+
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput placeholder="Max candidates number" type="number" formControlName="maxCandidates" required>
+                    <mat-error *ngIf="f.maxCandidates.errors?.required">Max Candidates number is required</mat-error>
+                  </mat-form-field> <br>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker"  formControlName="endDate" placeholder="End date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="f.endDate.errors?.required">End date is required</mat-error>
+              </mat-form-field>
+              <br>
+
+
+
+
+          <div>
+            <button mat-button matStepperNext class="next-btn">Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+
+
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+
+        <div class="finalStep">
+
+            <p><b>Title: </b> {{this.competitionUpdateForm.value.title }} </p>
+            <p><b>Description: </b> {{this.competitionUpdateForm.value.description }} </p>
+            <p><b>Max candidates number: </b> {{this.competitionUpdateForm.value.maxCandidates }} </p>
+            <p><b>End date: </b> {{this.competitionUpdateForm.value.endDate | date: shortDate}} </p>
+       </div>
+
+        <div>
+          <button mat-button matStepperPrevious class="bck-btn">Back</button>
+
+          <button
+              mat-raised-button
+              cdkFocusInitial
+              color="primary"
+              (click)="onSubmit()"
+            >
+             Save
+            </button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+</div>

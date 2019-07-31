@@ -7,9 +7,10 @@ import { CompetitionListComponent } from './components/competition-list/competit
 import { CompetitionComponent } from './components/competition/competition.component';
 import { CompetitionActiveListComponent } from './components/competition-active-list/competition-active-list.component';
 import { CompetitiomDetailsComponent } from './components/competitiom-details/competitiom-details.component';
+import { CompetitionAddeditComponent } from './components/competition-addedit/competition-addedit.component';
 
 @NgModule({
-  declarations: [CompetitionListComponent, CompetitionComponent, CompetitionActiveListComponent, CompetitiomDetailsComponent],
+  declarations: [CompetitionListComponent, CompetitionComponent, CompetitionActiveListComponent, CompetitiomDetailsComponent, CompetitionAddeditComponent],
   imports: [
     CommonModule,
     CompetitionRoutingModule,

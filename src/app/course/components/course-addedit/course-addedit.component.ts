@@ -9,6 +9,7 @@ import { EducatorService } from "src/app/educator/services/educator.service";
 import { forkJoin } from "rxjs";
 import { AddCourse } from "src/app/shared/models/addCourse";
 import { EditCourse } from 'src/app/shared/models/editCourse';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: "app-course-addedit",
@@ -35,6 +36,7 @@ export class CourseAddeditComponent implements OnInit {
 
   observables: any = [];
   courseId: number;
+  adminId: any;
 
   constructor(
     private fb: FormBuilder,
@@ -42,12 +44,13 @@ export class CourseAddeditComponent implements OnInit {
     private router: Router,
     private courseService: CourseService,
     private edcService: EducatorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _service: DataService,
 
   ) {}
 
   ngOnInit() {
-
+    this.adminId = this._service.currentUser.userId;
     this.route.paramMap.subscribe(params => {
       this.courseId = +params.get("id");
     });
@@ -191,7 +194,7 @@ export class CourseAddeditComponent implements OnInit {
       classStartTime: this.advInfoFormGroup.value.classStartTime,
       daysOfWeek: this.advInfoFormGroup.value.daysOfWeek,
 
-      administratorId: 1, //promjeniti kad se uradi login
+      administratorId: this.adminId, 
       educatorId: this.specInfoFormGroup.value.educatorId,
       courseFieldId: this.specInfoFormGroup.value.courseFieldId
     };

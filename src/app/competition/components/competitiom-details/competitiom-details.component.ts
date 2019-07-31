@@ -10,6 +10,8 @@ import { DataService } from "src/app/shared/services/data.service";
 import * as moment from "moment";
 import { CourseService } from 'src/app/course/services/course.service';
 import { MatSnackBar } from '@angular/material';
+import { Educator } from 'src/app/shared/models/educator';
+import { EducatorService } from 'src/app/educator/services/educator.service';
 
 @Component({
   selector: "app-competitiom-details",
@@ -19,6 +21,7 @@ import { MatSnackBar } from '@angular/material';
 export class CompetitiomDetailsComponent implements OnInit {
   hideSpinner = false;
   competition: Competition;
+
   competitionId: number;
   sortedData: CompetitionApplication[];
   selectedStudents: CompetitionApplication[] = [];
@@ -36,6 +39,7 @@ export class CompetitiomDetailsComponent implements OnInit {
     private _service: DataService,
     private snackBar: MatSnackBar,
     private router: Router,
+    private educatorService: EducatorService
   ) {}
 
   ngOnInit() {
@@ -45,10 +49,15 @@ export class CompetitiomDetailsComponent implements OnInit {
 
     this.observables.push(
       this.compService.getCompetitionById(this.competitionId)
+
     );
+
+
 
     forkJoin(this.observables).subscribe(responseList => {
       this.competition = responseList[0] as Competition;
+     console.log('Ovo je comp sada: ', this.competition)
+
       this.sortedData = this.competition.applications.slice();
       if (this._service.isStudent) {
         this.checkIsApplied();
@@ -65,6 +74,7 @@ export class CompetitiomDetailsComponent implements OnInit {
       this.toggleSpinner();
     });
   }
+  
 checkIsApplied() {
   this.competition.applications.forEach((app) => {
          if (app.studentId === this._service.currentUser.userId) {

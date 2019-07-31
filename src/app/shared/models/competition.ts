@@ -1,4 +1,5 @@
 import { CompetitionApplication } from './competitionApplication';
+import { Educator } from './educator';
 
 export class Competition {
   id: number;
@@ -9,8 +10,9 @@ export class Competition {
   active: boolean;
   startDate: Date;
   endDate: Date;
-  educatorId: number;
   maxCandidatesNumber: number;
   currentCandidatesNumber: number;
   applications: CompetitionApplication[];
+  educator: Educator;
+  lecturesNumber: number;
 }

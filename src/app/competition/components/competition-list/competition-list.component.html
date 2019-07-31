@@ -12,7 +12,7 @@
   <mat-card class="notif-body mat-elevation-z1" *ngFor='let c of filteredCompetitions'>
 
     <div style="display:inline-block; width:100%;">
-       <div class="notif-title" style="color:rgba(0, 150, 136, 1);" ><h4>{{c.courseName}}</h4></div>
+       <div class="notif-title" style="color:rgba(0, 150, 136, 1);" ><h4>{{c.title}}</h4></div>
     </div>
      <div style="display:inline-block; width:100%;">
      <div class="notif-user"><span>Current number of application:  {{c.currentCandidatesNumber + ' / ' + c.maxCandidatesNumber}}</span>

@@ -4,6 +4,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { throwError, of } from 'rxjs';
 import { AppConfig } from 'src/app/config/config';
 import { Competition } from 'src/app/shared/models/competition';
+import { AddCompetition } from 'src/app/shared/models/addCompetition';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,12 @@ export class CompetitionService {
 
   getCompetitionById(id: number) {
     return this.http.get<Competition>(this.pathAPI + `api/competition/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getCompetitionDetailsById(id: number) {
+    return this.http.get<AddCompetition>(this.pathAPI + `api/competition/details/${id}`).pipe(
       catchError(this.handleError)
     );
   }
@@ -49,6 +56,18 @@ export class CompetitionService {
      catchError(this.handleError)
     );
   }
+
+  addCompetition(competition: AddCompetition) {
+    return this.http.post<AddCompetition>(this.pathAPI + 'api/competition', competition).pipe(
+     catchError(this.handleError)
+    );
+ }
+
+ updateCompetition(comp: AddCompetition ) {
+  return this.http.put<AddCompetition>(this.pathAPI + `api/competition`, comp).pipe(
+   catchError(this.handleError)
+  );
+}
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

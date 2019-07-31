@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CompetitionListComponent } from './components/competition-list/competition-list.component';
 import { CompetitionComponent } from './components/competition/competition.component';
 import { CompetitiomDetailsComponent } from './components/competitiom-details/competitiom-details.component';
-
+import { CompetitionAddeditComponent } from './components/competition-addedit/competition-addedit.component';
 
 const routes: Routes = [
   {
@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: CompetitiomDetailsComponent
+  },
+  {
+    path: 'addedit/:id',
+    component: CompetitionAddeditComponent
   }
 ];
 

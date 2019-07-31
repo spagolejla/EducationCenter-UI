@@ -50,6 +50,12 @@ export class CourseService {
     );
   }
 
+  getCoursesForCompetition(id: number) {
+    return this.http.get<Course[]>(this.pathAPI + `api/educator/${id}/courses/forCompetition`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getActiveCoursesByEducatorId(id: number) {
     return this.http.get<Course[]>(this.pathAPI + `api/educator/${id}/courses/active`).pipe(
       catchError(this.handleError)

@@ -15,9 +15,9 @@
           <mat-card class="part1">
 
             <img
-              src="https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Sunglasses&hatColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Black&eyeType=Close&eyebrowType=Angry&mouthType=Default&skinColor=Light"
+              src={{competition.educator.avatarUrl}}
               style="width: 200px; height: 200px" />
-            <h2 style="margin-top:5%">Dinaid Dinic</h2>
+            <h2 style="margin-top:5%">{{competition.educator.firstName + ' ' + competition.educator.lastName}}</h2>
             <h4>Educator</h4>
 
           </mat-card>
@@ -38,7 +38,7 @@
                   10:00h | Monday, Friday <br />
                 </div>
                 <div class="details-row">
-                  <b style="color:rgba(0, 150, 136, 1);">Fields: </b>Programming | 10 lectures<br />
+                  <b style="color:rgba(0, 150, 136, 1);">Fields: </b>{{competition.educator.courseField}} | {{competition.lecturesNumber}} lectures<br />
                 </div>
                 <div class="details-row">
                   <b style="color:rgba(0, 150, 136, 1);">Competition period: </b>{{competition.startDate |date: short}}
