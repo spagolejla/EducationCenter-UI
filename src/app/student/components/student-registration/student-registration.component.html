@@ -1,0 +1,139 @@
+<div id="spinnerWrapper">
+    <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+  </div>
+<mat-card class="form-box" *ngIf="hideSpinner">
+
+  <div class="head">Education Center</div>
+  <div class="head1" >Registration</div>
+
+
+
+
+<mat-card-content>
+  <mat-horizontal-stepper  #stepper >
+    <mat-step [stepControl]="basicInfoFormGroup">
+      <form [formGroup]="basicInfoFormGroup">
+        <ng-template matStepLabel>Basic info</ng-template>
+        <mat-form-field class="field">
+          <input matInput placeholder="First name" formControlName="firstName" required>
+          <mat-error *ngIf="f1.firstName.errors?.required"> First name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Last name" formControlName="lastName" required>
+          <mat-error *ngIf="f1.lastName.errors?.required">Last Name is required</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="field">
+          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-error *ngIf="f1.email.errors?.email"> Please enter valid email address</mat-error>
+          <mat-error *ngIf="f1.email.errors?.required"> Email is required</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="tel" matInput placeholder="Telephone" formControlName="phone" required>
+            <mat-error *ngIf="f1.phone.errors?.required">Phone is required</mat-error>
+          </mat-form-field>
+
+      <br>
+
+        <mat-form-field class="field">
+          <textarea matInput placeholder="Tell about you" formControlName="description" required></textarea>
+
+          <mat-error *ngIf="f1.description.errors?.required">Description is required</mat-error>
+        </mat-form-field>
+
+        <!-- <mat-form-field>
+          <mat-select formControlName="courseFieldId" matSelect placeholder="Course field" class="dropdown-input" required>
+              <mat-option *ngFor="let cf of courseFields" [value]="cf.id">{{cf.field}}</mat-option>
+
+
+          </mat-select>
+          <mat-error *ngIf="f1.courseFieldId.errors?.required">Course field is required</mat-error>
+        </mat-form-field> <br> -->
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker"  formControlName="birthdate" placeholder="Birthate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="f1.birthdate.errors?.required">Birthdate is required</mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <div>
+          <button mat-button matStepperNext class="next-btn">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="advInfoFormGroup">
+      <form [formGroup]="advInfoFormGroup">
+        <ng-template matStepLabel>Advanced info</ng-template>
+        <mat-form-field class="field">
+          <input matInput placeholder="Username" formControlName="username" required>
+          <mat-error *ngIf="f2.username.errors?.usernameInUse"> Username is already exist!</mat-error>
+          <mat-error *ngIf="f2.username.errors?.required"> Username is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="AvatarURL" formControlName="avatarUrl" required></textarea>
+            <mat-error *ngIf="f2.avatarUrl.errors?.required"> AvatarURL is required</mat-error>
+          </mat-form-field> <a target="_blank" rel="noopener noreferrer" href="https://getavataaars.com/">Generate Avatar</a>
+        <br>
+        <mat-form-field class="field">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error *ngIf="f2.password.errors?.required"> Paasword is required</mat-error>
+            <mat-error *ngIf="f2.password.errors?.minlength"> Must be at least 8 characters!</mat-error>
+            <mat-error *ngIf="f2.password.errors?.hasNumber">   Must contain at least 1 number!</mat-error>
+            <mat-error *ngIf="f2.password.errors?.hasCapitalCase"> Must contain at least 1 in Capital Case!</mat-error>
+            <mat-error *ngIf="f2.password.errors?.hasSmallCase">  Must contain at least 1 Letter in Small Case!</mat-error>
+
+
+          </mat-form-field>
+
+          <mat-form-field>
+              <input matInput type="password" placeholder="Confrim password" formControlName="confirmPassword" required>
+              <mat-error *ngIf="f2.confirmPassword.errors?.required"> Password is required</mat-error>
+              <mat-error *ngIf="f2.confirmPassword.errors?.NoPassswordMatch">   Password do not match</mat-error>
+
+            </mat-form-field>
+            <br>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious class="bck-btn">Back</button>
+          <button mat-button matStepperNext class="next-btn">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="finalStep" style="display: inline-block; width:100%;margin-bottom:20px;">
+        <div style="float: left; ;margin-right:70px;">
+            <p><b>Student: </b> {{this.basicInfoFormGroup.value.firstName + ' ' + this.basicInfoFormGroup.value.lastName}} </p>
+            <p><b>Phone: </b> {{this.basicInfoFormGroup.value.phone }} </p>
+            <p><b>Email: </b> {{this.basicInfoFormGroup.value.email }} </p>
+            <p><b>Birthdate: </b> {{this.basicInfoFormGroup.value.birthdate | date: 'shortDate' }}  </p>
+            <p><b>Username: </b> {{this.advInfoFormGroup.value.username }} </p>
+        </div>
+
+
+
+      </div>
+      <div>
+        <button mat-button matStepperPrevious class="bck-btn">Back</button>
+
+        <button mat-raised-button cdkFocusInitial color="primary" (click)="onSubmit()">
+          Sign up
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card-content>
+
+
+</mat-card>

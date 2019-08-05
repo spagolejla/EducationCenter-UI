@@ -13,6 +13,7 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationModule } from './notification/notification.module';
 import { UsernameValidator } from './shared/helpers/username';
+import { ProfileComponent } from './shared/components/profile/profile.component';
 
 
 
@@ -21,6 +22,7 @@ import { UsernameValidator } from './shared/helpers/username';
     AppComponent,
     LoginComponent,
     HomeComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

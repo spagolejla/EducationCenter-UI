@@ -1,0 +1,108 @@
+<!-- Card -->
+<div class="card myCard mat-elevation-z1">
+
+  <!-- Card content -->
+  <div class="card-body d-flex flex-row">
+
+    <!-- Avatar -->
+    <img src={{_service?.currentUser.avatarUrl}} class="rounded-circle mr-3" height="150px" width="150px" alt="avatar">
+
+    <!-- Content -->
+    <div class="title">
+
+      <!-- Title -->
+      <h1>{{_service?.currentUser.firstName + ' ' + _service?.currentUser.lastName}}</h1>
+      <!-- Subtitle -->
+      <p class="card-text"><i class="far fa-clock pr-2"></i>{{_service?.currentUser.accountType }}</p>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- Card content -->
+  <div class="card-body">
+    <mat-tab-group>
+      <mat-tab label="Details">
+        <div class="details">
+            <h5 style="display: inline; color: rgba(0, 150, 136, 1);">Name </h5><p>{{_service?.currentUser.firstName + ' ' + _service?.currentUser.lastName }}</p>
+            <mat-divider></mat-divider>
+            <h5 style="color: rgba(0, 150, 136, 1); margin-top:1%;">Username</h5>
+            <p class="card-text">{{_service?.currentUser.username }}</p>
+            <mat-divider></mat-divider>
+            <h5 style=" color: rgba(0, 150, 136, 1); margin-top:1%;">Email</h5>
+            <p class="card-text">{{_service?.currentUser.email }}</p>
+            <mat-divider></mat-divider>
+            <h5 style="color: rgba(0, 150, 136, 1); margin-top:1%;">Phone</h5>
+            <p class="card-text">{{_service?.currentUser.phone }}</p>
+
+
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Update profile">
+          <form [formGroup]="editForm" style="margin-top: 2%;">
+
+              <mat-form-field class="field">
+                <input matInput placeholder="First name" formControlName="firstName" required>
+                <mat-error *ngIf="f1.firstName.errors?.required"> First name is required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Last name" formControlName="lastName" required>
+                <mat-error *ngIf="f1.lastName.errors?.required">Last Name is required</mat-error>
+              </mat-form-field>
+
+              <br>
+              <mat-form-field class="field">
+                <input matInput placeholder="Email" formControlName="email" required>
+                <mat-error *ngIf="f1.email.errors?.email"> Please enter valid email address</mat-error>
+                <mat-error *ngIf="f1.email.errors?.required"> Email is required</mat-error>
+
+              </mat-form-field>
+
+              <mat-form-field>
+                  <input type="tel" matInput placeholder="Telephone" formControlName="phone" required>
+                  <mat-error *ngIf="f1.phone.errors?.required">Phone is required</mat-error>
+                </mat-form-field>
+
+            <br>
+
+
+              <mat-form-field>
+                  <textarea matInput placeholder="AvatarURL" formControlName="avatarUrl" required></textarea>
+                  <mat-error *ngIf="f1.avatarUrl.errors?.required"> AvatarURL is required</mat-error>
+                </mat-form-field> <a target="_blank" rel="noopener noreferrer" href="https://getavataaars.com/">Generate Avatar</a>
+              <br>
+              <mat-form-field class="field">
+                  <input matInput type="password" placeholder="Password" formControlName="password" required>
+                  <mat-error *ngIf="f1.password.errors?.required"> Paasword is required</mat-error>
+                  <mat-error *ngIf="f1.password.errors?.minlength"> Must be at least 8 characters!</mat-error>
+                  <mat-error *ngIf="f1.password.errors?.hasNumber">   Must contain at least 1 number!</mat-error>
+                  <mat-error *ngIf="f1.password.errors?.hasCapitalCase"> Must contain at least 1 in Capital Case!</mat-error>
+                  <mat-error *ngIf="f1.password.errors?.hasSmallCase">  Must contain at least 1 Letter in Small Case!</mat-error>
+
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Confrim password" formControlName="confirmPassword" >
+                    <mat-error *ngIf="f1.confirmPassword.errors?.NoPassswordMatch">   Password do not match</mat-error>
+
+                  </mat-form-field> <button mat-raised-button cdkFocusInitial color="primary"  class="saveBtn"(click)="onSubmit()">
+                      Save
+                    </button>
+
+
+            </form>
+      </mat-tab>
+
+    </mat-tab-group>
+
+
+  </div>
+
+</div>
+<!-- Card -->

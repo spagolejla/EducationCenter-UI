@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { EducatorService } from "../../services/educator.service";
 import { ActivatedRoute } from "@angular/router";
 import { Educator } from "src/app/shared/models/educator";
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: "app-educator-list",
@@ -27,7 +28,8 @@ export class EducatorListComponent implements OnInit {
 
   constructor(
     private educatorService: EducatorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _service: DataService
   ) {}
 
   ngOnInit() {

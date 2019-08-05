@@ -1,0 +1,36 @@
+.myCard{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+.title{
+  font-size: 20%;
+  font-weight: bold;
+  margin-top:5%;
+}
+.details {
+  margin-top:3%;
+}
+.field{
+  margin-right: 5%;
+  margin-bottom: 10px;
+
+}
+
+ a {
+  text-decoration: none;
+  color: rgba(0, 150, 136, 1);
+  margin-left: 5%;
+  margin-bottom: 30px;
+
+}
+.saveBtn {
+  margin-left: 2%;
+}
+#spinnerWrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

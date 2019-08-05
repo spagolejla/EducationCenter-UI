@@ -15,4 +15,8 @@ export class Competition {
   applications: CompetitionApplication[];
   educator: Educator;
   lecturesNumber: number;
+  courseStartDate: Date;
+  price: number;
+  daysOfWeek: string;
+  courseStartTime: string;
 }

@@ -5,7 +5,7 @@
   <mat-card class="mat-elevation-z3">
     <div style="margin-bottom:15px;">
       <h1 style="display:inline;"> Educators</h1>
-      <button mat-button class="add-button" [routerLink]="['/educator/addedit', 0]">Add new</button>
+      <button mat-button class="add-button" [routerLink]="['/educator/addedit', 0]" *ngIf='_service?.isAdmin'>Add new</button>
     </div>
 
     <mat-form-field>

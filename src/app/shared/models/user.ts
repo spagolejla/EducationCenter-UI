@@ -8,5 +8,6 @@ export class User {
   accountTypeId: number;
   accountType: string;
   userAccountId: number;
-
+  email: string;
+  phone: string;
 }

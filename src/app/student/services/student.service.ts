@@ -4,6 +4,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { throwError, of } from 'rxjs';
 import { Student } from 'src/app/shared/models/student';
 import { AppConfig } from 'src/app/config/config';
+import { StudentRegistration } from 'src/app/shared/models/studentRegistration';
 
 
 @Injectable({
@@ -28,6 +29,13 @@ export class StudentService {
       catchError(this.handleError)
     );
   }
+
+  addStudent(std: StudentRegistration) {
+    return this.http.post<StudentRegistration>(this.pathAPI + 'api/student', std).pipe(
+     catchError(this.handleError)
+    );
+  }
+
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

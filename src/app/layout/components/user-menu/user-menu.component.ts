@@ -26,8 +26,9 @@ export class UserMenuComponent implements OnInit {
       cu => {this.currentUser = cu}
     );
   }
-  show() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  showProfile() {
+    this.router.navigate(["/profile"]);
+    this.layoutService.closeUserMenu();
   }
   logout() {
     this.authService.logout();

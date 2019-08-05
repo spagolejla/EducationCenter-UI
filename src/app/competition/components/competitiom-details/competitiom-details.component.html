@@ -34,8 +34,8 @@
             <mat-card style="margin-top: 5px;">
               <mat-card-content>
                 <div class="details-row">
-                  <b style="color:rgba(0, 150, 136, 1);">Course starts: </b> {{competition.startDate | date: short}} |
-                  10:00h | Monday, Friday <br />
+                  <b style="color:rgba(0, 150, 136, 1);">Course starts: </b> {{competition.courseStartDate | date: short}} |
+                  {{competition.courseStartTime}} |{{ competition.daysOfWeek}} <br />
                 </div>
                 <div class="details-row">
                   <b style="color:rgba(0, 150, 136, 1);">Fields: </b>{{competition.educator.courseField}} | {{competition.lecturesNumber}} lectures<br />

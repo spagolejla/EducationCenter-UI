@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { retry, catchError, filter } from 'rxjs/operators';
 import { throwError, of } from 'rxjs';
 import { AppConfig } from 'src/app/config/config';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,11 @@ export class UserService {
     );
   }
 
-
+  updateUser(user: User) {
+    return this.http.put<User>(this.pathAPI + 'api/userAccount', user).pipe(
+     catchError(this.handleError)
+    );
+  }
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
