@@ -4,7 +4,7 @@ import { Educator } from 'src/app/shared/models/educator';
 import { Student } from 'src/app/shared/models/student';
 import { EducatorService } from 'src/app/educator/services/educator.service';
 import { CourseService } from '../../services/course.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { DataService } from 'src/app/shared/services/data.service';
 import {Location} from '@angular/common';
@@ -27,7 +27,8 @@ export class CourseDetailsComponent implements OnInit {
     private courseService: CourseService,
     private route: ActivatedRoute,
     private _service: DataService,
-    private _location: Location
+    private _location: Location,
+    private router: Router
     ) { }
 
     ngOnInit() {
@@ -47,7 +48,12 @@ export class CourseDetailsComponent implements OnInit {
       });
     }
     onBack() {
-      this._location.back();
+      if (this._service.isStudent ){
+        this.router.navigate(['/course/manage', this.courseId]);
+      }else{
+        this._location.back();
+      }
+
     }
     toggleSpinner() {
       this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;

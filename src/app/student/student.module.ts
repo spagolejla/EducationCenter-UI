@@ -11,6 +11,7 @@ import { StudentHomeComponent } from './components/student-home/student-home.com
 import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
 import { RateAddComponent } from './components/rate-add/rate-add.component';
 import { CourseRateAddComponent } from './components/course-rate-add/course-rate-add.component';
+import { NotificationModule } from '../notification/notification.module';
 
 
 
@@ -21,7 +22,8 @@ import { CourseRateAddComponent } from './components/course-rate-add/course-rate
     StudentRoutingModule,
     MaterialDesignModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotificationModule
   ]
 })
 export class StudentModule { }

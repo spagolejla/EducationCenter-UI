@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentHomeComponent implements OnInit {
 
+  hiddenNotif: boolean = true;
+ 
+
   constructor() { }
 
   ngOnInit() {
   }
 
+hiddeNotif(){
+   this.hiddenNotif = true;
+}
+
+showNotif(){
+   this.hiddenNotif = false;
+}
 }

@@ -26,7 +26,9 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSortModule} from '@angular/material/sort';
-import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -60,7 +62,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
     MatTabsModule,
     MatChipsModule,
     MatSortModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule
   ],
   exports: [
     MatToolbarModule,
@@ -91,7 +94,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
     MatTabsModule,
     MatChipsModule,
     MatSortModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule
   ]
 })
 export class MaterialDesignModule { }

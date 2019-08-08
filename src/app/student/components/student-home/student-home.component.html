@@ -1,31 +1,194 @@
 <mat-card class="box" >
+<div style= "display: inline-block; width: 100%">
+  <div class="head">Student Module</div>
+  <div class="example-button-row icons">
+   
+    <button mat-icon-button  (click)="hiddeNotif()" style="color: rgba(3, 211, 192, 1);" aria-label="Example icon-button with a heart icon">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    
+  
+    <button mat-icon-button  (click)="showNotif()" style="color: rgba(3, 211, 192, 1);" aria-label="Example icon-button with a heart icon">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    
+    <button mat-icon-button [matMenuTriggerFor]="menu4" style="color:rgba(27, 188, 155, 1);" aria-label="Example icon-button with a heart icon">
+      <mat-icon>person</mat-icon>
+    </button>
+ <mat-menu #menu4="matMenu">
+     
+          <button mat-menu-item routerLink='/profile'>My profile</button>
 
-  <div class="head">Improve your skills. Explore our courses.</div>
+        </mat-menu>
+  </div>
+</div>
+
 
 </mat-card>
+<mat-card class="box" *ngIf="!hiddenNotif">
+<h2>Latest notifications</h2>
+ <cdk-virtual-scroll-viewport  style="height: 600px" itemSize="90" >
+        <ng-container>
+          <app-notification-list></app-notification-list>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+</mat-card>
 
-<mat-card class="box" >
+<mat-card class="box" *ngIf="hiddenNotif">
 
-    <p>Programming</p>
-    <mat-card>
-      <mat-card-title>C++ programming</mat-card-title>
-      <mat-card-content>Lorem ipsum dolor sit amet. Lorem ispum dolor sit amet.</mat-card-content>
+    <p>Explore our courses</p>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Search courses" [(ngModel)]="listFilter">
+      <button mat-button matSuffix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
 
-    </mat-card>
-    <mat-card>
-        <mat-card-title>C++ programming</mat-card-title>
-        <mat-card-content>Lorem ipsum dolor sit amet. Lorem ispum dolor sit amet.</mat-card-content>
+    </mat-form-field>
 
-      </mat-card>
-      <mat-card>
-      <mat-card-title>C++ programming</mat-card-title>
-      <mat-card-content>Lorem ipsum dolor sit amet. Lorem ispum dolor sit amet.</mat-card-content>
+     <cdk-virtual-scroll-viewport  style="height: 600px" itemSize="90" >
+     <div class="list-items ">
+           <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
 
-    </mat-card>
-    <mat-card>
-        <mat-card-title>C++ programming</mat-card-title>
-        <mat-card-content>Lorem ipsum dolor sit amet. Lorem ispum dolor sit amet.</mat-card-content>
 
-      </mat-card>
+   <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
+
+   <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
+
+   <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
+
+   <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
+
+   <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
+
+   <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
+
+   <div class="list-item mat-elevation-z1" >
+ <div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">Introduction in programming: C++</h3>
+ </div>
+   <cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+              <div> <p>Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              Lorem ispum dolor sit amet, lorem ispum dolor sit amter lorem ipsum loremipsum
+              
+              </p></div> 
+             
+            </cdk-virtual-scroll-viewport>
+   
+   <div style="display: inline-block; width: 100%; margin-top:1%;"><h1 style="float: left;">200$</h1> <a  [routerLink]="['/competition/details', 1]"
+   >Details</a></div>
+  </div>
+   
+    </div>
+             
+            </cdk-virtual-scroll-viewport>
+    
+
+
 
   </mat-card>
