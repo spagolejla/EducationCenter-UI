@@ -4,6 +4,8 @@ import { StudentComponent } from './components/student/student.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { StudentHomeComponent } from './components/student-home/student-home.component';
 import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
+import { RateAddComponent } from './components/rate-add/rate-add.component';
+import { CourseRateAddComponent } from './components/course-rate-add/course-rate-add.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path: 'registration',
     component: StudentRegistrationComponent
+  },
+  {
+    path: 'rateEducator/:id',
+    component: RateAddComponent
+  },
+  {
+    path: 'rateCourse/:id',
+    component: CourseRateAddComponent
   },
 ];
 

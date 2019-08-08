@@ -6,6 +6,7 @@ import { CourseAddeditComponent } from './components/course-addedit/course-added
 import { CourseEducatorComponent } from './components/course-educator/course-educator.component';
 import { CourseManageComponent } from './components/course-manage/course-manage.component';
 import { CourseclassAddComponent } from './components/courseclass-add/courseclass-add.component';
+import { CourseStudentComponent } from './components/course-student/course-student.component';
 
 
 
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'educator',
    component: CourseEducatorComponent
+  },
+  {
+    path: 'student',
+   component: CourseStudentComponent
   },
   {
     path: 'manage/:id',

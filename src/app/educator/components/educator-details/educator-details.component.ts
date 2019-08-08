@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { EducatorService } from "../../services/educator.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Educator } from "src/app/shared/models/educator";
 import { Course } from "src/app/shared/models/course";
 import { CourseService } from "src/app/course/services/course.service";
 import { forkJoin } from 'rxjs';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: "app-educator-details",
@@ -26,7 +27,10 @@ export class EducatorDetailsComponent implements OnInit {
   constructor(
     private educatorService: EducatorService,
     private courseService: CourseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _service: DataService,
+    private snackBar: MatSnackBar,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -54,5 +58,19 @@ export class EducatorDetailsComponent implements OnInit {
   toggleSpinner() {
     this.hideSpinner ? this.hideSpinner = false : this.hideSpinner = true;
   }
+  rateEducator() {
+    //[routerLink]="['/student/rateEducator', educator.id]"
+       const std = this._service.currentUser.firstName + ' ' + this._service.currentUser.lastName;
+    for ( let i = 0 ; i < this.educator.rates.length; i++){
+         if ( this.educator.rates[i].student === std) {
+          this.snackBar.open("Error! You had already rated this educator!", "Close", {
+            duration: 3000
+          });
+          return;
+         }
+    }
 
+    this.router.navigate(["/student/rateEducator", this.educatorId]);
+
+  }
 }

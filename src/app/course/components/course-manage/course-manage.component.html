@@ -16,12 +16,42 @@
     </mat-card>
 
   </div>
-
+  <div class="part" *ngIf='_service?.isStudent'>
+      <mat-card class="mat-elevation-z3">
+         <div style="display: inline-block; width: 100%; margin-bottom: 0.5%">
+            <h4 style="display: inline">Your attendance on this course</h4>  <button mat-button class="back-btn" [routerLink]="['/student/rateCourse', course.id]"
+             style="float: right;">Rate this course</button>
+         </div>
+         
+        
+              <mat-card  style="margin-bottom: 1%;">
+                  <div style="display: inline-block; width:100%;">
+                    <div style="float: left; margin-right: 3%;">
+                      <img style=" width:100px; height:100px;" src={{student.avatarUrl}}>
+                    </div>
+    
+                    <div style="float: left; width: 60%;">
+                      <h4>
+                        {{student.student}}
+                      </h4>
+                      <div style="margin-top: 7%;">
+                        <section>
+                          <mat-progress-bar  color="primary" mode="determinate" value={{student.attendanceAvg}} >
+                          </mat-progress-bar>
+                        </section>
+                      </div>
+                    </div>
+    
+                  </div>
+    
+                </mat-card>
+          </mat-card>
+  </div>
   <div class="part">
     <mat-card *ngIf='course' class="mat-elevation-z3">
       <div style="width: 100%; display:inline-block;">
         <div style=" float:right;">
-          <button mat-mini-fab color="primary"   (click)="addClass()"aria-label="Example icon-button with a heart icon">
+          <button mat-mini-fab color="primary" *ngIf='_service?.isEducator'  (click)="addClass()"aria-label="Example icon-button with a heart icon">
             <mat-icon>add</mat-icon>
           </button>
         </div>
@@ -30,61 +60,67 @@
         </div>
       </div>
       <div class="part">
-        <table class="table ">
-          <thead>
-            <tr>
-              <th scope="col">No.</th>
-              <th scope="col">Date</th>
-              <th scope="col">Description</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor='let class of course?.classes'>
-              <td scope="row">{{class.number}}.</td>
-              <td>{{class.date | date: 'shortDate'}}</td>
-              <td>{{class.description}}</td>
-            </tr>
-          </tbody>
-        </table>
+          <cdk-virtual-scroll-viewport  style="height: 300px" itemSize="90" >
+              <table class="table ">
+                  <thead>
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Description</th>
+        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let class of course?.classes'>
+                      <td scope="row">{{class.number}}.</td>
+                      <td>{{class.date | date: 'shortDate'}}</td>
+                      <td>{{class.description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </cdk-virtual-scroll-viewport>
+      
       </div>
 
 
     </mat-card>
 
   </div>
-  <div class="part">
+ 
+  <div class="part" *ngIf='_service?.isEducator'>
     <mat-card class="mat-elevation-z3">
 
       <h4>Students on this course</h4>
+      <cdk-virtual-scroll-viewport  style="height: 600px" itemSize="90" >
+          <mat-card *ngFor='let student of course.students' style="margin-bottom: 1%;">
+              <div style="display: inline-block; width:100%;">
+                <div style="float: left; margin-right: 3%;">
+                  <img style=" width:100px; height:100px;" src={{student.avatarUrl}}>
+                </div>
+
+                <div style="float: left; width: 60%;">
+                  <h4>
+                    {{student.student}}
+                  </h4>
+                  <div style="margin-top: 7%;">
+                    <section>
+                      <mat-progress-bar  color="primary" mode="determinate" value={{student.attendanceAvg}} >
+                      </mat-progress-bar>
+                    </section>
+                  </div>
+                </div>
+
+              </div>
+
+            </mat-card>
 
 
-      <mat-card *ngFor='let student of course.students' style="margin-bottom: 1%;">
-        <div style="display: inline-block; width:100%;">
-          <div style="float: left; margin-right: 3%;">
-            <img style=" width:100px; height:100px;" src={{student.avatarUrl}}>
-          </div>
 
-          <div style="float: left; width: 60%;">
-            <h4>
-              {{student.student}}
-            </h4>
-            <div style="margin-top: 7%;">
-              <section>
-                <mat-progress-bar  color="primary" mode="determinate" value={{student.attendanceAvg}} >
-                </mat-progress-bar>
-              </section>
-            </div>
-          </div>
 
-        </div>
-
+         
+        </cdk-virtual-scroll-viewport>
       </mat-card>
 
-
-
-
-    </mat-card>
 
 
   </div>

@@ -1,0 +1,63 @@
+<!-- Card -->
+<div class="card myCard mat-elevation-z1">
+
+  <!-- Card content -->
+  <div class="card-body d-flex flex-row">
+
+
+    <div class="title" style="margin-top: 5%;">
+      <div  style="text-align: center; align-items: center">
+        <img src={{educator?.avatarUrl}} class="rounded-circle mr-3" height="150px" width="150px"
+          alt="avatar">
+ <!-- Title -->
+ <h1 style="margin-top: 5%">{{educator?.firstName + ' ' + educator?.lastName}}</h1>
+ <!-- Subtitle -->
+ <p class="card-text"><i class="far fa-clock pr-2"></i>{{educator?.accountType }}</p>
+      </div>
+
+
+    </div>
+    <form [formGroup]="rateForm" (ngSubmit)="onSubmit()" id="rate-form" novalidate >
+      <div class="example-container">
+        <mat-form-field class="form-group">
+          <input matInput placeholder="Rate" type="number" formControlName="rate">
+
+          <mat-error *ngIf="f.rate.errors?.required"> You must fill the rate!</mat-error>
+          <mat-error *ngIf="f.rate.errors?.min"> Min rate is 1!</mat-error>
+          <mat-error *ngIf="f.rate.errors?.max"> Max rate is 10!</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="form-group">
+          <textarea matInput placeholder="Comment" rows="7" formControlName="comment"></textarea>
+        </mat-form-field>
+
+        <button [disabled]="!rateForm.valid" mat-raised-button color="primary" class="btn" mat-button>Rate</button>
+
+      </div>
+    </form>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="thank">
+      <h1>Thank you!</h1>
+      <p>Thank you for rating our educators. </p>
+      <p> Your positive feedback keep us going and motivate us to do even better.</p>
+      <p> Every time we learn more about your experience we are actively seeking to improve.
+      </p>
+  <button  mat-raised-button  class="btn-back" mat-button [routerLink]="['/educator/details', educatorId]"
+   >Back</button>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- Card content -->
+  <div class="card-body">
+
+
+
+  </div>
+
+</div>
+<!-- Card -->

@@ -9,11 +9,13 @@ import { MaterialDesignModule } from '../shared/material-design/material-design.
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { StudentHomeComponent } from './components/student-home/student-home.component';
 import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
+import { RateAddComponent } from './components/rate-add/rate-add.component';
+import { CourseRateAddComponent } from './components/course-rate-add/course-rate-add.component';
 
 
 
 @NgModule({
-  declarations: [StudentComponent, StudentDetailsComponent, StudentHomeComponent, StudentRegistrationComponent],
+  declarations: [StudentComponent, StudentDetailsComponent, StudentHomeComponent, StudentRegistrationComponent, RateAddComponent, CourseRateAddComponent],
   imports: [
     CommonModule,
     StudentRoutingModule,

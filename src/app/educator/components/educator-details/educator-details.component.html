@@ -35,9 +35,10 @@
     <mat-card *ngIf='educator' class="mat-elevation-z3">
       <mat-card-title>
         <h4 style="color:rgba(0, 150, 136, 1);display:inline-block">Additional informations</h4>
-        <button mat-mini-fab color="primary" style="margin-left: 15px; margin-top: 15px;" [routerLink]="['/educator/edit', educator.id]" >
+        <button mat-mini-fab color="primary" style="margin-left: 15px; margin-top: 15px;" [routerLink]="['/educator/edit', educator.id]" *ngIf='_service?.isAdmin'>
           <i class="material-icons">edit</i>
         </button>
+
       </mat-card-title>
       <mat-card-content>
         <div class="details-row">
@@ -113,6 +114,8 @@
         </mat-expansion-panel-header>
 
           <div class="table-body">
+              <button mat-button class="rate-btn" *ngIf='_service?.isStudent' (click)='rateEducator()' 
+              >Add rate</button>
             <table mat-table [dataSource]="dataSource" class=" table-body mat-elevation-z3">
 
               <ng-container matColumnDef="Student">

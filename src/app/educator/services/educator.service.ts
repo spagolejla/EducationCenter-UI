@@ -6,6 +6,7 @@ import { AppConfig } from 'src/app/config/config';
 import { Educator } from 'src/app/shared/models/educator';
 import { AddEducator } from 'src/app/shared/models/addEducator';
 import { EditEducator } from 'src/app/shared/models/editEducator';
+import { AddEducatorRate } from 'src/app/shared/models/addEducatorRate';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,12 @@ updateEducator(edc: EditEducator) {
 
 addEducator(edc: AddEducator) {
   return this.http.post<AddEducator>(this.pathAPI + 'api/educator', edc).pipe(
+   catchError(this.handleError)
+  );
+}
+
+addEducatorRate(rate: AddEducatorRate) {
+  return this.http.post<AddEducatorRate>(this.pathAPI + 'api/educator/addRate', rate).pipe(
    catchError(this.handleError)
   );
 }

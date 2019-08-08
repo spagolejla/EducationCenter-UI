@@ -9,9 +9,10 @@ import { CourseAddeditComponent } from './components/course-addedit/course-added
 import { CourseEducatorComponent } from './components/course-educator/course-educator.component';
 import { CourseManageComponent } from './components/course-manage/course-manage.component';
 import { CourseclassAddComponent } from './components/courseclass-add/courseclass-add.component';
+import { CourseStudentComponent } from './components/course-student/course-student.component';
 
 @NgModule({
-  declarations: [CourseListComponent, CourseDetailsComponent, CourseAddeditComponent, CourseEducatorComponent, CourseManageComponent, CourseclassAddComponent],
+  declarations: [CourseListComponent, CourseDetailsComponent, CourseAddeditComponent, CourseEducatorComponent, CourseManageComponent, CourseclassAddComponent, CourseStudentComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,

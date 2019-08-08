@@ -10,6 +10,7 @@ import { EditCourse } from 'src/app/shared/models/editCourse';
 import { CompetitionApplication } from 'src/app/shared/models/competitionApplication';
 import { CourseManage } from 'src/app/shared/models/courseManage';
 import { AddCourseClass } from 'src/app/shared/models/addCourseClass';
+import { AddCourseRate } from 'src/app/shared/models/addCourseRate';
 
 
 @Injectable({
@@ -68,6 +69,12 @@ export class CourseService {
     );
   }
 
+  getActiveCoursesByStudentId(id: number) {
+    return this.http.get<Course[]>(this.pathAPI + `api/student/${id}/courses/active`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   addCourse(course: AddCourse) {
     return this.http.post<AddCourse>(this.pathAPI + 'api/course', course).pipe(
      catchError(this.handleError)
@@ -91,7 +98,11 @@ export class CourseService {
    catchError(this.handleError)
   );
 }
-
+addCourseRate(rate: AddCourseRate) {
+  return this.http.post<AddCourseRate>(this.pathAPI + 'api/course/addRate', rate).pipe(
+   catchError(this.handleError)
+  );
+}
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

@@ -9,6 +9,7 @@ import { forkJoin } from 'rxjs';
 import { DataService } from 'src/app/shared/services/data.service';
 import {Location} from '@angular/common';
 import { MatSnackBar } from '@angular/material';
+import { StudentAttendance } from 'src/app/shared/models/studentAttendance';
 
 @Component({
   selector: 'app-course-manage',
@@ -24,7 +25,7 @@ export class CourseManageComponent implements OnInit {
   helperNumber: number;
   isChanged: boolean = false;
   students: Student[];
-
+  student: StudentAttendance;
   observables: any = [];
 
   constructor(
@@ -47,6 +48,13 @@ export class CourseManageComponent implements OnInit {
     forkJoin(this.observables).subscribe(responseList => {
       this.course = responseList[0] as CourseManage;
       this.classesNumber = this.course.currentNumberOfClasses;
+      if(this._service.isStudent) {
+        for (let i = 0; i < this.course.students.length; i++) {
+          if (this.course.students[i].studentId === this._service.currentUser.userId ){
+                      this.student =  this.course.students[i]; break;
+          }
+        }
+      }
       this.toggleSpinner();
       console.log(this.course);
     });
