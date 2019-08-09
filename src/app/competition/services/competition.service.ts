@@ -21,6 +21,11 @@ export class CompetitionService {
     );
   }
 
+  getActiveCompetitions() {
+    return this.http.get<Competition[]>(this.pathAPI + 'api/competitions/active').pipe(
+      catchError(this.handleError)
+    );
+  }
   getCompetitionById(id: number) {
     return this.http.get<Competition>(this.pathAPI + `api/competition/${id}`).pipe(
       catchError(this.handleError)

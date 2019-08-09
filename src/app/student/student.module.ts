@@ -12,11 +12,13 @@ import { StudentRegistrationComponent } from './components/student-registration/
 import { RateAddComponent } from './components/rate-add/rate-add.component';
 import { CourseRateAddComponent } from './components/course-rate-add/course-rate-add.component';
 import { NotificationModule } from '../notification/notification.module';
+import { ExploreCoursesComponent } from './components/explore-courses/explore-courses.component';
+import { AvaibleCoursesComponent } from './components/avaible-courses/avaible-courses.component';
 
 
 
 @NgModule({
-  declarations: [StudentComponent, StudentDetailsComponent, StudentHomeComponent, StudentRegistrationComponent, RateAddComponent, CourseRateAddComponent],
+  declarations: [StudentComponent, StudentDetailsComponent, StudentHomeComponent, StudentRegistrationComponent, RateAddComponent, CourseRateAddComponent, ExploreCoursesComponent, AvaibleCoursesComponent],
   imports: [
     CommonModule,
     StudentRoutingModule,

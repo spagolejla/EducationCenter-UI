@@ -1,0 +1,37 @@
+<p>Explore our courses</p>
+<mat-form-field>
+<input matInput type="text" placeholder="Search courses" [(ngModel)]="listFilter">
+<button mat-button matSuffix mat-icon-button>
+  <mat-icon>search</mat-icon>
+</button>
+
+</mat-form-field>
+
+<cdk-virtual-scroll-viewport  style="height: 600px" itemSize="90" >
+<div class="list-items ">
+     <div *ngFor="let c of filteredCompetitions" class="list-item mat-elevation-z1" >
+<div class="item-title "><h3 style="color: rgba(0, 150, 136, 1);  font-weight: bolder;">{{c.courseName}}</h3>
+</div>
+<cdk-virtual-scroll-viewport  style="height: 100px" itemSize="90" >
+        <div> <p>{{c.description}}
+
+        </p></div>
+
+      </cdk-virtual-scroll-viewport>
+
+<div style="display: inline-block; width: 100%; margin-top:1%;">
+ 
+  <h1 style="float: left;">{{c.price}}$</h1> <a  [routerLink]="['/competition/details', c.id]"
+>Details</a></div>
+</div>
+
+
+
+
+
+
+</div>
+
+      </cdk-virtual-scroll-viewport>
+
+
