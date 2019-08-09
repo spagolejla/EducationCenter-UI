@@ -37,6 +37,13 @@ export class StudentService {
   }
 
 
+   upatedStudentDescription(std: Student) {
+      return this.http.put<Student>(this.pathAPI + 'api/student', std).pipe(
+       catchError(this.handleError)
+      );
+  }
+
+
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);

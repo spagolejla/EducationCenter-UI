@@ -1,3 +1,5 @@
+import { Payment } from './payment';
+
 export class Student {
   id: number;
   firstName: string;
@@ -10,6 +12,8 @@ export class Student {
   accountType: string;
   active: boolean;
   avatarUrl: string;
+  points: number;
+  payments: Payment[];
 }
 
 

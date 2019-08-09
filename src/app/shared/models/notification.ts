@@ -6,4 +6,5 @@ export class Notification {
   text: number;
   date: Date;
   isCreator: boolean;
+  avatarUrl: string;
 }

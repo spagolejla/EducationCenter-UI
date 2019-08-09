@@ -7,6 +7,7 @@ import { StudentRegistrationComponent } from './components/student-registration/
 import { RateAddComponent } from './components/rate-add/rate-add.component';
 import { CourseRateAddComponent } from './components/course-rate-add/course-rate-add.component';
 import { AvaibleCoursesComponent } from './components/avaible-courses/avaible-courses.component';
+import { StudentDataComponent } from './components/student-data/student-data.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'availableCourses',
     component: AvaibleCoursesComponent
+  },
+  {
+    path: 'studentData',
+    component: StudentDataComponent
   },
 ];
 

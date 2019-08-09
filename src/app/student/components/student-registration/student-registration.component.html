@@ -10,7 +10,7 @@
 
 
 <mat-card-content>
-  <mat-horizontal-stepper  #stepper >
+  <mat-horizontal-stepper  #stepper linear>
     <mat-step [stepControl]="basicInfoFormGroup">
       <form [formGroup]="basicInfoFormGroup">
         <ng-template matStepLabel>Basic info</ng-template>

@@ -5,13 +5,22 @@
 <div  *ngIf="hideSpinner">
     <div class="notif-body " *ngFor="let n of notifications">
         <mat-card class="mat-elevation-z1">
-          <div style="display:inline-block; width:100%;">
-             <div class="notif-title" style="color: rgba(0, 150, 136, 1);" ><h4>{{n.title}}</h4></div>
-             <div class="notif-date"><h5>{{n.date | date: 'longDate'}}</h5></div>
+          <div style="display: inline-block; width:100%;">
+              <div style="float: left; margin-right: 3%;">
+                  <img style=" width:70px; height:70px;" src={{n.avatarUrl}}>
+                </div>
+            <div style="float: left; width:70%">
 
+                <div style=" display:inline-block; width:100%;">
+                    <div class="notif-title" style="color: rgba(0, 150, 136, 1);" ><h4>{{n.title}}</h4></div>
+                    <div class="notif-date"><h5>{{n.date | date: 'longDate'}}</h5></div>
+
+                 </div>
+
+                  <div class="notif-text">{{n.text}}</div>
+            </div>
           </div>
 
-           <div class="notif-text">{{n.text}}</div>
 
            <div style="display:inline-block; width:100%;">
            <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>  {{n.user}}
