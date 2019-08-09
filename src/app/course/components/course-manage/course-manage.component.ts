@@ -56,7 +56,7 @@ export class CourseManageComponent implements OnInit {
         }
       }
       this.toggleSpinner();
-      console.log(this.course);
+
     });
   }
 

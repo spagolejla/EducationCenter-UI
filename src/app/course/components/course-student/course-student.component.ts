@@ -57,7 +57,7 @@ export class CourseStudentComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.courses);
 
 
-      console.log(this.courses);
+      
     });
   }
 
@@ -68,7 +68,7 @@ export class CourseStudentComponent implements OnInit {
 
       this.dataSource2 = new MatTableDataSource(this.activeCourses);
 
-      console.log(this.activeCourses);
+
     });
   }
 

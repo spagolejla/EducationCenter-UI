@@ -65,7 +65,7 @@ export class CompetitionAddeditComponent implements OnInit {
  });
 
     this.observables.push(this.courseService.getCoursesForCompetition(this.educatorId));
-   console.log("compId", this.competitionId);
+  
     if ( this.competitionId !== 0 ) {
 
       this.observables.push(this.compService.getCompetitionDetailsById(this.competitionId));
@@ -86,7 +86,7 @@ export class CompetitionAddeditComponent implements OnInit {
   }
   displayCompetition() {
     this.title = "Edit competition";
-  console.log(this.compEdit)
+  
     this.competitionUpdateForm.patchValue({
       title: this.compEdit.title,
       description: this.compEdit.description,

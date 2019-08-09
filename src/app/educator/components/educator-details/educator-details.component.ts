@@ -45,10 +45,10 @@ export class EducatorDetailsComponent implements OnInit {
 
     forkJoin(this.observables).subscribe(responseList => {
       this.educator = responseList[0] as Educator;
-      console.log('Educator', this.educator);
+
       this.dataSource = new MatTableDataSource(this.educator.rates);
       this.courses = responseList[1] as Course[];
-      console.log(this.courses);
+     
       this.toggleSpinner();
     }
 

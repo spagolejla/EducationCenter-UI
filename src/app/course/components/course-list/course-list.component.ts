@@ -36,7 +36,7 @@ export class CourseListComponent implements OnInit {
         this.toggleSpinner();
         this.courses = c;
         this.filteredCourses = this.courses;
-        console.log(this.courses);
+
       }
       );
   }

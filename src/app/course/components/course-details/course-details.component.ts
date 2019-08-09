@@ -44,7 +44,7 @@ export class CourseDetailsComponent implements OnInit {
       forkJoin(this.observables).subscribe(responseList => {
         this.course = responseList[0] as Course;
         this.toggleSpinner();
-        console.log(this.course);
+
       });
     }
     onBack() {

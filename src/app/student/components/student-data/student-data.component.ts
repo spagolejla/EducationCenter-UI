@@ -44,7 +44,7 @@ export class StudentDataComponent implements OnInit {
     forkJoin(this.observables).subscribe(responseList => {
       this.student = responseList[0] as Student;
       this.dataSource = new MatTableDataSource(this.student.payments);
-      console.log(this.student);
+      
       this.toggleSpinner();
 
     });

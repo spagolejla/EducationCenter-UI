@@ -13,7 +13,7 @@
 
                 <div style=" display:inline-block; width:100%;">
                     <div class="notif-title" style="color: rgba(0, 150, 136, 1);" ><h4>{{n.title}}</h4></div>
-                    <div class="notif-date"><h5>{{n.date | date: 'longDate'}}</h5></div>
+
 
                  </div>
 
@@ -23,7 +23,8 @@
 
 
            <div style="display:inline-block; width:100%;">
-           <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>  {{n.user}}
+           <div class="notif-user"><span style="color:rgba(0, 150, 136, 1);">Note was written by: </span>
+             {{n.user + ', ' }}{{n.date | date: 'longDate'}}
 
            </div>
            <div style="float: right;" *ngIf="n.isCreator">

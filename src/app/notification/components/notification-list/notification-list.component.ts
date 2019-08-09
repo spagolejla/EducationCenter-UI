@@ -13,7 +13,7 @@ export class NotificationListComponent implements OnInit {
   hideSpinner = false;
 
   notifications: Notification[];
-  user: string;  //promjeniti kad napravim logiranje
+  user: string;
   constructor(
     private route: ActivatedRoute,
     private notifService: NotificationService,
@@ -41,7 +41,7 @@ export class NotificationListComponent implements OnInit {
       this.notifications = ntf;
       this.user = this._service.currentUser.firstName + ' ' + this._service.currentUser.lastName;
       this.checkNotification();
-      console.log(this.notifications);
+
     });
   }
 }

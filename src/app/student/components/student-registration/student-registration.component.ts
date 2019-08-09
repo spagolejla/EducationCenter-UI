@@ -114,7 +114,7 @@ export class StudentRegistrationComponent implements OnInit {
             this.router.navigate(['/student/home']);
 
 
-          console.log(usr);
+          
         },
         err => {
           this.toggleSpinner();
@@ -128,7 +128,7 @@ export class StudentRegistrationComponent implements OnInit {
 
 
 
-       
+
       },
       err => {
         this.toggleSpinner();

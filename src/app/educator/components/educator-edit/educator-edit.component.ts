@@ -86,7 +86,7 @@ export class EducatorEditComponent implements OnInit {
       this.toggleSpinner();
 
       this.editEducator = edc;
-      console.log("Educator", this.editEducator);
+
       this.displayEducator();
     });
   }

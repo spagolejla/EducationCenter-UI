@@ -124,7 +124,6 @@ export class AdminAddeditComponent implements OnInit {
     this.adminService.getAdminById(this.adminId).subscribe(adm => {
       this.toggleSpinner();
       this.adminEdit = adm;
-      console.log(this.adminEdit);
       this.displayAdmin();
     });
   }

@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/student/home']);
         }
 
-        console.log(this.currentUser);
+
       },
       err => {
        // this.toggleSpinner();

@@ -37,7 +37,7 @@ export class ExploreCoursesComponent implements OnInit {
         this.competitions = c;
         this.filteredCompetitions = this.competitions;
 
-        console.log(this.competitions);
+       
       }
       );
   }

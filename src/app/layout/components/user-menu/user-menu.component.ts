@@ -18,7 +18,7 @@ export class UserMenuComponent implements OnInit {
   ngOnInit() {
     this._service.initUser();
     this.currentUser = this._service.currentUser;
-    console.log(this.currentUser);
+
 
   }
   getCurrentUser() {

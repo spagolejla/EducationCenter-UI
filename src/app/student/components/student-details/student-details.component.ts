@@ -40,7 +40,7 @@ export class StudentDetailsComponent implements OnInit {
     forkJoin(this.observables).subscribe(responseList => {
       this.student = responseList[0] as Student;
       this.courses = responseList[1] as Course[];
-      console.log(this.courses);
+      
       this.toggleSpinner();
 
     });

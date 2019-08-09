@@ -42,7 +42,7 @@ export class CompetitionListComponent implements OnInit {
         {
           this.competitionsExist = true;
         }
-        console.log(this.competitions);
+
       }
       );
   }

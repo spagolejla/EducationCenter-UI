@@ -56,7 +56,6 @@ export class CompetitiomDetailsComponent implements OnInit {
 
     forkJoin(this.observables).subscribe(responseList => {
       this.competition = responseList[0] as Competition;
-     console.log('Ovo je comp sada: ', this.competition)
 
       this.sortedData = this.competition.applications.slice();
       if (this._service.isStudent) {
@@ -74,7 +73,7 @@ export class CompetitiomDetailsComponent implements OnInit {
       this.toggleSpinner();
     });
   }
-  
+
 checkIsApplied() {
   this.competition.applications.forEach((app) => {
          if (app.studentId === this._service.currentUser.userId) {
@@ -115,7 +114,7 @@ checkIsApplied() {
       this.selectedStudents.push(this.sortedData[i]);
     }
 
-    console.log(this.selectedStudents);
+
   }
 
   toggleSpinner() {

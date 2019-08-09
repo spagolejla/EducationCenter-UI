@@ -48,7 +48,7 @@ export class CourseclassAddComponent implements OnInit {
 
     forkJoin(this.observables).subscribe(responseList => {
       this.course = responseList[0] as CourseManage;
-      console.log(this.course);
+
     });
   }
   onRemoveUser(id: number): void {
@@ -79,7 +79,7 @@ export class CourseclassAddComponent implements OnInit {
         courseId: this.course.id,
         studentIds: this.selectedStudentsIds
     };
-    console.log('Ovo je novi cas: ',courseClass);
+
     this.courseService.addCourseClass(courseClass).subscribe(
       () => {
         this.openSnackBar('Success!', 'New Class added!');
@@ -87,7 +87,7 @@ export class CourseclassAddComponent implements OnInit {
       },
       err => console.log(err)
     );
-    console.log(this.selectedStudentsIds);
+
   }
   onBack() {
     this._location.back();

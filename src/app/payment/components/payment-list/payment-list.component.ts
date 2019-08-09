@@ -34,7 +34,7 @@ export class PaymentListComponent implements OnInit {
         this.toggleSpinner();
         this.payments = payment;
         this.dataSource = new MatTableDataSource(this.payments);
-        console.log(this.payments);
+        
       }
       );
   }

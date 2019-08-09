@@ -43,7 +43,6 @@ export class AdministratorListComponent implements OnInit {
       this.toggleSpinner();
       this.admins = admin;
       this.dataSource = new MatTableDataSource(this.admins);
-      console.log(this.admins);
     });
   }
 }

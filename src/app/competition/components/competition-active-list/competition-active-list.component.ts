@@ -38,11 +38,10 @@ export class CompetitionActiveListComponent implements OnInit {
         this.toggleSpinner();
         this.competitions = c;
         this.filteredCompetitions = this.competitions;
-        if(this.competitions.length > 0)
-        {
+        if ( this.competitions.length > 0 ) {
           this.competitionsExist = true;
         }
-        console.log(this.competitions);
+
       }
       );
   }

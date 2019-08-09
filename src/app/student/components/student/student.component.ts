@@ -33,7 +33,7 @@ export class StudentComponent implements OnInit {
         this.toggleSpinner();
         this.students = student;
         this.dataSource = new MatTableDataSource(this.students);
-        console.log(this.students);
+
       }
       );
   }
