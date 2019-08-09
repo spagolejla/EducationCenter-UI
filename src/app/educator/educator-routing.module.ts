@@ -5,28 +5,36 @@ import { EducatorDetailsComponent } from './components/educator-details/educator
 import { EducatorAddeditComponent } from './components/educator-addedit/educator-addedit.component';
 import { EducatorEditComponent } from './components/educator-edit/educator-edit.component';
 import { EducatorHomeComponent } from './components/educator-home/educator-home.component';
+import { LoggedInGuard } from '../shared/guards/logged-in.guard';
+import { AdminGuard } from '../shared/guards/admin.guard';
+import { EducatorGuard } from '../shared/guards/educator.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: EducatorListComponent
+    component: EducatorListComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'details/:id',
-    component: EducatorDetailsComponent
+    component: EducatorDetailsComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'addedit/:id',
-    component: EducatorAddeditComponent
+    component: EducatorAddeditComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'edit/:id',
-    component: EducatorEditComponent
+    component: EducatorEditComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'home',
-    component: EducatorHomeComponent
+    component: EducatorHomeComponent,
+    canActivate: [EducatorGuard]
   },
 ];
 

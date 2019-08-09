@@ -8,20 +8,25 @@ import { RateAddComponent } from './components/rate-add/rate-add.component';
 import { CourseRateAddComponent } from './components/course-rate-add/course-rate-add.component';
 import { AvaibleCoursesComponent } from './components/avaible-courses/avaible-courses.component';
 import { StudentDataComponent } from './components/student-data/student-data.component';
+import { LoggedInGuard } from '../shared/guards/logged-in.guard';
+import { StudentGuard } from '../shared/guards/student.guard';
 
 
-const routes: Routes = [
+const routes: Routes = [ 
   {
     path: '',
-    component: StudentComponent
+    component: StudentComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'details/:id',
-    component: StudentDetailsComponent
+    component: StudentDetailsComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'home',
-    component: StudentHomeComponent
+    component: StudentHomeComponent,
+    canActivate: [StudentGuard]
   },
   {
     path: 'registration',
@@ -29,19 +34,23 @@ const routes: Routes = [
   },
   {
     path: 'rateEducator/:id',
-    component: RateAddComponent
+    component: RateAddComponent,
+    canActivate: [StudentGuard]
   },
   {
     path: 'rateCourse/:id',
-    component: CourseRateAddComponent
+    component: CourseRateAddComponent,
+    canActivate: [StudentGuard]
   },
   {
     path: 'availableCourses',
-    component: AvaibleCoursesComponent
+    component: AvaibleCoursesComponent,
+    canActivate: [StudentGuard]
   },
   {
     path: 'studentData',
-    component: StudentDataComponent
+    component: StudentDataComponent,
+    canActivate: [StudentGuard]
   },
 ];
 

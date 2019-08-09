@@ -131,6 +131,8 @@ export class NotificationAddeditComponent implements OnInit {
       },
       err => {
         this.snackBar.open(err, 'Close');
+        this.toggleSpinner();
+
         console.error(err);
       }
     );

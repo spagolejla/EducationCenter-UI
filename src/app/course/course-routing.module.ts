@@ -7,37 +7,48 @@ import { CourseEducatorComponent } from './components/course-educator/course-edu
 import { CourseManageComponent } from './components/course-manage/course-manage.component';
 import { CourseclassAddComponent } from './components/courseclass-add/courseclass-add.component';
 import { CourseStudentComponent } from './components/course-student/course-student.component';
+import { AdminGuard } from '../shared/guards/admin.guard';
+import { LoggedInGuard } from '../shared/guards/logged-in.guard';
+import { EducatorGuard } from '../shared/guards/educator.guard';
+import { StudentGuard } from '../shared/guards/student.guard';
 
 
 
 const routes: Routes = [
   {
     path: '',
-    component: CourseListComponent
+    component: CourseListComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'details/:id',
-    component: CourseDetailsComponent
+    component: CourseDetailsComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'addedit/:id',
-    component: CourseAddeditComponent
+    component: CourseAddeditComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'educator',
-   component: CourseEducatorComponent
+   component: CourseEducatorComponent,
+   canActivate: [EducatorGuard]
   },
   {
     path: 'student',
-   component: CourseStudentComponent
+   component: CourseStudentComponent,
+   canActivate: [StudentGuard]
   },
   {
     path: 'manage/:id',
-    component: CourseManageComponent
+    component: CourseManageComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'manage/addClass/:id',
-    component: CourseclassAddComponent
+    component: CourseclassAddComponent,
+    canActivate: [EducatorGuard]
   }
 ];
 

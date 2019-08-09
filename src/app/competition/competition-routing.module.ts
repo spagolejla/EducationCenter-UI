@@ -4,19 +4,24 @@ import { CompetitionListComponent } from './components/competition-list/competit
 import { CompetitionComponent } from './components/competition/competition.component';
 import { CompetitiomDetailsComponent } from './components/competitiom-details/competitiom-details.component';
 import { CompetitionAddeditComponent } from './components/competition-addedit/competition-addedit.component';
+import { EducatorGuard } from '../shared/guards/educator.guard';
+import { LoggedInGuard } from '../shared/guards/logged-in.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: CompetitionComponent
+    component: CompetitionComponent,
+    canActivate: [EducatorGuard]
   },
   {
     path: 'details/:id',
-    component: CompetitiomDetailsComponent
+    component: CompetitiomDetailsComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'addedit/:id',
-    component: CompetitionAddeditComponent
+    component: CompetitionAddeditComponent,
+    canActivate: [EducatorGuard]
   }
 ];
 

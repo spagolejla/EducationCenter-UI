@@ -3,12 +3,14 @@ import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './shared/components/login/login.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { LoggedInGuard } from './shared/guards/logged-in.guard';
 
 const routes: Route[] = [
   { path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'profile', component: ProfileComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AdminGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard]},
   {
     path: 'student',
     loadChildren: './student/student.module#StudentModule'
@@ -23,7 +25,8 @@ const routes: Route[] = [
   },
   {
     path: 'administrator',
-    loadChildren: './administrator/administrator.module#AdministratorModule'
+    loadChildren: './administrator/administrator.module#AdministratorModule',
+    canActivate: [AdminGuard]
   },
   {
     path: 'notification',
