@@ -6,7 +6,7 @@
   <mat-card class="mat-elevation-z3" *ngIf='competition'>
     <div style="margin-bottom:15px;">
       <h1 style="display:inline;"> {{competition.courseName}}</h1>
-      <button mat-button class="back-button" [routerLink]="['/competition']">Back</button>
+      <button mat-button class="back-button" (click)="onBack()">Back</button>
     </div>
 
     <mat-tab-group>
@@ -108,7 +108,7 @@
                         If you are interested please apply as soon  because the end date of the competition is very close.
                     </span> <br> <br>
 
-                <button [disabled]="isApplied"  class="btn" style="background-color: rgba(0, 150, 136, 1); color: white;   margin-top: 1%;" >Apply now</button>
+                <button [disabled]="isApplied"  class="btn" style="background-color: rgba(0, 150, 136, 1); color: white;   margin-top: 1%;" (click)="studentApply()" >Apply now</button>
                 </div>
 
                 <div *ngIf='isApplied'>

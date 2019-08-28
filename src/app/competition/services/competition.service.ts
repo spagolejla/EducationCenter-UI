@@ -5,6 +5,7 @@ import { throwError, of } from 'rxjs';
 import { AppConfig } from 'src/app/config/config';
 import { Competition } from 'src/app/shared/models/competition';
 import { AddCompetition } from 'src/app/shared/models/addCompetition';
+import { AddCompetitionApplication } from 'src/app/shared/models/addCompetitionApp';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,11 @@ export class CompetitionService {
     );
  }
 
+ addCompetitionApplication(app: AddCompetitionApplication) {
+  return this.http.post<AddCompetitionApplication>(this.pathAPI + 'api/competition/addApplication', app).pipe(
+   catchError(this.handleError)
+  );
+}
  updateCompetition(comp: AddCompetition ) {
   return this.http.put<AddCompetition>(this.pathAPI + `api/competition`, comp).pipe(
    catchError(this.handleError)

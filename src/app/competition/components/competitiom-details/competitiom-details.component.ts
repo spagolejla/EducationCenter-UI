@@ -12,6 +12,7 @@ import { CourseService } from 'src/app/course/services/course.service';
 import { MatSnackBar } from '@angular/material';
 import { Educator } from 'src/app/shared/models/educator';
 import { EducatorService } from 'src/app/educator/services/educator.service';
+import { AddCompetitionApplication } from 'src/app/shared/models/addCompetitionApp';
 
 @Component({
   selector: "app-competitiom-details",
@@ -40,7 +41,7 @@ export class CompetitiomDetailsComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private educatorService: EducatorService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -73,16 +74,43 @@ export class CompetitiomDetailsComponent implements OnInit {
       this.toggleSpinner();
     });
   }
-
-checkIsApplied() {
-  this.competition.applications.forEach((app) => {
-         if (app.studentId === this._service.currentUser.userId) {
-           this.isApplied = true;
-         }
-  });
+  onBack(){
+    if(this._service.isStudent){
+      this.router.navigate(["/student/availableCourses"]);
+    }else{
+      this.router.navigate(["/competition"]);
+    }
+  }
+  checkIsApplied() {
+    this.competition.applications.forEach((app) => {
+      if (app.studentId === this._service.currentUser.userId) {
+        this.isApplied = true;
+      }
+    });
 
   }
+  studentApply() {
+    const newApplication: AddCompetitionApplication = {
+      studentId: this._service.currentUser.userId,
+      competitionId: this.competition.id,
+      courseId: this.competition.courseId,
+      courseName: this.competition.courseName,
+    }
 
+    this.compService.addCompetitionApplication(newApplication).subscribe(
+      () => {
+        this.toggleSpinner();
+        this.openSnackBar("Success!", "You succesfully applied on this competition!");
+        this.isApplied = true;
+        this.router.navigate(["/student/availableCourses"]);
+      },
+      err => {
+        this.toggleSpinner();
+        this.openSnackBar("Error!", err);
+        console.log(err);
+      }
+    );
+  }
   sortData(sort: Sort) {
     const data = this.competition.applications.slice();
     if (!sort.active || sort.direction === "") {
@@ -122,20 +150,20 @@ checkIsApplied() {
   }
 
   addToCourse() {
-this.competition.active = false;
-this.compService.deactivateCompetition(this.competition);
-this.courseService.addStudentsToCourse(this.selectedStudents).subscribe(
-  () => {
-    this.toggleSpinner();
-    this.openSnackBar("Success!", "Students  added to course!");
-    this.router.navigate(["/course/educator"]);
-  },
-  err => {
-    this.toggleSpinner();
-    this.snackBar.open(err, "Close");
-    console.error(err);
-  }
-);
+    this.competition.active = false;
+    this.compService.deactivateCompetition(this.competition);
+    this.courseService.addStudentsToCourse(this.selectedStudents).subscribe(
+      () => {
+        this.toggleSpinner();
+        this.openSnackBar("Success!", "Students  added to course!");
+        this.router.navigate(["/course/educator"]);
+      },
+      err => {
+        this.toggleSpinner();
+        this.snackBar.open(err, "Close");
+        console.error(err);
+      }
+    );
 
   }
 
